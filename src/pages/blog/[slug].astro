@@ -1,0 +1,1069 @@
+---
+// [slug].astro - Dynamic blog post page with static content
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Static Blog Posts - Must match the posts in index.astro
+const blogPosts = [
+  {
+    slug: 'thinking-aloud-about-agentic-ai',
+    title: 'Thinking Aloud About Agentic AI',
+    excerpt: 'Agentic AI breaks the pattern. These systems do not just observe and advise. They decide and act, often before a human realises there is anything to respond to.',
+    content: `
+      <p>I still remember the moment I realised something fundamental had changed.</p>
+
+      <p>We were testing an automated network control system. Nothing had failed. Dashboards looked normal. And yet the system quietly rerouted traffic away from a link that, to everyone in the room, appeared healthy. About twenty minutes later, that same link degraded sharply. The AI had acted on something we had not yet seen.</p>
+
+      <p>That was the first time I felt I was no longer working with a tool that simply analysed the world. I was working with something that formed expectations about it.</p>
+
+      <p>I have spent much of my career working at the intersection of AI and critical infrastructure: telecoms, energy systems, and security-sensitive platforms where mistakes scale quickly and forgiveness is limited. For years, AI in these environments was reactive. It detected anomalies, raised alerts, and waited for humans to decide.</p>
+
+      <p>Agentic AI breaks that pattern. These systems do not just observe and advise. They decide and act, often before a human realises there is anything to respond to.</p>
+
+      <h2>From Reacting to Anticipating</h2>
+
+      <p>In telecoms, agentic systems now reallocate spectrum or spin up network functions ahead of congestion. In energy systems, they forecast demand or renewable variability and adjust control strategies early. In security, they isolate assets or alter access pathways based on inferred intent rather than confirmed attacks.</p>
+
+      <p>The value is obvious. Humans cannot operate at this speed or scale. But something subtle happens when systems move from reacting to anticipating. They stop acting purely on facts and start acting on beliefs about the future.</p>
+
+      <p>And beliefs can be wrong.</p>
+
+      <p>When an AI throttles traffic because it predicts congestion that never arrives, who absorbs that cost? When an energy system sheds load preemptively, how do we explain that decision to those affected? When a security agent blocks access because behaviour looks suspicious rather than malicious, how easily can that decision be unwound?</p>
+
+      <p>These questions became real for me during the MIMER project.</p>
+
+      <h2>What MIMER Forced Us to Confront</h2>
+
+      <p>MIMER sits at the boundary between identity verification, security, and critical digital infrastructure. The problem we were tackling was simple to state but hard to solve. Remote identity verification systems are increasingly vulnerable to sophisticated spoofing, including deepfake-driven impersonation. These systems underpin access to financial services, telecom onboarding, and essential digital platforms.</p>
+
+      <p>Static rules do not survive long in adversarial environments. Attackers adapt too quickly. So we explored adaptive approaches, including agentic components that could observe evolving attack patterns, reason about intent, and adjust verification strategies dynamically.</p>
+
+      <p>What surprised me was how quickly uncertainty became operational. Confidence scores that work well as decision support become fragile when agents act on them autonomously. Humans can contextualise borderline cases. Agents tend to treat thresholds as truths unless carefully constrained.</p>
+
+      <p>We also learned that explainability degrades as agency increases. When an agent chains perception, memory, and action, reconstructing why a decision was made becomes genuinely difficult. In regulated environments, saying "the model decided" is not an answer.</p>
+
+      <p>MIMER made one thing clear to me: Agentic AI is not primarily a modelling challenge. It is a governance challenge that happens to involve models.</p>
+
+      <h2>The Trust Problem</h2>
+
+      <p>Trust behaves differently in critical infrastructure than it does in education or consumer technology.</p>
+
+      <p>In education, we worry people trust AI too much. In critical systems, engineers often trust it too little. That instinct is healthy, until it undermines the very benefits autonomy offers.</p>
+
+      <p>During MIMER trials, some operators wanted to veto every decision, reducing the agent to a sophisticated alarm. Others were tempted to step back entirely because early performance looked strong. Neither felt safe.</p>
+
+      <p>What we lack are good ways to calibrate trust over time. Not blind faith and not permanent scepticism, but situational trust that adapts to context, risk, and uncertainty. We talk extensively about accuracy and robustness, but far less about how humans actually experience supervising autonomous systems day after day.</p>
+
+      <h2>The Accountability Gap</h2>
+
+      <p>This is where the conversation gets uncomfortable.</p>
+
+      <p>When an AI agent makes a decision in a telecom network or energy grid, who is responsible? The engineer who deployed it? The organisation that configured it? The vendor that supplied the model? The regulator who approved its use?</p>
+
+      <p>Traditional systems had clearer accountability chains. Agentic systems do not fail cleanly. They drift, cascade, and compound. Without deliberate design for traceability, logging, and meaningful human override, accountability simply dissolves.</p>
+
+      <p>Security communities are beginning to grapple with this. Recent work on agentic AI threat modelling highlights risks such as cascading decision failures, untraceable actions, and overwhelmed human oversight in multi-agent systems. These risks are not theoretical. They emerge naturally when autonomy scales faster than governance.</p>
+
+      <h2>What Keeps Me Awake</h2>
+
+      <p>I worry less about AI making mistakes than about systems failing quietly through chains of reasonable-looking decisions. By the time humans notice, the system may already be far from its original intent.</p>
+
+      <p>I worry about boundary erosion. Each automated decision subtly shifts what we consider acceptable to delegate. Over time, no one remembers why certain decisions were once considered too important to automate.</p>
+
+      <p>And I worry about human disengagement. Supervising autonomy is cognitively demanding. The more capable these systems become, the harder it is for humans to stay meaningfully involved. We do not yet design agentic systems that respect human attention and fatigue in safety-critical contexts.</p>
+
+      <h2>The Human Element</h2>
+
+      <p>Despite these concerns, I am not pessimistic.</p>
+
+      <p>Agentic AI can make critical infrastructure more resilient and adaptive, reducing brittle, reactive decision-making. But only if trust, accountability, and human judgment are treated as first-class design problems.</p>
+
+      <p>An AI agent can decide how to reroute traffic. It should not decide whose connectivity matters more in a crisis without human involvement. An agent can detect identity risk patterns. It should not redefine fairness thresholds on its own.</p>
+
+      <p>The boundary between human and machine judgment is not fixed, and it should not be. But it must be intentional.</p>
+
+      <h2>Where This Leaves Us</h2>
+
+      <p>MIMER did not give me neat answers. What it gave me was clarity about the questions we should be asking more openly.</p>
+
+      <p>Agentic AI is already reshaping telecoms, energy, and security. The real question is not whether these systems will act on our behalf.</p>
+
+      <p>It is how much agency we are willing to delegate before we are no longer entirely sure who is still in charge.</p>
+
+      <p>I do not think we should rush to answer that. But I do think we need to keep asking it, honestly, and before the systems decide for us.</p>
+    `,
+    date: 'December 5, 2025',
+    dateSort: new Date('2025-12-05'),
+    readTime: '10 min read',
+    category: 'AI & Infrastructure',
+    featuredImage: '/images/blog/agentic_ai.png',
+    author: {
+      name: 'Dr Ahmed Zoha',
+      avatar: '/images/profile.jpg',
+    },
+  },
+  {
+    slug: 'ai-in-higher-education',
+    title: 'The Conversation We\'re Not Having About AI in Higher Education',
+    excerpt: 'We\'re so caught up in debates about academic integrity that we\'re missing something fundamental about how learning actually happens. As someone who\'s championed dialogic approaches to teaching, I explore whether AI might open up new spaces for rich, generative dialogue or shut those spaces down entirely.',
+    content: `
+      <p>I've been teaching long enough to recognize when something is genuinely transformative rather than just the latest shiny object in edtech. When I first encountered generative AI in my classroom through student submissions, my reaction was somewhere between fascination and mild panic.</p>
+
+      <p>But here's what's been nagging at me: we're so caught up in debates about academic integrity that we're missing something fundamental about how learning actually happens. As someone who's championed dialogic approaches to teaching for years, I keep wondering whether AI might actually open up new spaces for rich, generative dialogue or whether it's going to shut those spaces down entirely.</p>
+
+      <h2>What Gets Lost in Translation</h2>
+
+      <p>Dialogic teaching isn't just about discussion. It's about creating conditions where thinking happens through conversation, where ideas are tested, reshaped, and built upon collectively. It's messy. It requires students to articulate half-formed thoughts, to stumble, to hear themselves think out loud.</p>
+
+      <p>The best moments in my seminars happen when a student says, "Wait, I'm not sure this makes sense, but..." and then the whole room leans in. That uncertainty, that willingness to think publicly, is where deep learning lives.</p>
+
+      <p>So when AI entered our classrooms, my first question wasn't really about plagiarism. It was: what happens to this dialogic space?</p>
+
+      <h2>The Unexpected Bits</h2>
+
+      <p>I've been watching closely, and it's more complicated than I expected. A recent study from the University of Liverpool looked at architecture students using AI image generators. Students who crafted more conceptually rich prompts produced more compelling visual outputs. Nothing groundbreaking there.</p>
+
+      <p>But what caught my attention was this: students reported high levels of creative support, particularly in exploration. They weren't passively consuming AI outputs. They were iterating through language to refine their design intentions. It looked suspiciously like dialogue.</p>
+
+      <p>This challenged my initial assumption that AI would short-circuit learning. Instead, students were learning a new literacy that required them to articulate their thinking with both precision and creativity.</p>
+
+      <h2>Where I'm Worried</h2>
+
+      <p>The Liverpool study found that collaboration and immersion scores were notably lower than other dimensions. That matters. Learning isn't just about producing good outputs. It's about the struggle, the shared frustration of working through difficult ideas with other people.</p>
+
+      <p>I'm also worried about student voice. In dialogic learning, we talk about students developing their unique perspective. But when you're constantly negotiating with an AI trained on millions of texts, whose voice is actually emerging? There's a real risk that students start sounding like slightly customized versions of a language model.</p>
+
+      <p>And then there's intellectual dependency. If students outsource the hard cognitive work of drafting to AI, are they actually developing as thinkers? Writing isn't just about producing text. It's about wrestling with ideas until they make sense.</p>
+
+      <h2>What I'm Trying Instead</h2>
+
+      <p>I've started experimenting. Instead of banning AI, I ask students to use it as a thinking partner, then bring that conversation into our classroom dialogue. "Show me what the AI suggested, then tell me where it's wrong or incomplete."</p>
+
+      <p>The results have been surprising. Students who normally stay quiet seem more confident when they've rehearsed ideas with AI first. Others use AI to generate provocative counterarguments that push discussion in unexpected directions. One student told me it was like "having a really patient but occasionally clueless study partner who helps you figure out what you actually think."</p>
+
+      <p>That last bit is crucial: what you actually think. The AI doesn't replace thinking. It becomes a tool for externalizing and examining it.</p>
+
+      <h2>Putting Theory into Practice: The LEAP Project</h2>
+
+      <p>These aren't just theoretical concerns for me. I'm currently leading <a href="/projects/leap" class="text-accent-yellow hover:underline">LEAP (Learning Enhancement through Adaptive Pathways)</a>, a two-year Knowledge Transfer Partnership funded by Innovate UK. We're developing an AI platform specifically designed to support teachers and enhance student learning through dialogue-driven thinking.</p>
+
+      <p>The goal isn't to replace human teaching but to amplify educator expertise. LEAP uses adaptive pathways to create spaces where AI acts as a scaffold for deeper thinking, not a shortcut around it. It's about designing AI tools that preserve and enhance the dialogic spaces I've been talking about, rather than collapsing them.</p>
+
+      <p>If you're interested in how we're approaching this challenge practically, <a href="/projects/leap" class="text-accent-yellow hover:underline">you can learn more about the LEAP project here</a>.</p>
+
+      <h2>What Needs to Change</h2>
+
+      <p>Most universities have responded to AI with policies about when it can be used, focusing on detection and prevention. That's treating AI as a problem to manage rather than a shift that needs thoughtful integration.</p>
+
+      <p>We need to redesign assessments around process, not just product. If students can document their dialogue with AI, showing how they tested ideas and rejected suggestions, that becomes evidence of learning.</p>
+
+      <p>We should teach prompt engineering as a rhetorical practice. How do you articulate a question well? How do you push back against an answer that seems plausible but feels wrong? These are exactly the skills we've always wanted students to develop.</p>
+
+      <p>And critically, we need to preserve spaces for human-only dialogue. Not because AI is bad, but because certain kinds of learning, particularly those involving emotion and ethics, require human presence and vulnerability.</p>
+
+      <h2>What Keeps Me Up</h2>
+
+      <p>Can students develop genuine intellectual autonomy if they're always in dialogue with a tool that seems to know everything? What happens to productive confusion if AI is always there to resolve ambiguity?</p>
+
+      <p>And perhaps most importantly: are we asking students to engage in dialogue with AI, or are we asking AI to simulate the dialogue that should be happening between humans?</p>
+
+      <h2>No Easy Answers</h2>
+
+      <p>Those architecture students had 45 minutes to design a residential space using only text prompts. The researchers found that richer, more varied language in prompts correlated with better outcomes. But the real insight was about what happened between intention and output, in that iterative dance of articulation and revision.</p>
+
+      <p>That's where learning happens. That's what we need to protect as we navigate this shift.</p>
+
+      <p>I'm not arguing for or against AI in education. That debate feels beside the point. AI is here. The question is whether we can shape that integration in ways that deepen rather than diminish learning.</p>
+
+      <p>My hope is that we can. But it requires us to be thoughtful, experimental, and willing to admit when we're unsure. It requires treating AI not as an answer but as a new participant in an ongoing conversation about what education is for.</p>
+
+      <p>What's your experience been? I'm genuinely curious how other educators are navigating this.</p>
+    `,
+    date: 'December 10, 2025',
+    dateSort: new Date('2025-12-10'),
+    readTime: '8 min read',
+    category: 'AI & Education',
+    featuredImage: '/images/blog/academia_ai.png',
+    author: {
+      name: 'Dr Ahmed Zoha',
+      avatar: '/images/profile.jpg',
+    },
+  },
+  {
+    slug: 'privacy-paradox-federated-learning',
+    title: 'The Privacy Paradox: Why Federated Learning Is Not Enough',
+    excerpt: 'I remember the moment when my confidence in federated learning began to slip. From the gradients alone, those supposedly harmless updates, they reconstructed recognisable features from the training data.',
+    content: `
+      <h2>The moment my confidence slipped</h2>
+
+      <p>I remember the moment when my confidence in federated learning began to slip.</p>
+
+      <p>We were testing a privacy preserving system for detecting deepfake attacks in remote identity verification. On paper, everything looked right. Sensitive data stayed local. Only model updates were shared. Noise was added to protect privacy. It was the story I had told many times before, to partners, funders, and students.</p>
+
+      <p>Then a colleague showed something that made the room go quiet. From the gradients alone, those supposedly harmless updates, they reconstructed recognisable features from the training data. Not perfectly, but clearly enough to be unsettling.</p>
+
+      <p>That was the moment I realised federated learning was not the privacy solution I had believed it to be. It was progress, yes. But it also created new risks we were still learning how to see.</p>
+
+      <h2>The elegance that drew us in</h2>
+
+      <p>Federated learning is seductive because it appears to resolve a contradiction. We want powerful models, but we do not want to centralise sensitive data. So we leave the data where it is and share only what the model learns.</p>
+
+      <p>For a long time, I repeated this logic without hesitation. The mathematics is elegant. Differential privacy gives us bounds. Secure aggregation hides individual contributions. Encryption lets us compute without seeing.</p>
+
+      <p>The problem is that mathematics lives in a clean world. Deployed systems do not.</p>
+
+      <h2>Where the promise starts to fracture</h2>
+
+      <p>The core promise of federated learning rests on one fragile assumption. That model updates cannot be reverse engineered in meaningful ways.</p>
+
+      <p>In reality, they can.</p>
+
+      <p>Gradients can leak more than intuition suggests. Images can be partially reconstructed. Participation can be inferred. Sensitive attributes can be teased out even when raw data never moves.</p>
+
+      <p>When we pushed our own systems harder, the same pattern appeared. Privacy protections reduced leakage, but they also reduced performance. More noise meant weaker detection. Stronger guarantees meant poorer utility.</p>
+
+      <p>We were forced into an uncomfortable trade off. Protect privacy too weakly and risk exposure. Protect it too strongly and undermine the system's purpose.</p>
+
+      <h2>Theory meets deployed reality</h2>
+
+      <p>In conversations with engineers who have deployed federated systems, the same theme comes up again and again. Every privacy mechanism adds complexity. Every layer introduces new assumptions. And every assumption can break.</p>
+
+      <p>Privacy guarantees rarely fail because the maths is wrong. They fail because real systems are assembled from many moving parts, often bolted onto existing infrastructure under time and resource constraints.</p>
+
+      <p>A small oversight in one component can quietly undo strong guarantees elsewhere.</p>
+
+      <h2>Privacy as an adversarial problem</h2>
+
+      <p>This is not just a technical challenge. It is an adversarial one.</p>
+
+      <p>Federated systems attract attackers precisely because they promise privacy. Gradient leakage, membership inference, model inversion, and poisoning attacks all exist because someone is actively trying to extract value from what is meant to be hidden.</p>
+
+      <p>Each defence invites a counter attack. Each fix shifts the problem rather than eliminating it. We are in an arms race, and there is no stable end point.</p>
+
+      <h2>Why governance matters more than algorithms</h2>
+
+      <p>This leads to a conclusion I resisted for a long time. Federated learning's hardest problems are not algorithmic. They are governance problems.</p>
+
+      <p>Who decides how much privacy loss is acceptable. Who verifies that protections are implemented correctly. Who is accountable when guarantees silently erode over time.</p>
+
+      <p>Federated learning distributes computation, but it does not remove the need for trust. It reshapes trust into a web of dependencies that is harder to reason about and harder to manage.</p>
+
+      <h2>What this means for critical systems</h2>
+
+      <p>For critical infrastructure, the implications are serious.</p>
+
+      <p>In telecoms, leaked updates can reveal behavioural patterns. In healthcare, they can expose participation in sensitive studies. In finance, they can hint at individual transaction behaviour.</p>
+
+      <p>These failures are subtle. There is no obvious breach. No database leaked online. Just gradual erosion of privacy that is difficult to detect and even harder to explain.</p>
+
+      <p>This is the paradox. Federated learning can make privacy failures quieter and more opaque than centralised systems ever were.</p>
+
+      <h2>The human side of privacy</h2>
+
+      <p>What troubles me most is not a technical flaw, but a human one.</p>
+
+      <p>People do not distinguish between data staying local and inference happening remotely. From their perspective, inference still feels like surveillance. A system that meets formal definitions but feels invasive has already failed.</p>
+
+      <p>No amount of mathematical precision resolves that gap on its own. Trust requires transparency, communication, and honesty about trade offs.</p>
+
+      <h2>Where this leaves us</h2>
+
+      <p>Federated learning remains useful. But we need to stop treating it as a privacy solution. It is a privacy improving technique that works only under carefully defined conditions and only when paired with other safeguards.</p>
+
+      <p>It can reduce risk. It cannot eliminate it.</p>
+
+      <p>It can shift trust. It cannot remove the need for it.</p>
+
+      <p>If we want systems that are genuinely trustworthy, we need governance frameworks that match the technical complexity of what we are building, and humility about the limits of our tools.</p>
+
+      <h2>The question that matters</h2>
+
+      <p>The real question is not whether federated learning preserves privacy.</p>
+
+      <p>It is whether we are prepared to recognise when it does not, and what we do when that happens.</p>
+
+      <p>That gap, between what works in theory and what we can trust in practice, is where the real work begins.</p>
+    `,
+    date: 'December 12, 2025',
+    dateSort: new Date('2025-12-12'),
+    readTime: '9 min read',
+    category: 'AI & Privacy',
+    featuredImage: '/images/blog/fedai_bp.png',
+    author: {
+      name: 'Dr Ahmed Zoha',
+      avatar: '/images/profile.jpg',
+    },
+  },
+  {
+    slug: 'code-switching-problem-multilingual-ai',
+    title: 'The Code-Switching Problem: Why Multilingual AI Is Harder Than It Looks',
+    excerpt: 'I remember sitting in a meeting room in Taxila, listening to our Pakistani banking partners discuss their customer verification systems. The conversation flowed naturally between Urdu, English, and occasional Hindi phrases. Then one of the bankers asked: "Can your AI understand this?"',
+    content: `
+      <p>I remember sitting in a meeting room in Taxila, listening to our Pakistani banking partners discuss their customer verification systems. The conversation flowed naturally between Urdu, English, and occasional Hindi phrases. Someone would start a sentence in English, switch to Urdu mid-thought, then throw in a technical term in English again. Nobody blinked. This was simply how people spoke.</p>
+
+      <p>Then one of the bankers asked a question that would shape the next two years of our MIMER project: "Can your AI understand <em>this</em>?" He gestured at the air, encompassing the multilingual conversation we had just been having. "Because this is how our customers actually talk."</p>
+
+      <p>That was the moment I realized we had been solving the wrong problem.</p>
+
+      <h2>The Invisible Majority</h2>
+
+      <p>We had spent months building sophisticated deepfake detection systems for voice authentication. Our technology could distinguish real voices from artificially generated ones with impressive accuracy on benchmark datasets. We were achieving results that would make any researcher proud.</p>
+
+      <p>But those benchmark datasets were almost entirely monolingual. People spoke English, or Mandarin, or Spanish. They did not switch between languages mid-sentence. They certainly did not exhibit the complex, fluid multilingualism that characterized actual human conversation in Pakistan and India.</p>
+
+      <p>The numbers tell a sobering story. Over half a billion people speak Hindi and Urdu. Hindi is the third most spoken language globally. Yet when we surveyed existing voice authentication and deepfake detection datasets, we found nothing that captured how these populations actually communicate.</p>
+
+      <p>Code-switching, the practice of alternating between languages within a single conversation or even a single sentence, is not a bug in human communication. It is a feature. It conveys social meaning, establishes identity, and enables nuanced expression that monolingual speech cannot achieve.</p>
+
+      <p>But for AI systems, code-switching is a nightmare.</p>
+
+      <h2>Building Reality Into Data</h2>
+
+      <p>During the development of our Multilingual Spoofed Speech dataset, we made a deliberate choice to preserve natural code-switching behavior. We did not ask speakers to compartmentalize their languages. We captured them as they were, switching between Urdu, Hindi, and English as context and comfort dictated.</p>
+
+      <p>The result was 472,486 utterances from 154 speakers, featuring the actual conversational dynamics of bilingual South Asian speakers. Some samples had minimal code-switching. Others alternated languages multiple times within seconds. The dataset reflected reality, which meant it reflected complexity.</p>
+
+      <p>When we analyzed the data, approximately 50% of audio samples contained significant code-switching. In the Hindi subset, speakers switched languages even more frequently than in Urdu. This was not random variation. It was systematic behavior shaped by social context, speaker background, and the pragmatics of bilingual communication.</p>
+
+      <p>For our spoofing detection systems, this created a compound challenge. We were not just trying to distinguish real voices from synthetic ones. We were trying to do so in an environment where the linguistic ground was constantly shifting beneath the model's feet.</p>
+
+      <h2>The Prosody Problem</h2>
+
+      <p>One of the subtler challenges relates to prosody, the rhythm and melody of speech. When speakers switch languages, they do not simply swap out words. They often shift prosodic patterns as well.</p>
+
+      <p>A speaker might start a sentence with the intonation patterns of Urdu, switch to an English phrase with English stress patterns, then return to Urdu prosody for the remainder. For human listeners embedded in these linguistic communities, this sounds completely natural. For machine learning models trained on clean, monolingual data, it is deeply confusing.</p>
+
+      <p>Voice conversion systems, the spoofing attacks we were defending against, had to grapple with this same complexity. In our testing, sophisticated techniques like Seed-VC and HierSpeech++ produced spoofed samples that were nearly indistinguishable from genuine ones, even in code-switched contexts. These systems had learned to preserve the natural flow of multilingual speech, making them far more dangerous than simpler text-to-speech approaches.</p>
+
+      <h2>The Performance Paradox</h2>
+
+      <p>When we evaluated our detection framework, WavSpeech-AASIST, across the three language subsets, we encountered a puzzling asymmetry. The system performed well on Urdu, achieving an equal error rate of just 0.43%. English was slightly more challenging at 1.39%. But Hindi proved dramatically harder, with an error rate of 5.55%.</p>
+
+      <p>Why was Hindi so much more difficult than Urdu?</p>
+
+      <p>The answer lay in the frequency and nature of code-switching. Hindi speakers in our dataset switched between languages more often and more abruptly. These rapid transitions created prosodic and phonetic shifts that our models struggled to follow. The phonetic boundaries blurred. The acoustic features that indicated genuine versus spoofed speech became less reliable.</p>
+
+      <p>Moreover, many Hindi recordings contained background music and overlapping voices, common in South Asian broadcast environments. This environmental noise was preserved in the spoofed samples, creating an additional layer of acoustic complexity. The model had to distinguish between noise patterns associated with genuine recordings and those associated with the spoofing process itself, all while tracking rapid language switches.</p>
+
+      <p>This revealed something important. It is not just that multilingual speech is more variable. It is that the variability itself interferes with the acoustic signatures we rely on for detecting synthesis and manipulation.</p>
+
+      <h2>The Accent Layer</h2>
+
+      <p>There is yet another dimension that we encountered repeatedly. The English spoken by native Urdu and Hindi speakers carries distinct phonetic characteristics. Pronunciation patterns, intonation contours, and rhythm differ from native English speakers in predictable ways.</p>
+
+      <p>When someone switches from Urdu to English, they do not switch accents. The English phrases carry prosodic and phonetic markers of the speaker's first language. This is not a deficiency. It is a characteristic of genuine bilingual speech.</p>
+
+      <p>But for AI models trained primarily on native English speakers, these accented productions of English words look anomalous. When we tested our systems on supposedly multilingual datasets that were actually just monolingual English with different speakers, they performed well but failed to generalize to the English-with-Urdu-accent that our target users actually produced.</p>
+
+      <p>This highlighted a problematic assumption underlying much multilingual AI research. We often treat languages as discrete categories, assuming that once a model learns Language A and Language B separately, it can handle both together. But bilingual speech is not two monolingual modes spliced together. It is a distinct communicative system with its own phonetic, prosodic, and pragmatic rules.</p>
+
+      <h2>The Data Hunger</h2>
+
+      <p>One frustrating aspect of code-switching research is the perpetual scarcity of training data. Monolingual datasets are plentiful. English speech corpora contain hundreds or thousands of hours of annotated audio. High-resource languages like Mandarin and Spanish have substantial resources too.</p>
+
+      <p>But code-switched data? Vanishingly rare.</p>
+
+      <p>During MIMER, we explored various data augmentation strategies. We used voice conversion not just to generate spoofed samples but to increase the diversity of genuine multilingual speech. We employed automatic transcription on unannotated multilingual broadcasts, trading manual annotation costs for noisier but more abundant data.</p>
+
+      <p>These approaches helped. They increased training volume and improved model performance. But they could not fully replicate the complexity of natural code-switching. Synthetic code-switches lack the pragmatic motivations of real ones. They do not capture the social meanings embedded in language choice.</p>
+
+      <h2>The Cost of Complexity</h2>
+
+      <p>Our WavSpeech-AASIST framework combined multiple self-supervised learning models, specifically wav2vec and UniSpeech, to capture the complementary representations needed for multilingual spoofing detection.</p>
+
+      <p>Interestingly, this multi-embedding approach did not uniformly improve performance. On English and on standard monolingual benchmarks like ASVspoof-2019, fusing representations from both models yielded the best results. But on Urdu and Hindi, using wav2vec features alone sometimes performed better.</p>
+
+      <p>This suggests that straightforward concatenation of multilingual representations can introduce interference rather than synergy. The features that help with one linguistic context may add noise in another. What we need are adaptive fusion strategies that can weight different feature streams based on the linguistic context the model currently inhabits.</p>
+
+      <h2>What This Means for Deployment</h2>
+
+      <p>These challenges have direct implications for real-world systems. Consider voice authentication used by South Asian banks, our original use case. If these systems are trained on monolingual data or artificial multilingual data without code-switching, they will either reject genuine customers who code-switch naturally or fail to detect sophisticated spoofing attacks that exploit code-switching patterns.</p>
+
+      <p>The same applies to voice assistants, automated customer service systems, and any AI that processes spoken language in genuinely multilingual environments. A system that cannot follow code-switched speech is essentially useless to billions of people. A fraud detection system that fails to model code-switching opens exploitable vulnerabilities.</p>
+
+      <p>This is not a peripheral concern affecting edge cases. It is a fundamental limitation affecting how AI systems interact with the majority of the world's population. Most of the world is multilingual. Code-switching is normal, widespread practice. Building AI that cannot handle it means building AI that cannot serve most people.</p>
+
+      <h2>The Path Forward</h2>
+
+      <p>MIMER taught me that the hardest problems in AI are often the ones we do not notice because they live outside the linguistic and cultural contexts where most AI research happens.</p>
+
+      <p>Code-switching is invisible if you work primarily in monolingual English environments. It becomes a curiosity, a special case, something to address once the main problems are solved. But for billions of people, it is simply how language works.</p>
+
+      <p>Building AI systems that genuinely serve global populations requires centering these supposedly marginal cases. It means starting with the complexity of real human communication rather than hoping that systems optimized on simplified data will somehow generalize.</p>
+
+      <p>The technical challenges are substantial. We need new theoretical frameworks for thinking about multilingual speech that do not reduce it to parallel monolingual channels. We need architectures that can adapt to linguistic context shifts rather than treating them as noise. We need evaluation metrics that capture not just accuracy but also linguistic appropriateness and social acceptability.</p>
+
+      <p>I do not know how to fully solve the code-switching problem. Neither does anyone else, yet. But I do know that solving it requires more than better models or bigger datasets. It requires rethinking our assumptions about what language is and how AI should engage with it.</p>
+
+      <p>The conversation in that Taxila meeting room continues to echo. "Can your AI understand <em>this</em>?"</p>
+
+      <p>Not yet. But we are beginning to understand why the question is harder than we thought.</p>
+
+      <hr>
+
+      <p><em>This reflects on work from the MIMER project (Mitigating Presentation Attacks in Remote Identity Proofing: Pakistan in Focus), funded by EPSRC, developing the Multilingual Spoofed Speech (MSS) dataset for deepfake detection in code-switched environments.</em></p>
+    `,
+    date: 'December 13, 2025',
+    dateSort: new Date('2025-12-13'),
+    readTime: '11 min read',
+    category: 'AI & Language',
+    featuredImage: '/images/blog/codeswitching.png',
+    author: {
+      name: 'Dr Ahmed Zoha',
+      avatar: '/images/profile.jpg',
+    },
+  },
+];
+
+// Generate static paths for all posts at build time
+export async function getStaticPaths() {
+  const blogPosts = [
+    {
+      slug: 'thinking-aloud-about-agentic-ai',
+      title: 'Thinking Aloud About Agentic AI',
+      excerpt: 'Agentic AI breaks the pattern. These systems do not just observe and advise. They decide and act, often before a human realises there is anything to respond to.',
+      content: `
+        <p>I still remember the moment I realised something fundamental had changed.</p>
+
+        <p>We were testing an automated network control system. Nothing had failed. Dashboards looked normal. And yet the system quietly rerouted traffic away from a link that, to everyone in the room, appeared healthy. About twenty minutes later, that same link degraded sharply. The AI had acted on something we had not yet seen.</p>
+
+        <p>That was the first time I felt I was no longer working with a tool that simply analysed the world. I was working with something that formed expectations about it.</p>
+
+        <p>I have spent much of my career working at the intersection of AI and critical infrastructure: telecoms, energy systems, and security-sensitive platforms where mistakes scale quickly and forgiveness is limited. For years, AI in these environments was reactive. It detected anomalies, raised alerts, and waited for humans to decide.</p>
+
+        <p>Agentic AI breaks that pattern. These systems do not just observe and advise. They decide and act, often before a human realises there is anything to respond to.</p>
+
+        <h2>From Reacting to Anticipating</h2>
+
+        <p>In telecoms, agentic systems now reallocate spectrum or spin up network functions ahead of congestion. In energy systems, they forecast demand or renewable variability and adjust control strategies early. In security, they isolate assets or alter access pathways based on inferred intent rather than confirmed attacks.</p>
+
+        <p>The value is obvious. Humans cannot operate at this speed or scale. But something subtle happens when systems move from reacting to anticipating. They stop acting purely on facts and start acting on beliefs about the future.</p>
+
+        <p>And beliefs can be wrong.</p>
+
+        <p>When an AI throttles traffic because it predicts congestion that never arrives, who absorbs that cost? When an energy system sheds load preemptively, how do we explain that decision to those affected? When a security agent blocks access because behaviour looks suspicious rather than malicious, how easily can that decision be unwound?</p>
+
+        <p>These questions became real for me during the MIMER project.</p>
+
+        <h2>What MIMER Forced Us to Confront</h2>
+
+        <p>MIMER sits at the boundary between identity verification, security, and critical digital infrastructure. The problem we were tackling was simple to state but hard to solve. Remote identity verification systems are increasingly vulnerable to sophisticated spoofing, including deepfake-driven impersonation. These systems underpin access to financial services, telecom onboarding, and essential digital platforms.</p>
+
+        <p>Static rules do not survive long in adversarial environments. Attackers adapt too quickly. So we explored adaptive approaches, including agentic components that could observe evolving attack patterns, reason about intent, and adjust verification strategies dynamically.</p>
+
+        <p>What surprised me was how quickly uncertainty became operational. Confidence scores that work well as decision support become fragile when agents act on them autonomously. Humans can contextualise borderline cases. Agents tend to treat thresholds as truths unless carefully constrained.</p>
+
+        <p>We also learned that explainability degrades as agency increases. When an agent chains perception, memory, and action, reconstructing why a decision was made becomes genuinely difficult. In regulated environments, saying "the model decided" is not an answer.</p>
+
+        <p>MIMER made one thing clear to me: Agentic AI is not primarily a modelling challenge. It is a governance challenge that happens to involve models.</p>
+
+        <h2>The Trust Problem</h2>
+
+        <p>Trust behaves differently in critical infrastructure than it does in education or consumer technology.</p>
+
+        <p>In education, we worry people trust AI too much. In critical systems, engineers often trust it too little. That instinct is healthy, until it undermines the very benefits autonomy offers.</p>
+
+        <p>During MIMER trials, some operators wanted to veto every decision, reducing the agent to a sophisticated alarm. Others were tempted to step back entirely because early performance looked strong. Neither felt safe.</p>
+
+        <p>What we lack are good ways to calibrate trust over time. Not blind faith and not permanent scepticism, but situational trust that adapts to context, risk, and uncertainty. We talk extensively about accuracy and robustness, but far less about how humans actually experience supervising autonomous systems day after day.</p>
+
+        <h2>The Accountability Gap</h2>
+
+        <p>This is where the conversation gets uncomfortable.</p>
+
+        <p>When an AI agent makes a decision in a telecom network or energy grid, who is responsible? The engineer who deployed it? The organisation that configured it? The vendor that supplied the model? The regulator who approved its use?</p>
+
+        <p>Traditional systems had clearer accountability chains. Agentic systems do not fail cleanly. They drift, cascade, and compound. Without deliberate design for traceability, logging, and meaningful human override, accountability simply dissolves.</p>
+
+        <p>Security communities are beginning to grapple with this. Recent work on agentic AI threat modelling highlights risks such as cascading decision failures, untraceable actions, and overwhelmed human oversight in multi-agent systems. These risks are not theoretical. They emerge naturally when autonomy scales faster than governance.</p>
+
+        <h2>What Keeps Me Awake</h2>
+
+        <p>I worry less about AI making mistakes than about systems failing quietly through chains of reasonable-looking decisions. By the time humans notice, the system may already be far from its original intent.</p>
+
+        <p>I worry about boundary erosion. Each automated decision subtly shifts what we consider acceptable to delegate. Over time, no one remembers why certain decisions were once considered too important to automate.</p>
+
+        <p>And I worry about human disengagement. Supervising autonomy is cognitively demanding. The more capable these systems become, the harder it is for humans to stay meaningfully involved. We do not yet design agentic systems that respect human attention and fatigue in safety-critical contexts.</p>
+
+        <h2>The Human Element</h2>
+
+        <p>Despite these concerns, I am not pessimistic.</p>
+
+        <p>Agentic AI can make critical infrastructure more resilient and adaptive, reducing brittle, reactive decision-making. But only if trust, accountability, and human judgment are treated as first-class design problems.</p>
+
+        <p>An AI agent can decide how to reroute traffic. It should not decide whose connectivity matters more in a crisis without human involvement. An agent can detect identity risk patterns. It should not redefine fairness thresholds on its own.</p>
+
+        <p>The boundary between human and machine judgment is not fixed, and it should not be. But it must be intentional.</p>
+
+        <h2>Where This Leaves Us</h2>
+
+        <p>MIMER did not give me neat answers. What it gave me was clarity about the questions we should be asking more openly.</p>
+
+        <p>Agentic AI is already reshaping telecoms, energy, and security. The real question is not whether these systems will act on our behalf.</p>
+
+        <p>It is how much agency we are willing to delegate before we are no longer entirely sure who is still in charge.</p>
+
+        <p>I do not think we should rush to answer that. But I do think we need to keep asking it, honestly, and before the systems decide for us.</p>
+      `,
+      date: 'December 5, 2025',
+      dateSort: new Date('2025-12-05'),
+      readTime: '10 min read',
+      category: 'AI & Infrastructure',
+      featuredImage: '/images/blog/agentic_ai.png',
+      author: {
+        name: 'Dr Ahmed Zoha',
+        avatar: '/images/profile.jpg',
+      },
+    },
+    {
+      slug: 'ai-in-higher-education',
+      title: 'The Conversation We\'re Not Having About AI in Higher Education',
+      excerpt: 'We\'re so caught up in debates about academic integrity that we\'re missing something fundamental about how learning actually happens. As someone who\'s championed dialogic approaches to teaching, I explore whether AI might open up new spaces for rich, generative dialogue or shut those spaces down entirely.',
+      content: `
+        <p>I've been teaching long enough to recognize when something is genuinely transformative rather than just the latest shiny object in edtech. When I first encountered generative AI in my classroom through student submissions, my reaction was somewhere between fascination and mild panic.</p>
+
+        <p>But here's what's been nagging at me: we're so caught up in debates about academic integrity that we're missing something fundamental about how learning actually happens. As someone who's championed dialogic approaches to teaching for years, I keep wondering whether AI might actually open up new spaces for rich, generative dialogue or whether it's going to shut those spaces down entirely.</p>
+
+        <h2>What Gets Lost in Translation</h2>
+
+        <p>Dialogic teaching isn't just about discussion. It's about creating conditions where thinking happens through conversation, where ideas are tested, reshaped, and built upon collectively. It's messy. It requires students to articulate half-formed thoughts, to stumble, to hear themselves think out loud.</p>
+
+        <p>The best moments in my seminars happen when a student says, "Wait, I'm not sure this makes sense, but..." and then the whole room leans in. That uncertainty, that willingness to think publicly, is where deep learning lives.</p>
+
+        <p>So when AI entered our classrooms, my first question wasn't really about plagiarism. It was: what happens to this dialogic space?</p>
+
+        <h2>The Unexpected Bits</h2>
+
+        <p>I've been watching closely, and it's more complicated than I expected. A recent study from the University of Liverpool looked at architecture students using AI image generators. Students who crafted more conceptually rich prompts produced more compelling visual outputs. Nothing groundbreaking there.</p>
+
+        <p>But what caught my attention was this: students reported high levels of creative support, particularly in exploration. They weren't passively consuming AI outputs. They were iterating through language to refine their design intentions. It looked suspiciously like dialogue.</p>
+
+        <p>This challenged my initial assumption that AI would short-circuit learning. Instead, students were learning a new literacy that required them to articulate their thinking with both precision and creativity.</p>
+
+        <h2>Where I'm Worried</h2>
+
+        <p>The Liverpool study found that collaboration and immersion scores were notably lower than other dimensions. That matters. Learning isn't just about producing good outputs. It's about the struggle, the shared frustration of working through difficult ideas with other people.</p>
+
+        <p>I'm also worried about student voice. In dialogic learning, we talk about students developing their unique perspective. But when you're constantly negotiating with an AI trained on millions of texts, whose voice is actually emerging? There's a real risk that students start sounding like slightly customized versions of a language model.</p>
+
+        <p>And then there's intellectual dependency. If students outsource the hard cognitive work of drafting to AI, are they actually developing as thinkers? Writing isn't just about producing text. It's about wrestling with ideas until they make sense.</p>
+
+        <h2>What I'm Trying Instead</h2>
+
+        <p>I've started experimenting. Instead of banning AI, I ask students to use it as a thinking partner, then bring that conversation into our classroom dialogue. "Show me what the AI suggested, then tell me where it's wrong or incomplete."</p>
+
+        <p>The results have been surprising. Students who normally stay quiet seem more confident when they've rehearsed ideas with AI first. Others use AI to generate provocative counterarguments that push discussion in unexpected directions. One student told me it was like "having a really patient but occasionally clueless study partner who helps you figure out what you actually think."</p>
+
+        <p>That last bit is crucial: what you actually think. The AI doesn't replace thinking. It becomes a tool for externalizing and examining it.</p>
+
+        <h2>Putting Theory into Practice: The LEAP Project</h2>
+
+        <p>These aren't just theoretical concerns for me. I'm currently leading <a href="/projects/leap" class="text-accent-yellow hover:underline">LEAP (Learning Enhancement through Adaptive Pathways)</a>, a two-year Knowledge Transfer Partnership funded by Innovate UK. We're developing an AI platform specifically designed to support teachers and enhance student learning through dialogue-driven thinking.</p>
+
+        <p>The goal isn't to replace human teaching but to amplify educator expertise. LEAP uses adaptive pathways to create spaces where AI acts as a scaffold for deeper thinking, not a shortcut around it. It's about designing AI tools that preserve and enhance the dialogic spaces I've been talking about, rather than collapsing them.</p>
+
+        <p>If you're interested in how we're approaching this challenge practically, <a href="/projects/leap" class="text-accent-yellow hover:underline">you can learn more about the LEAP project here</a>.</p>
+
+        <h2>What Needs to Change</h2>
+
+        <p>Most universities have responded to AI with policies about when it can be used, focusing on detection and prevention. That's treating AI as a problem to manage rather than a shift that needs thoughtful integration.</p>
+
+        <p>We need to redesign assessments around process, not just product. If students can document their dialogue with AI, showing how they tested ideas and rejected suggestions, that becomes evidence of learning.</p>
+
+        <p>We should teach prompt engineering as a rhetorical practice. How do you articulate a question well? How do you push back against an answer that seems plausible but feels wrong? These are exactly the skills we've always wanted students to develop.</p>
+
+        <p>And critically, we need to preserve spaces for human-only dialogue. Not because AI is bad, but because certain kinds of learning, particularly those involving emotion and ethics, require human presence and vulnerability.</p>
+
+        <h2>What Keeps Me Up</h2>
+
+        <p>Can students develop genuine intellectual autonomy if they're always in dialogue with a tool that seems to know everything? What happens to productive confusion if AI is always there to resolve ambiguity?</p>
+
+        <p>And perhaps most importantly: are we asking students to engage in dialogue with AI, or are we asking AI to simulate the dialogue that should be happening between humans?</p>
+
+        <h2>No Easy Answers</h2>
+
+        <p>Those architecture students had 45 minutes to design a residential space using only text prompts. The researchers found that richer, more varied language in prompts correlated with better outcomes. But the real insight was about what happened between intention and output, in that iterative dance of articulation and revision.</p>
+
+        <p>That's where learning happens. That's what we need to protect as we navigate this shift.</p>
+
+        <p>I'm not arguing for or against AI in education. That debate feels beside the point. AI is here. The question is whether we can shape that integration in ways that deepen rather than diminish learning.</p>
+
+        <p>My hope is that we can. But it requires us to be thoughtful, experimental, and willing to admit when we're unsure. It requires treating AI not as an answer but as a new participant in an ongoing conversation about what education is for.</p>
+
+        <p>What's your experience been? I'm genuinely curious how other educators are navigating this.</p>
+      `,
+      date: 'December 10, 2025',
+      dateSort: new Date('2025-12-10'),
+      readTime: '8 min read',
+      category: 'AI & Education',
+      featuredImage: '/images/blog/academia_ai.png',
+      author: {
+        name: 'Dr Ahmed Zoha',
+        avatar: '/images/profile.jpg',
+      },
+    },
+    {
+      slug: 'privacy-paradox-federated-learning',
+      title: 'The Privacy Paradox: Why Federated Learning Is Not Enough',
+      excerpt: 'I remember the moment when my confidence in federated learning began to slip. From the gradients alone, those supposedly harmless updates, they reconstructed recognisable features from the training data.',
+      content: `
+        <h2>The moment my confidence slipped</h2>
+
+        <p>I remember the moment when my confidence in federated learning began to slip.</p>
+
+        <p>We were testing a privacy preserving system for detecting deepfake attacks in remote identity verification. On paper, everything looked right. Sensitive data stayed local. Only model updates were shared. Noise was added to protect privacy. It was the story I had told many times before, to partners, funders, and students.</p>
+
+        <p>Then a colleague showed something that made the room go quiet. From the gradients alone, those supposedly harmless updates, they reconstructed recognisable features from the training data. Not perfectly, but clearly enough to be unsettling.</p>
+
+        <p>That was the moment I realised federated learning was not the privacy solution I had believed it to be. It was progress, yes. But it also created new risks we were still learning how to see.</p>
+
+        <h2>The elegance that drew us in</h2>
+
+        <p>Federated learning is seductive because it appears to resolve a contradiction. We want powerful models, but we do not want to centralise sensitive data. So we leave the data where it is and share only what the model learns.</p>
+
+        <p>For a long time, I repeated this logic without hesitation. The mathematics is elegant. Differential privacy gives us bounds. Secure aggregation hides individual contributions. Encryption lets us compute without seeing.</p>
+
+        <p>The problem is that mathematics lives in a clean world. Deployed systems do not.</p>
+
+        <h2>Where the promise starts to fracture</h2>
+
+        <p>The core promise of federated learning rests on one fragile assumption. That model updates cannot be reverse engineered in meaningful ways.</p>
+
+        <p>In reality, they can.</p>
+
+        <p>Gradients can leak more than intuition suggests. Images can be partially reconstructed. Participation can be inferred. Sensitive attributes can be teased out even when raw data never moves.</p>
+
+        <p>When we pushed our own systems harder, the same pattern appeared. Privacy protections reduced leakage, but they also reduced performance. More noise meant weaker detection. Stronger guarantees meant poorer utility.</p>
+
+        <p>We were forced into an uncomfortable trade off. Protect privacy too weakly and risk exposure. Protect it too strongly and undermine the system's purpose.</p>
+
+        <h2>Theory meets deployed reality</h2>
+
+        <p>In conversations with engineers who have deployed federated systems, the same theme comes up again and again. Every privacy mechanism adds complexity. Every layer introduces new assumptions. And every assumption can break.</p>
+
+        <p>Privacy guarantees rarely fail because the maths is wrong. They fail because real systems are assembled from many moving parts, often bolted onto existing infrastructure under time and resource constraints.</p>
+
+        <p>A small oversight in one component can quietly undo strong guarantees elsewhere.</p>
+
+        <h2>Privacy as an adversarial problem</h2>
+
+        <p>This is not just a technical challenge. It is an adversarial one.</p>
+
+        <p>Federated systems attract attackers precisely because they promise privacy. Gradient leakage, membership inference, model inversion, and poisoning attacks all exist because someone is actively trying to extract value from what is meant to be hidden.</p>
+
+        <p>Each defence invites a counter attack. Each fix shifts the problem rather than eliminating it. We are in an arms race, and there is no stable end point.</p>
+
+        <h2>Why governance matters more than algorithms</h2>
+
+        <p>This leads to a conclusion I resisted for a long time. Federated learning's hardest problems are not algorithmic. They are governance problems.</p>
+
+        <p>Who decides how much privacy loss is acceptable. Who verifies that protections are implemented correctly. Who is accountable when guarantees silently erode over time.</p>
+
+        <p>Federated learning distributes computation, but it does not remove the need for trust. It reshapes trust into a web of dependencies that is harder to reason about and harder to manage.</p>
+
+        <h2>What this means for critical systems</h2>
+
+        <p>For critical infrastructure, the implications are serious.</p>
+
+        <p>In telecoms, leaked updates can reveal behavioural patterns. In healthcare, they can expose participation in sensitive studies. In finance, they can hint at individual transaction behaviour.</p>
+
+        <p>These failures are subtle. There is no obvious breach. No database leaked online. Just gradual erosion of privacy that is difficult to detect and even harder to explain.</p>
+
+        <p>This is the paradox. Federated learning can make privacy failures quieter and more opaque than centralised systems ever were.</p>
+
+        <h2>The human side of privacy</h2>
+
+        <p>What troubles me most is not a technical flaw, but a human one.</p>
+
+        <p>People do not distinguish between data staying local and inference happening remotely. From their perspective, inference still feels like surveillance. A system that meets formal definitions but feels invasive has already failed.</p>
+
+        <p>No amount of mathematical precision resolves that gap on its own. Trust requires transparency, communication, and honesty about trade offs.</p>
+
+        <h2>Where this leaves us</h2>
+
+        <p>Federated learning remains useful. But we need to stop treating it as a privacy solution. It is a privacy improving technique that works only under carefully defined conditions and only when paired with other safeguards.</p>
+
+        <p>It can reduce risk. It cannot eliminate it.</p>
+
+        <p>It can shift trust. It cannot remove the need for it.</p>
+
+        <p>If we want systems that are genuinely trustworthy, we need governance frameworks that match the technical complexity of what we are building, and humility about the limits of our tools.</p>
+
+        <h2>The question that matters</h2>
+
+        <p>The real question is not whether federated learning preserves privacy.</p>
+
+        <p>It is whether we are prepared to recognise when it does not, and what we do when that happens.</p>
+
+        <p>That gap, between what works in theory and what we can trust in practice, is where the real work begins.</p>
+      `,
+      date: 'December 12, 2025',
+      dateSort: new Date('2025-12-12'),
+      readTime: '9 min read',
+      category: 'AI & Privacy',
+      featuredImage: '/images/blog/fedai_bp.png',
+      author: {
+        name: 'Dr Ahmed Zoha',
+        avatar: '/images/profile.jpg',
+      },
+    },
+    {
+      slug: 'code-switching-problem-multilingual-ai',
+      title: 'The Code-Switching Problem: Why Multilingual AI Is Harder Than It Looks',
+      excerpt: 'I remember sitting in a meeting room in Taxila, listening to our Pakistani banking partners discuss their customer verification systems. The conversation flowed naturally between Urdu, English, and occasional Hindi phrases. Then one of the bankers asked: "Can your AI understand this?"',
+      content: `
+        <p>I remember sitting in a meeting room in Taxila, listening to our Pakistani banking partners discuss their customer verification systems. The conversation flowed naturally between Urdu, English, and occasional Hindi phrases. Someone would start a sentence in English, switch to Urdu mid-thought, then throw in a technical term in English again. Nobody blinked. This was simply how people spoke.</p>
+
+        <p>Then one of the bankers asked a question that would shape the next two years of our MIMER project: "Can your AI understand <em>this</em>?" He gestured at the air, encompassing the multilingual conversation we had just been having. "Because this is how our customers actually talk."</p>
+
+        <p>That was the moment I realized we had been solving the wrong problem.</p>
+
+        <h2>The Invisible Majority</h2>
+
+        <p>We had spent months building sophisticated deepfake detection systems for voice authentication. Our technology could distinguish real voices from artificially generated ones with impressive accuracy on benchmark datasets. We were achieving results that would make any researcher proud.</p>
+
+        <p>But those benchmark datasets were almost entirely monolingual. People spoke English, or Mandarin, or Spanish. They did not switch between languages mid-sentence. They certainly did not exhibit the complex, fluid multilingualism that characterized actual human conversation in Pakistan and India.</p>
+
+        <p>The numbers tell a sobering story. Over half a billion people speak Hindi and Urdu. Hindi is the third most spoken language globally. Yet when we surveyed existing voice authentication and deepfake detection datasets, we found nothing that captured how these populations actually communicate.</p>
+
+        <p>Code-switching, the practice of alternating between languages within a single conversation or even a single sentence, is not a bug in human communication. It is a feature. It conveys social meaning, establishes identity, and enables nuanced expression that monolingual speech cannot achieve.</p>
+
+        <p>But for AI systems, code-switching is a nightmare.</p>
+
+        <h2>Building Reality Into Data</h2>
+
+        <p>During the development of our Multilingual Spoofed Speech dataset, we made a deliberate choice to preserve natural code-switching behavior. We did not ask speakers to compartmentalize their languages. We captured them as they were, switching between Urdu, Hindi, and English as context and comfort dictated.</p>
+
+        <p>The result was 472,486 utterances from 154 speakers, featuring the actual conversational dynamics of bilingual South Asian speakers. Some samples had minimal code-switching. Others alternated languages multiple times within seconds. The dataset reflected reality, which meant it reflected complexity.</p>
+
+        <p>When we analyzed the data, approximately 50% of audio samples contained significant code-switching. In the Hindi subset, speakers switched languages even more frequently than in Urdu. This was not random variation. It was systematic behavior shaped by social context, speaker background, and the pragmatics of bilingual communication.</p>
+
+        <p>For our spoofing detection systems, this created a compound challenge. We were not just trying to distinguish real voices from synthetic ones. We were trying to do so in an environment where the linguistic ground was constantly shifting beneath the model's feet.</p>
+
+        <h2>The Prosody Problem</h2>
+
+        <p>One of the subtler challenges relates to prosody, the rhythm and melody of speech. When speakers switch languages, they do not simply swap out words. They often shift prosodic patterns as well.</p>
+
+        <p>A speaker might start a sentence with the intonation patterns of Urdu, switch to an English phrase with English stress patterns, then return to Urdu prosody for the remainder. For human listeners embedded in these linguistic communities, this sounds completely natural. For machine learning models trained on clean, monolingual data, it is deeply confusing.</p>
+
+        <p>Voice conversion systems, the spoofing attacks we were defending against, had to grapple with this same complexity. In our testing, sophisticated techniques like Seed-VC and HierSpeech++ produced spoofed samples that were nearly indistinguishable from genuine ones, even in code-switched contexts. These systems had learned to preserve the natural flow of multilingual speech, making them far more dangerous than simpler text-to-speech approaches.</p>
+
+        <h2>The Performance Paradox</h2>
+
+        <p>When we evaluated our detection framework, WavSpeech-AASIST, across the three language subsets, we encountered a puzzling asymmetry. The system performed well on Urdu, achieving an equal error rate of just 0.43%. English was slightly more challenging at 1.39%. But Hindi proved dramatically harder, with an error rate of 5.55%.</p>
+
+        <p>Why was Hindi so much more difficult than Urdu?</p>
+
+        <p>The answer lay in the frequency and nature of code-switching. Hindi speakers in our dataset switched between languages more often and more abruptly. These rapid transitions created prosodic and phonetic shifts that our models struggled to follow. The phonetic boundaries blurred. The acoustic features that indicated genuine versus spoofed speech became less reliable.</p>
+
+        <p>Moreover, many Hindi recordings contained background music and overlapping voices, common in South Asian broadcast environments. This environmental noise was preserved in the spoofed samples, creating an additional layer of acoustic complexity. The model had to distinguish between noise patterns associated with genuine recordings and those associated with the spoofing process itself, all while tracking rapid language switches.</p>
+
+        <p>This revealed something important. It is not just that multilingual speech is more variable. It is that the variability itself interferes with the acoustic signatures we rely on for detecting synthesis and manipulation.</p>
+
+        <h2>The Accent Layer</h2>
+
+        <p>There is yet another dimension that we encountered repeatedly. The English spoken by native Urdu and Hindi speakers carries distinct phonetic characteristics. Pronunciation patterns, intonation contours, and rhythm differ from native English speakers in predictable ways.</p>
+
+        <p>When someone switches from Urdu to English, they do not switch accents. The English phrases carry prosodic and phonetic markers of the speaker's first language. This is not a deficiency. It is a characteristic of genuine bilingual speech.</p>
+
+        <p>But for AI models trained primarily on native English speakers, these accented productions of English words look anomalous. When we tested our systems on supposedly multilingual datasets that were actually just monolingual English with different speakers, they performed well but failed to generalize to the English-with-Urdu-accent that our target users actually produced.</p>
+
+        <p>This highlighted a problematic assumption underlying much multilingual AI research. We often treat languages as discrete categories, assuming that once a model learns Language A and Language B separately, it can handle both together. But bilingual speech is not two monolingual modes spliced together. It is a distinct communicative system with its own phonetic, prosodic, and pragmatic rules.</p>
+
+        <h2>The Data Hunger</h2>
+
+        <p>One frustrating aspect of code-switching research is the perpetual scarcity of training data. Monolingual datasets are plentiful. English speech corpora contain hundreds or thousands of hours of annotated audio. High-resource languages like Mandarin and Spanish have substantial resources too.</p>
+
+        <p>But code-switched data? Vanishingly rare.</p>
+
+        <p>During MIMER, we explored various data augmentation strategies. We used voice conversion not just to generate spoofed samples but to increase the diversity of genuine multilingual speech. We employed automatic transcription on unannotated multilingual broadcasts, trading manual annotation costs for noisier but more abundant data.</p>
+
+        <p>These approaches helped. They increased training volume and improved model performance. But they could not fully replicate the complexity of natural code-switching. Synthetic code-switches lack the pragmatic motivations of real ones. They do not capture the social meanings embedded in language choice.</p>
+
+        <h2>The Cost of Complexity</h2>
+
+        <p>Our WavSpeech-AASIST framework combined multiple self-supervised learning models, specifically wav2vec and UniSpeech, to capture the complementary representations needed for multilingual spoofing detection.</p>
+
+        <p>Interestingly, this multi-embedding approach did not uniformly improve performance. On English and on standard monolingual benchmarks like ASVspoof-2019, fusing representations from both models yielded the best results. But on Urdu and Hindi, using wav2vec features alone sometimes performed better.</p>
+
+        <p>This suggests that straightforward concatenation of multilingual representations can introduce interference rather than synergy. The features that help with one linguistic context may add noise in another. What we need are adaptive fusion strategies that can weight different feature streams based on the linguistic context the model currently inhabits.</p>
+
+        <h2>What This Means for Deployment</h2>
+
+        <p>These challenges have direct implications for real-world systems. Consider voice authentication used by South Asian banks, our original use case. If these systems are trained on monolingual data or artificial multilingual data without code-switching, they will either reject genuine customers who code-switch naturally or fail to detect sophisticated spoofing attacks that exploit code-switching patterns.</p>
+
+        <p>The same applies to voice assistants, automated customer service systems, and any AI that processes spoken language in genuinely multilingual environments. A system that cannot follow code-switched speech is essentially useless to billions of people. A fraud detection system that fails to model code-switching opens exploitable vulnerabilities.</p>
+
+        <p>This is not a peripheral concern affecting edge cases. It is a fundamental limitation affecting how AI systems interact with the majority of the world's population. Most of the world is multilingual. Code-switching is normal, widespread practice. Building AI that cannot handle it means building AI that cannot serve most people.</p>
+
+        <h2>The Path Forward</h2>
+
+        <p>MIMER taught me that the hardest problems in AI are often the ones we do not notice because they live outside the linguistic and cultural contexts where most AI research happens.</p>
+
+        <p>Code-switching is invisible if you work primarily in monolingual English environments. It becomes a curiosity, a special case, something to address once the main problems are solved. But for billions of people, it is simply how language works.</p>
+
+        <p>Building AI systems that genuinely serve global populations requires centering these supposedly marginal cases. It means starting with the complexity of real human communication rather than hoping that systems optimized on simplified data will somehow generalize.</p>
+
+        <p>The technical challenges are substantial. We need new theoretical frameworks for thinking about multilingual speech that do not reduce it to parallel monolingual channels. We need architectures that can adapt to linguistic context shifts rather than treating them as noise. We need evaluation metrics that capture not just accuracy but also linguistic appropriateness and social acceptability.</p>
+
+        <p>I do not know how to fully solve the code-switching problem. Neither does anyone else, yet. But I do know that solving it requires more than better models or bigger datasets. It requires rethinking our assumptions about what language is and how AI should engage with it.</p>
+
+        <p>The conversation in that Taxila meeting room continues to echo. "Can your AI understand <em>this</em>?"</p>
+
+        <p>Not yet. But we are beginning to understand why the question is harder than we thought.</p>
+
+        <hr>
+
+        <p><em>This reflects on work from the MIMER project (Mitigating Presentation Attacks in Remote Identity Proofing: Pakistan in Focus), funded by EPSRC, developing the Multilingual Spoofed Speech (MSS) dataset for deepfake detection in code-switched environments.</em></p>
+      `,
+      date: 'December 13, 2025',
+      dateSort: new Date('2025-12-13'),
+      readTime: '11 min read',
+      category: 'AI & Language',
+      featuredImage: '/images/blog/codeswitching.png',
+      author: {
+        name: 'Dr Ahmed Zoha',
+        avatar: '/images/profile.jpg',
+      },
+    },
+  ];
+
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Get the post from props (passed from getStaticPaths)
+const { post } = Astro.props;
+
+// If no post found (shouldn't happen with static generation)
+if (!post) {
+  return Astro.redirect('/blog');
+}
+
+// Get related posts (same category, excluding current)
+const relatedPosts = blogPosts
+  .filter(p => p.slug !== post.slug)
+  .filter(p => p.category === post.category)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={post.title}
+  description={post.excerpt}
+>
+
+  <article class="pt-8 lg:pt-16">
+    <!-- Back Link -->
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Blog
+    </a>
+
+    <!-- Article Header -->
+    <header class="mb-10">
+      <!-- Category -->
+      {post.category && (
+        <div class="flex gap-2 mb-4">
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {post.category}
+          </span>
+        </div>
+      )}
+
+      <!-- Title -->
+      <h1 class="text-3xl lg:text-5xl font-light leading-tight mb-6">
+        {post.title}
+      </h1>
+
+      <!-- Meta -->
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        {post.author && (
+          <div class="flex items-center gap-2">
+            {post.author.avatar && (
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                class="w-8 h-8 rounded-full"
+              />
+            )}
+            <span>{post.author.name}</span>
+          </div>
+        )}
+        <span>•</span>
+        <time>{post.date}</time>
+        <span>•</span>
+        <span>{post.readTime}</span>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    {post.featuredImage && (
+      <div class="mb-10 rounded-2xl overflow-hidden bg-dark-700">
+        <img
+          src={post.featuredImage}
+          alt={post.title}
+          class="w-full h-auto"
+        />
+      </div>
+    )}
+
+    <!-- Article Content -->
+    <div
+      class="prose prose-invert prose-lg max-w-none
+             prose-headings:font-medium prose-headings:text-text-primary
+             prose-p:text-text-secondary prose-p:leading-relaxed
+             prose-a:text-accent-yellow prose-a:no-underline hover:prose-a:underline
+             prose-strong:text-text-primary
+             prose-code:text-accent-yellow prose-code:bg-dark-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+             prose-pre:bg-dark-700 prose-pre:border prose-pre:border-dark-500
+             prose-blockquote:border-l-accent-yellow prose-blockquote:bg-dark-700/50 prose-blockquote:py-1
+             prose-img:rounded-xl
+             prose-hr:border-dark-500
+             prose-ul:text-text-secondary prose-ol:text-text-secondary
+             prose-li:text-text-secondary"
+      set:html={post.content}
+    />
+
+    <!-- Share Section -->
+    <div class="mt-12 pt-8 border-t border-dark-500/30">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p class="text-text-secondary">Share this article:</p>
+        <div class="flex gap-3">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://ahmedzoha.com/blog/${post.slug}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-dark-700 rounded-lg hover:bg-dark-600 transition-colors"
+            title="Share on Twitter"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+            </svg>
+          </a>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://ahmedzoha.com/blog/${post.slug}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-dark-700 rounded-lg hover:bg-dark-600 transition-colors"
+            title="Share on LinkedIn"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M2 4a2 2 0 114 0 2 2 0 01-4 0z"/>
+            </svg>
+          </a>
+          <button
+            onclick="navigator.clipboard.writeText(window.location.href); this.querySelector('span').textContent = 'Copied!'; setTimeout(() => this.querySelector('span').textContent = 'Copy link', 2000)"
+            class="px-4 py-2 bg-dark-700 rounded-lg hover:bg-dark-600 transition-colors text-sm flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span>Copy link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Author Box -->
+    {post.author && (
+      <div class="mt-8 p-6 bg-dark-700 rounded-2xl border border-dark-500/30">
+        <div class="flex items-start gap-4">
+          {post.author.avatar && (
+            <img
+              src={post.author.avatar}
+              alt={post.author.name}
+              class="w-16 h-16 rounded-full"
+            />
+          )}
+          <div>
+            <h3 class="font-medium mb-1">Written by {post.author.name}</h3>
+            <p class="text-sm text-text-secondary mb-3">
+              Technology Leader, Applied AI Expert, Academic Innovator
+            </p>
+            <a
+              href="/about"
+              class="text-sm text-accent-yellow hover:underline"
+            >
+              Learn more about me →
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-medium mb-8">Related Articles</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {relatedPosts.map((relPost) => (
+            <a
+              href={`/blog/${relPost.slug}`}
+              class="group block bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30
+                     hover:border-accent-yellow/30 transition-all"
+            >
+              <div class="aspect-video bg-dark-600 overflow-hidden">
+                {relPost.featuredImage ? (
+                  <img
+                    src={relPost.featuredImage}
+                    alt={relPost.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-dark-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+              <div class="p-4">
+                <span class="text-xs text-text-muted">{relPost.date}</span>
+                <h3 class="font-medium mt-1 group-hover:text-accent-yellow transition-colors line-clamp-2">
+                  {relPost.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </article>
+
+</BaseLayout>
+
+<style is:global>
+  /* Additional prose styles for blog content */
+  .prose img {
+    @apply mx-auto;
+  }
+
+  .prose figure {
+    @apply my-8;
+  }
+
+  .prose figcaption {
+    @apply text-center text-sm text-text-muted mt-2;
+  }
+
+  .prose table {
+    @apply w-full border-collapse;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-dark-500 px-4 py-2;
+  }
+
+  .prose th {
+    @apply bg-dark-700;
+  }
+</style>

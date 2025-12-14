@@ -1,0 +1,337 @@
+---
+// contact.astro - Contact page
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Contact info removed per user request
+const contactInfo = [];
+
+// Web3Forms configuration
+const WEB3FORMS_ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'b47871b7-4ac1-43d7-a861-61fb97b7408b';
+
+// Social links
+const socialLinks = [
+  { name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=b0oVLKwAAAAJ&hl=en', icon: 'scholar' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ahmedzoha', icon: 'linkedin' },
+  { name: 'X (Twitter)', url: 'https://x.com/AhmedZoha', icon: 'twitter' },
+];
+---
+
+<BaseLayout title="Contact" description="Get in touch with Dr Ahmed Zoha">
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-light mb-4">
+        Get in <span class="text-accent-yellow">Touch</span>
+      </h1>
+      <p class="text-text-secondary max-w-2xl">
+        I'm always interested in hearing about new research collaborations, 
+        speaking opportunities, or just having a conversation about AI.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      
+      <!-- Contact Form -->
+      <div>
+        <h2 class="text-xl font-medium mb-6">Send a Message</h2>
+        <form 
+          id="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="space-y-5"
+          novalidate
+        >
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="name-input" class="block text-sm text-text-secondary mb-2">
+                Name <span class="text-accent-yellow">*</span>
+              </label>
+              <input 
+                id="name-input"
+                type="text" 
+                name="name"
+                required
+                minlength="2"
+                maxlength="100"
+                class="w-full px-4 py-3 bg-dark-700 rounded-lg border border-dark-500 
+                       focus:border-accent-yellow focus:outline-none transition-colors"
+                placeholder="Your name"
+                aria-describedby="name-error"
+              />
+              <p id="name-error" class="text-xs text-red-400 mt-1" role="alert"></p>
+            </div>
+            <div>
+              <label for="email-input" class="block text-sm text-text-secondary mb-2">
+                Email <span class="text-accent-yellow">*</span>
+              </label>
+              <input 
+                id="email-input"
+                type="email" 
+                name="email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                class="w-full px-4 py-3 bg-dark-700 rounded-lg border border-dark-500 
+                       focus:border-accent-yellow focus:outline-none transition-colors"
+                placeholder="your@email.com"
+                aria-describedby="email-error"
+              />
+              <p id="email-error" class="text-xs text-red-400 mt-1" role="alert"></p>
+            </div>
+          </div>
+          
+          <div>
+            <label for="subject-input" class="block text-sm text-text-secondary mb-2">
+              Subject <span class="text-accent-yellow">*</span>
+            </label>
+            <select 
+              id="subject-input"
+              name="subject"
+              required
+              class="w-full px-4 py-3 bg-dark-700 rounded-lg border border-dark-500 
+                     focus:border-accent-yellow focus:outline-none transition-colors"
+            >
+              <option value="">Select a topic</option>
+              <option value="research">Research Collaboration</option>
+              <option value="speaking">Speaking Opportunity</option>
+              <option value="consulting">Consulting</option>
+              <option value="media">Media Inquiry</option>
+              <option value="student">PhD/Postdoc Inquiry</option>
+              <option value="other">Other</option>
+            </select>
+            <p id="subject-error" class="text-xs text-red-400 mt-1" role="alert"></p>
+          </div>
+          
+          <div>
+            <label for="message-input" class="block text-sm text-text-secondary mb-2">
+              Message <span class="text-accent-yellow">*</span>
+            </label>
+            <textarea 
+              id="message-input"
+              name="message"
+              required
+              minlength="10"
+              maxlength="5000"
+              rows="5"
+              class="w-full px-4 py-3 bg-dark-700 rounded-lg border border-dark-500 
+                     focus:border-accent-yellow focus:outline-none transition-colors resize-none"
+              placeholder="Your message..."
+              aria-describedby="message-error"
+            ></textarea>
+            <p id="message-error" class="text-xs text-red-400 mt-1" role="alert"></p>
+          </div>
+
+          <!-- Honeypot field for spam prevention -->
+          <input type="text" name="_gotcha" style="display:none" aria-hidden="true" />
+          
+          <button 
+            id="submit-btn"
+            type="submit"
+            class="w-full md:w-auto px-8 py-3 bg-accent-yellow text-dark-900 font-medium 
+                   rounded-lg hover:bg-accent-yellow/90 transition-colors flex items-center 
+                   justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span id="submit-text">Send Message</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </form>
+
+        <!-- Success/Error Messages -->
+        <div id="form-success" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded text-green-400">
+          ✓ Thank you! Your message has been sent successfully.
+        </div>
+        <div id="form-error" class="hidden mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded text-red-400">
+          <p id="form-error-text">Failed to send message. Please try again.</p>
+        </div>
+      </div>
+
+      <!-- Contact Info & Social -->
+      <div>
+        <!-- Social Links -->
+        <div class="mb-10">
+          <h2 class="text-xl font-medium mb-6">Connect Online</h2>
+          <div class="grid grid-cols-2 gap-3">
+            {socialLinks.map((social) => (
+              <a 
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-4 bg-dark-700 rounded-lg border border-dark-500/30 
+                       hover:border-accent-yellow/30 hover:bg-dark-600 transition-all group"
+              >
+                <svg class="w-5 h-5 text-text-muted group-hover:text-accent-yellow transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {social.icon === 'scholar' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />}
+                  {social.icon === 'linkedin' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M2 4a2 2 0 114 0 2 2 0 01-4 0z" />}
+                  {social.icon === 'twitter' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />}
+                  {social.icon === 'github' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />}
+                  {social.icon === 'orcid' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M8 7v10 M11 17V9c1.5 0 4 .5 4 4s-2.5 4-4 4" />}
+                </svg>
+                <span class="text-sm group-hover:text-accent-yellow transition-colors">
+                  {social.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Form validation and submission handling
+  const form = document.getElementById('contact-form');
+  const inputs = form?.querySelectorAll('input, textarea, select');
+  
+  // Validation rules
+  const validationRules = {
+    'name-input': {
+      minLength: 2,
+      maxLength: 100,
+      messages: {
+        required: 'Name is required',
+        minLength: 'Name must be at least 2 characters',
+        maxLength: 'Name cannot exceed 100 characters',
+      }
+    },
+    'email-input': {
+      pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i,
+      messages: {
+        required: 'Email is required',
+        pattern: 'Please enter a valid email address',
+      }
+    },
+    'subject-input': {
+      messages: {
+        required: 'Please select a subject',
+      }
+    },
+    'message-input': {
+      minLength: 10,
+      maxLength: 5000,
+      messages: {
+        required: 'Message is required',
+        minLength: 'Message must be at least 10 characters',
+        maxLength: 'Message cannot exceed 5000 characters',
+      }
+    }
+  };
+
+  // Real-time validation
+  inputs?.forEach(input => {
+    input.addEventListener('blur', () => validateInput(input));
+    input.addEventListener('input', () => {
+      if (document.getElementById(`${input.id.replace('-input', '')}-error`)?.textContent) {
+        validateInput(input);
+      }
+    });
+  });
+
+  function validateInput(input) {
+    const rules = validationRules[input.id];
+    const errorId = input.id.replace('-input', '-error');
+    const errorEl = document.getElementById(errorId);
+    
+    if (!rules || !errorEl) return true;
+
+    // Check required
+    if (input.required && !input.value.trim()) {
+      showError(errorEl, rules.messages.required);
+      return false;
+    }
+
+    // Skip other checks if empty and not required
+    if (!input.required && !input.value.trim()) {
+      clearError(errorEl);
+      return true;
+    }
+
+    // Check minLength
+    if (rules.minLength && input.value.length < rules.minLength) {
+      showError(errorEl, rules.messages.minLength);
+      return false;
+    }
+
+    // Check maxLength
+    if (rules.maxLength && input.value.length > rules.maxLength) {
+      showError(errorEl, rules.messages.maxLength);
+      return false;
+    }
+
+    // Check pattern
+    if (rules.pattern && input.value && !rules.pattern.test(input.value)) {
+      showError(errorEl, rules.messages.pattern);
+      return false;
+    }
+
+    clearError(errorEl);
+    return true;
+  }
+
+  function showError(el, message) {
+    el.textContent = message;
+    el.style.display = 'block';
+  }
+
+  function clearError(el) {
+    el.textContent = '';
+    el.style.display = 'none';
+  }
+
+  // Form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate all inputs
+    let isValid = true;
+    inputs?.forEach(input => {
+      if (!validateInput(input)) {
+        isValid = false;
+      }
+    });
+
+    if (!isValid) return;
+
+    // Show loading state
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
+
+    submitBtn.disabled = true;
+    submitText.textContent = 'Sending...';
+    successMsg.classList.add('hidden');
+    errorMsg.classList.add('hidden');
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      if (response.ok) {
+        form.reset();
+        inputs?.forEach(input => {
+          const errorId = input.id.replace('-input', '-error');
+          const errorEl = document.getElementById(errorId);
+          if (errorEl) clearError(errorEl);
+        });
+        successMsg.classList.remove('hidden');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (error) {
+      document.getElementById('form-error-text').textContent = 
+        'Failed to send message. Please try again or contact us directly.';
+      errorMsg.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitText.textContent = 'Send Message';
+    }
+  });
+</script>

@@ -1,0 +1,359 @@
+---
+// impact.astro - Impact & Recognition page
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Awards & Recognition
+const awards = [
+  {
+    title: 'Best Paper Award',
+    organization: 'IEEE 4th Global Power, Energy and Communication Conference (GPECOM2022)',
+    year: '2022',
+    description: 'Outstanding research contribution in power, energy and communication systems.',
+  },
+  {
+    title: 'UK Exceptional Talent',
+    organization: 'Royal Academy of Engineering',
+    year: '2017',
+    description: 'Endorsement for exceptional promise in engineering and technology.',
+  },
+  {
+    title: 'Best Paper Award',
+    organization: '8th IEEE International Conference on Intelligent Sensors, Sensor Networks and Information Processing (ISSNIP), Melbourne',
+    year: '2013',
+    description: 'Excellence in intelligent sensor systems research.',
+  },
+  {
+    title: 'Best Paper Award',
+    organization: '6th IEEE Intelligent Systems Conference (IS2012), Sofia, Bulgaria',
+    year: '2012',
+    description: 'Outstanding contribution to intelligent systems research.',
+  },
+];
+
+// Impact Stories
+const impactStories = [
+  {
+    id: 'nhs-dementia-care',
+    title: 'Transforming Dementia Care: From Research to NHS Service',
+    subtitle: 'Award-winning NHS-deployed AI system for remote dementia monitoring',
+    year: '2017-2020',
+    image: '/images/impact/dementia-care.png',
+    category: 'Healthcare Innovation',
+    tags: ['NHS', 'AI', 'Award-Winning'],
+    color: 'from-emerald-500/20 to-teal-500/20',
+  },
+  {
+    id: '5g-remote-learning',
+    title: '5G for Remote Care: Sensor-Free Activity Monitoring',
+    subtitle: 'Non-invasive RF sensing for dignified elderly care without wearables',
+    year: '2019-2022',
+    image: '/images/impact/5g-healthcare.png',
+    category: '5G Healthcare Innovation',
+    tags: ['5G', 'Healthcare', 'Patents'],
+    color: 'from-cyan-500/20 to-blue-500/20',
+  },
+  {
+    id: 'policy-influence',
+    title: 'Contributing to Scotland\'s 5G Innovation Ecosystem',
+    subtitle: 'Building partnerships and developing real-world 5G use cases for healthcare, energy, and Net Zero',
+    year: '2019-Present',
+    image: '/images/impact/5g-ecosystem.jpg',
+    category: '5G Innovation & Partnership',
+    tags: ['5G', 'Partnerships', 'Net Zero'],
+    color: 'from-indigo-500/20 to-violet-500/20',
+  },
+  {
+    id: 'global-collaboration',
+    title: 'Building Global Reach: Research Without Borders',
+    subtitle: '100+ joint publications with 60+ collaborators across continents',
+    year: '2014-Present',
+    image: '/images/impact/collaboration.jpg',
+    category: 'International Collaboration',
+    tags: ['Global', 'Top 2%', 'Partnerships'],
+    color: 'from-amber-500/20 to-orange-500/20',
+  },
+  {
+    id: 'energy-assisted-living',
+    title: 'AI-Driven Energy Monitoring for Assisted Living and Net Zero',
+    subtitle: 'From campus testbed to real-world validation with COP26 showcase',
+    year: '2018-2022',
+    image: '/images/impact/energy-monitoring.png',
+    category: 'Energy & Healthcare Innovation',
+    tags: ['Energy', 'Net Zero', 'COP26'],
+    color: 'from-green-500/20 to-emerald-500/20',
+  },
+];
+
+// Media features (ordered by year, most recent first)
+const mediaFeatures = [
+  {
+    outlet: 'European Union',
+    title: 'EU Policy Document Citation',
+    date: '2022',
+    link: 'https://op.europa.eu/en/publication-detail/-/publication/179e7382-b564-11ec-b6f4-01aa75ed71a1/language-en',
+    description: 'Our TIHM dementia care research cited in an official European Union policy document.',
+    publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195605',
+    logo: '/images/media/eu-logo.png',
+    projectLink: '/projects/tihm-healthcare',
+    projectTitle: 'Technology Integrated Health Management (TIHM)',
+  },
+  {
+    outlet: 'FutureScot',
+    title: 'Glasgow Robotics Learning Experience Enjoyed by Students Globally',
+    date: 'August 2021',
+    link: 'https://futurescot.com/glasgow-robotics-learning-experience-enjoyed-by-students-globally/',
+    description: 'Coverage of the Scotland 5G Centre testbed at University of Glasgow, enabling immersive remote robotics-powered learning experiences for students worldwide.',
+    logo: '/images/media/futurescot-logo.png',
+    projectLink: '/projects/scotland-5g-centre',
+    projectTitle: '5G Scotland Centre Phase I/II - University of Glasgow',
+  },
+  {
+    outlet: 'digit.fyi',
+    title: '5G-Enabled Remote Robotics Featured in National Media',
+    date: 'November 2020',
+    link: 'https://www.digit.fyi/5g-tech-is-helping-to-support-a-pioneering-glasgow-uni-robotics-project/',
+    description: 'Our team\'s pioneering work on 5G-enabled remote laboratory access was featured in national technology press. The project demonstrates how students can conduct experiments using robotic systems from anywhere in the world, marking a significant advancement in remote education capabilities.',
+    logo: '/images/impact/digitfyi.png',
+    projectLink: '/projects/scotland-5g-centre',
+    projectTitle: '5G Scotland Centre Phase I/II - University of Glasgow',
+  },
+  {
+    outlet: 'MPR (Medical Professionals Reference)',
+    title: 'Machine Learning Methods Can Detect UTI in Dementia Patients',
+    date: 'January 2019',
+    link: 'https://www.empr.com/home/news/machine-learning-methods-can-detect-uti-in-dementia-patients/',
+    description: 'Our work on UTI detection published in PLOS ONE is featured in this healthcare news article.',
+    publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209909',
+    logo: '/images/media/mpr-logo.png',
+    projectLink: '/projects/tihm-healthcare',
+    projectTitle: 'Technology Integrated Health Management (TIHM)',
+  },
+  {
+    outlet: 'Medindia',
+    title: 'Urinary Tract Infections Can Be Detected By a New AI',
+    date: 'January 2019',
+    link: 'https://www.medindia.net/news/urinary-tract-infections-can-be-detected-by-a-new-ai-185185-1.htm',
+    description: 'Our machine learning research for UTI detection in dementia patients featured in Medindia health news.',
+    publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209909',
+    logo: '/images/media/medindia-logo.png',
+    projectLink: '/projects/tihm-healthcare',
+    projectTitle: 'Technology Integrated Health Management (TIHM)',
+  },
+  {
+    outlet: 'Science Daily',
+    title: 'Health Management and Pattern Analysis of Daily Living Activities of People with Dementia',
+    date: 'June 2018',
+    link: 'https://www.sciencedaily.com/releases/2018/06/180604112453.htm',
+    description: 'Our TIHM research on using IoT and machine learning for dementia care monitoring featured in Science Daily.',
+    publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195605',
+    logo: '/images/media/sciencedaily-logo.png',
+    projectLink: '/projects/tihm-healthcare',
+    projectTitle: 'Technology Integrated Health Management (TIHM)',
+  },
+  {
+    outlet: 'IEEE ComSoc TechFocus Blog',
+    title: 'Challenges in 5G: How to Empower SON with Big Data for Enabling 5G',
+    date: 'January 2016',
+    link: 'https://doi.org/10.1109/MNET.2014.6963801',
+    description: 'The IEEE Communications Society\'s "TechFocus" blog highlighted our paper as part of its coverage on emerging 5G technologies.',
+    logo: '/images/media/comsoc-logo.png',
+  },
+];
+---
+
+<BaseLayout title="Impact" description="Research impact, awards, and recognition">
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-light mb-4">
+        Research <span class="text-accent-yellow">Impact</span>
+      </h1>
+      <p class="text-text-secondary max-w-2xl">
+        Measuring the influence and reach of my research contributions 
+        across academia and industry.
+      </p>
+    </div>
+
+    <!-- Impact Stories Section -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-medium mb-8">Impact Stories</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {impactStories.map((story, index) => (
+          <a 
+            href={`/impact/${story.id}`}
+            class="group block bg-dark-700 rounded-2xl overflow-hidden border border-dark-500/30 
+                   hover:border-accent-yellow/30 transition-all duration-300 impact-story-card"
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <!-- Image -->
+            <div class={`aspect-video relative overflow-hidden bg-gradient-to-br ${story.color}`}>
+              <img
+                src={story.image}
+                alt={story.title}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100
+                       group-hover:scale-105 transition-all duration-500"
+                onerror="this.style.display='none'"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-700 via-transparent to-transparent"></div>
+
+              <!-- Badges Container -->
+              <div class="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
+                <!-- Category Badge -->
+                <span class="px-3 py-1 bg-dark-900/80 backdrop-blur-sm rounded-full text-xs font-medium text-accent-yellow max-w-[calc(100%-80px)] truncate">
+                  {story.category}
+                </span>
+
+                <!-- Year Badge -->
+                <span class="px-3 py-1 bg-dark-900/80 backdrop-blur-sm rounded-full text-xs text-text-secondary flex-shrink-0">
+                  {story.year}
+                </span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-5">
+              <h3 class="font-medium text-lg mb-2 group-hover:text-accent-yellow transition-colors line-clamp-2">
+                {story.title}
+              </h3>
+              <p class="text-sm text-text-secondary mb-4 line-clamp-2">
+                {story.subtitle}
+              </p>
+              
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2">
+                {story.tags.map((tag) => (
+                  <span class="px-2 py-1 bg-dark-600 rounded text-xs text-text-muted">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              <!-- Read More -->
+              <div class="mt-4 flex items-center gap-2 text-sm text-accent-yellow opacity-0 group-hover:opacity-100 transition-opacity">
+                <span>Read Story</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Awards Section -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-medium mb-8">Awards & Recognition</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        {awards.map((award) => (
+          <div class="p-6 bg-dark-700 rounded-xl border border-dark-500/30 
+                      hover:border-accent-yellow/30 transition-all">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 bg-accent-yellow/10 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <span class="text-sm text-accent-yellow">{award.year}</span>
+            </div>
+            <h3 class="font-medium mb-1">{award.title}</h3>
+            <p class="text-sm text-text-secondary mb-2">{award.organization}</p>
+            <p class="text-sm text-text-muted">{award.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Media Features -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-medium mb-8">In The Media</h2>
+      <div class="space-y-4">
+        {mediaFeatures.map((feature) => (
+          <div class="p-5 bg-dark-700 rounded-xl border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+            <div class="flex gap-5">
+              <!-- Logo -->
+              {feature.logo && (
+                <div class="flex-shrink-0">
+                  <div class="w-16 h-16 bg-white rounded-lg p-2 flex items-center justify-center">
+                    <img 
+                      src={feature.logo} 
+                      alt={feature.outlet}
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+              )}
+              
+              <!-- Content -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-4 mb-2">
+                  <div>
+                    <span class="text-xs text-accent-yellow uppercase tracking-wider">
+                      {feature.outlet}
+                    </span>
+                    <h3 class="font-medium mt-1">
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <span class="text-sm text-text-muted flex-shrink-0">{feature.date}</span>
+                </div>
+                
+                {feature.description && (
+                  <p class="text-sm text-text-secondary mb-4">
+                    {feature.description}
+                  </p>
+                )}
+                
+                <div class="flex flex-wrap gap-3">
+                  <a 
+                    href={feature.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-dark-600 rounded-lg text-sm 
+                           hover:bg-dark-500 hover:text-accent-yellow transition-all"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                    </svg>
+                    Read Article
+                  </a>
+                  
+                  {feature.publicationLink && (
+                    <a 
+                      href={feature.publicationLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow/10 text-accent-yellow rounded-lg text-sm 
+                             hover:bg-accent-yellow/20 transition-all"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                      </svg>
+                      View PLOS ONE Publication
+                    </a>
+                  )}
+                  
+                  {feature.projectLink && (
+                    <a 
+                      href={feature.projectLink}
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-accent-teal/10 text-accent-teal rounded-lg text-sm 
+                             hover:bg-accent-teal/20 transition-all"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                      </svg>
+                      {feature.projectTitle || 'View Project'}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

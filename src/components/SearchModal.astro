@@ -1,0 +1,289 @@
+---
+// SearchModal.astro - Global search modal component
+---
+
+<!-- Search Modal Overlay -->
+<div
+  id="search-modal"
+  class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden items-center justify-center p-4"
+  role="dialog"
+  aria-labelledby="search-title"
+  aria-modal="true"
+>
+  <div class="bg-dark-800 rounded-xl border border-dark-500 w-full max-w-2xl max-h-[80vh] flex flex-col shadow-2xl">
+    <!-- Search Header -->
+    <div class="p-4 border-b border-dark-500">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search blog posts, projects, research..."
+          class="flex-1 bg-transparent text-text-primary placeholder-text-muted outline-none text-lg"
+          autocomplete="off"
+          aria-label="Search content"
+        />
+        <button
+          id="search-close"
+          class="p-2 hover:bg-dark-600 rounded-lg transition-colors"
+          aria-label="Close search"
+        >
+          <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <p class="text-xs text-text-muted mt-2">
+        Press <kbd class="px-2 py-1 bg-dark-600 rounded text-xs">ESC</kbd> to close
+      </p>
+    </div>
+
+    <!-- Search Results -->
+    <div id="search-results" class="flex-1 overflow-y-auto p-4">
+      <!-- Initial state -->
+      <div id="search-empty" class="text-center py-12">
+        <svg class="w-16 h-16 mx-auto text-text-muted mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <p class="text-text-secondary">Type to search across all content</p>
+      </div>
+
+      <!-- No results state -->
+      <div id="search-no-results" class="hidden text-center py-12">
+        <svg class="w-16 h-16 mx-auto text-text-muted mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-text-secondary">No results found</p>
+        <p class="text-sm text-text-muted mt-2">Try different keywords</p>
+      </div>
+
+      <!-- Results container -->
+      <div id="search-results-list" class="hidden space-y-3">
+        <!-- Results will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Search Footer -->
+    <div class="p-3 border-t border-dark-500 text-xs text-text-muted flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <span>
+          <kbd class="px-2 py-1 bg-dark-600 rounded text-xs">↑↓</kbd> Navigate
+        </span>
+        <span>
+          <kbd class="px-2 py-1 bg-dark-600 rounded text-xs">Enter</kbd> Select
+        </span>
+      </div>
+      <span id="search-count" class="text-text-muted"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Search data - This will be populated with your site content
+  const searchData = [
+    // Blog posts
+    { type: 'Blog', title: 'Thinking Aloud About Agentic AI', url: '/blog/thinking-aloud-about-agentic-ai', excerpt: 'Exploring the future of agentic AI systems and their implications', category: 'AI & Infrastructure' },
+    { type: 'Blog', title: 'AI in Higher Education', url: '/blog/ai-in-higher-education', excerpt: 'How artificial intelligence is transforming learning', category: 'Education' },
+
+    // Pages
+    { type: 'Page', title: 'Research', url: '/research', excerpt: 'Explore cutting-edge research in AI, 5G, and Security', category: 'Research' },
+    { type: 'Page', title: 'Projects', url: '/projects', excerpt: 'Innovative projects driving real-world impact', category: 'Projects' },
+    { type: 'Page', title: 'Impact', url: '/impact', excerpt: 'Real-world impact through technology and innovation', category: 'Impact' },
+    { type: 'Page', title: 'About', url: '/about', excerpt: 'Learn about Dr Ahmed Zoha\'s background and expertise', category: 'About' },
+    { type: 'Page', title: 'FLAIR', url: '/modai', excerpt: 'Federated Learning and AI Research', category: 'Research' },
+    { type: 'Page', title: 'Contact', url: '/contact', excerpt: 'Get in touch for collaborations and opportunities', category: 'Contact' },
+
+    // Add your actual content here
+    // You can fetch this from WordPress or other sources
+  ];
+
+  // Search modal elements
+  const modal = document.getElementById('search-modal');
+  const searchInput = document.getElementById('search-input');
+  const searchClose = document.getElementById('search-close');
+  const searchEmpty = document.getElementById('search-empty');
+  const searchNoResults = document.getElementById('search-no-results');
+  const searchResultsList = document.getElementById('search-results-list');
+  const searchCount = document.getElementById('search-count');
+  const searchToggle = document.getElementById('search-toggle');
+
+  let selectedIndex = -1;
+
+  // Open search modal
+  function openSearch() {
+    modal?.classList.remove('hidden');
+    modal?.classList.add('flex');
+    searchInput?.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close search modal
+  function closeSearch() {
+    modal?.classList.remove('flex');
+    modal?.classList.add('hidden');
+    if (searchInput) searchInput.value = '';
+    clearResults();
+    document.body.style.overflow = '';
+    selectedIndex = -1;
+  }
+
+  // Clear results
+  function clearResults() {
+    searchEmpty?.classList.remove('hidden');
+    searchNoResults?.classList.add('hidden');
+    searchResultsList?.classList.add('hidden');
+    if (searchResultsList) searchResultsList.innerHTML = '';
+    if (searchCount) searchCount.textContent = '';
+  }
+
+  // Search function
+  function performSearch(query: string) {
+    if (!query.trim()) {
+      clearResults();
+      return;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    const results = searchData.filter(item =>
+      item.title.toLowerCase().includes(lowerQuery) ||
+      item.excerpt.toLowerCase().includes(lowerQuery) ||
+      item.category.toLowerCase().includes(lowerQuery)
+    );
+
+    searchEmpty?.classList.add('hidden');
+
+    if (results.length === 0) {
+      searchNoResults?.classList.remove('hidden');
+      searchResultsList?.classList.add('hidden');
+      if (searchCount) searchCount.textContent = '';
+      return;
+    }
+
+    searchNoResults?.classList.add('hidden');
+    searchResultsList?.classList.remove('hidden');
+
+    // Display results
+    if (searchResultsList) {
+      searchResultsList.innerHTML = results.map((result, index) => `
+        <a
+          href="${result.url}"
+          class="search-result block p-4 rounded-lg border border-dark-500 hover:border-accent-yellow hover:bg-dark-700 transition-all group ${index === selectedIndex ? 'border-accent-yellow bg-dark-700' : ''}"
+          data-index="${index}"
+        >
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <span class="text-xs px-2 py-1 rounded bg-dark-600 text-text-muted">${result.type}</span>
+            <span class="text-xs text-text-muted">${result.category}</span>
+          </div>
+          <h3 class="text-text-primary font-medium mb-1 group-hover:text-accent-yellow transition-colors">
+            ${highlightMatch(result.title, query)}
+          </h3>
+          <p class="text-sm text-text-secondary line-clamp-2">
+            ${highlightMatch(result.excerpt, query)}
+          </p>
+        </a>
+      `).join('');
+    }
+
+    if (searchCount) {
+      searchCount.textContent = `${results.length} result${results.length === 1 ? '' : 's'}`;
+    }
+
+    selectedIndex = -1;
+  }
+
+  // Highlight matching text
+  function highlightMatch(text: string, query: string): string {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<mark class="bg-accent-yellow/20 text-accent-yellow">$1</mark>');
+  }
+
+  // Navigate results with keyboard
+  function navigateResults(direction: 'up' | 'down') {
+    const results = document.querySelectorAll('.search-result');
+    if (results.length === 0) return;
+
+    // Remove current selection
+    results.forEach(r => {
+      r.classList.remove('border-accent-yellow', 'bg-dark-700');
+    });
+
+    // Update index
+    if (direction === 'down') {
+      selectedIndex = (selectedIndex + 1) % results.length;
+    } else {
+      selectedIndex = selectedIndex <= 0 ? results.length - 1 : selectedIndex - 1;
+    }
+
+    // Add selection to new item
+    const selected = results[selectedIndex];
+    selected.classList.add('border-accent-yellow', 'bg-dark-700');
+    selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  // Event listeners
+  searchToggle?.addEventListener('click', openSearch);
+  searchClose?.addEventListener('click', closeSearch);
+
+  // Click outside to close
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeSearch();
+  });
+
+  // Search input
+  searchInput?.addEventListener('input', (e) => {
+    const query = (e.target as HTMLInputElement).value;
+    performSearch(query);
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    // Cmd/Ctrl + K to open search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+
+    // ESC to close
+    if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+      closeSearch();
+    }
+
+    // Arrow navigation
+    if (!modal?.classList.contains('hidden')) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateResults('down');
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateResults('up');
+      } else if (e.key === 'Enter' && selectedIndex >= 0) {
+        e.preventDefault();
+        const selected = document.querySelector(`.search-result[data-index="${selectedIndex}"]`) as HTMLAnchorElement;
+        if (selected) window.location.href = selected.href;
+      }
+    }
+  });
+
+  // Global search shortcut hint
+  console.log('💡 Tip: Press Cmd/Ctrl + K to open search');
+</script>
+
+<style>
+  kbd {
+    font-family: ui-monospace, monospace;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  mark {
+    border-radius: 2px;
+    padding: 0 2px;
+  }
+</style>

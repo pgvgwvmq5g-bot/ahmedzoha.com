@@ -1,0 +1,674 @@
+---
+// news.astro - News & Updates page with static news entries
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Static News & Updates - sorted by date (newest first)
+const newsUpdates = [
+  {
+    title: 'Presenting GAN-Based Medical Imaging Research at MICAD 2025',
+    excerpt: 'A team member presented PhD research at the International Conference on Medical Imaging and Computer-Aided Diagnosis in London. The work explores using generative adversarial networks to standardize ultrasound tongue images for speech disorder diagnosis.',
+    date: 'Nov 2025',
+    dateSort: new Date('2025-11-01'),
+    link: 'https://www.linkedin.com/posts/activity-7397602631873081344-tNib?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Breakthrough in Multilingual Voice Anti-Spoofing Research',
+    excerpt: 'MIMER project achieves major milestone with the acceptance of groundbreaking MSS dataset paper at IEEE CBMI 2025 in Dublin. This first-of-its-kind multilingual spoofed speech dataset addresses critical challenges in deepfake detection and digital identity fraud.',
+    date: 'Oct 2025',
+    dateSort: new Date('2025-10-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7375438679454138368',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Join Our Team: Generative AI Specialist Wanted',
+    excerpt: 'KTP project LEAP is hiring a Generative AI & Large Language Model Specialist for a London-based position. Exciting opportunity to work at the cutting edge of AI research with real-world applications.',
+    date: 'Oct 2025',
+    dateSort: new Date('2025-10-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7373351512099532801',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Shaping the Future of Wireless Networks on Coursera',
+    excerpt: 'Proud to contribute to the new "6G for a Connected Future" specialization on Coursera, designing and delivering the module on multimodality-enabled smart wireless networks. From learner to contributor—completing the cycle of knowledge sharing.',
+    date: 'Sep 2025',
+    dateSort: new Date('2025-09-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7371215740290404352',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Expanding Cybersecurity Research with New HEC Funding',
+    excerpt: 'MIMER project secures additional NRPU grant from HEC Pakistan to advance the fight against AI-generated audio deception in critical real-time scenarios. Strengthening UK-Pakistan research collaborations in deepfake detection beyond 2026.',
+    date: 'Aug 2025',
+    dateSort: new Date('2025-08-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7352300783184343041',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Smart Grid Security Research Published in High-Impact Journal',
+    excerpt: 'A team member\'s research on fusion-enhanced federated learning for smart grid security has been published in Engineering Applications of Artificial Intelligence. The work introduces a defense framework to address adversarial attacks in federated learning systems for power networks.',
+    date: 'Jun 2025',
+    dateSort: new Date('2025-06-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7337095858309468160',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Celebrating Academic Excellence: PhD Graduation Success',
+    excerpt: 'Graduation day at the University of Glasgow\'s James Watt School of Engineering marks the completion of a transformative PhD journey in Electrical Engineering. A milestone of gratitude, reflection, and pride, looking forward to the next chapter.',
+    date: 'Jun 2025',
+    dateSort: new Date('2025-06-01'),
+    link: 'https://www.linkedin.com/posts/ark-71155998_graduationday-phd-electricalengineering-ugcPost-7347263985060118528-5k-2?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'Supporting Educators Through AI: New KTP Project LEAP',
+    excerpt: 'Grateful to receive Innovate UK funding for a 2-year Knowledge Transfer Partnership with AWTG Ltd to develop LEAP, an AI platform designed to support teachers and enhance student learning. The goal is to amplify educator expertise through adaptive pathways and dialogue-driven thinking.',
+    date: 'May 2025',
+    dateSort: new Date('2025-05-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7339309965691510784',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'New Publication on Federated Blockage Prediction in Wireless Networks',
+    excerpt: 'Our paper on Semantic-Aware Federated Blockage Prediction published in IEEE Transactions on Network and Service Management. The SFBP framework explores lightweight edge-based computer vision for next-generation wireless systems, showing encouraging results in reducing communication overhead.',
+    date: 'May 2025',
+    dateSort: new Date('2025-05-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_vision-aided-communications-activity-7339229109509603328-tOZK?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Presenting MIMER Project at ASEAN-Pakistan Technology Expo',
+    excerpt: 'Grateful for the opportunity to share our EPSRC-funded research on mitigating presentation attacks in remote identity proofing at APTEX\'25\'s Cybersecurity session. The event brought together 18 ASEAN delegates and over 600 participants to discuss AI-powered approaches for digital identity security in Pakistan\'s banking sector.',
+    date: 'Apr 2025',
+    dateSort: new Date('2025-04-01'),
+    link: 'https://www.linkedin.com/posts/junaid-mir-3a0370234_aptex-asean-ukri-activity-7321583946348044288-j4B2?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Demonstrating AI-Powered Identity Security at PINTECH\'25',
+    excerpt: 'Showcased the MIMER project at the All Punjab Innovation and Technology Expo in Lahore, demonstrating our approach to tackling deepfakes and spoofing attacks in Pakistan\'s banking sector. A meaningful step in connecting academic research with practical industrial applications.',
+    date: 'Mar 2025',
+    dateSort: new Date('2025-03-01'),
+    link: 'https://www.linkedin.com/posts/muhammad-haroon-yousaf-0b919828_pintech25-ukri-ai-activity-7321018096457080833-dyEG?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'New Research on Adversarial Robustness in Federated Load Forecasting',
+    excerpt: 'Research examines the balance between global and local learning in federated systems, demonstrating how increased local training can enhance model robustness against adversarial attacks. The work offers new insights for securing distributed learning frameworks in energy forecasting applications.',
+    date: 'Feb 2025',
+    dateSort: new Date('2025-02-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7289967358301896705',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Exploring AI and Dialogic Learning at EduCon2025',
+    excerpt: 'Valuable discussions at EduCon2025 about reimagining education in the age of AI. Rupert Wegerif\'s insights on combining AI with dialogic teaching approaches sparked important reflections on how we might think alongside these tools rather than simply using them.',
+    date: 'Feb 2025',
+    dateSort: new Date('2025-02-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_educon2025-educationinnovation-aiineducation-activity-7320825855931265024-KH1T?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'New Publication on Adaptive Computation for Federated Learning',
+    excerpt: 'Our paper on Adaptive Computation Amount Allocation published in IEEE Transactions on Mobile Computing. The ACAA approach addresses computation challenges in federated learning for heterogeneous IoT devices, showing encouraging improvements in training efficiency while maintaining privacy.',
+    date: 'Jan 2025',
+    dateSort: new Date('2025-01-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7297957344645140480',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Privacy-Preserving Load Forecasting for Smart Grids',
+    excerpt: 'Research from our group introduces federated SDTA for secure energy demand prediction in power systems. The mechanism enables utilities to collaborate on load forecasting while protecting sensitive data and defending against adversarial attacks.',
+    date: 'Jan 2025',
+    dateSort: new Date('2025-01-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_smartgrid-ai-powersystems-activity-7296674196774924288-e99_?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Engaging with Research Community at IEEE INMIC 2024',
+    excerpt: 'Attended the 26th IEEE INMIC conference in Karachi, chairing a technical session and participating in a panel on digital transformation in engineering education. Valuable opportunity to present the MIMER project findings and connect with colleagues for future collaborations.',
+    date: 'Dec 2024',
+    dateSort: new Date('2024-12-01'),
+    link: 'https://www.linkedin.com/posts/junaid-mir-3a0370234_inmic2024-salimhabibuniversity-shu-ugcPost-7281023817118892033-JBD5?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Celebrating PhD Success: UAV Communications Research',
+    excerpt: 'Proud to share that a team member successfully passed their PhD viva with research on leveraging machine learning and computer vision for advanced UAV communications. Grateful for the collaborative effort and looking forward to their continued contributions to the field.',
+    date: 'Dec 2024',
+    dateSort: new Date('2024-12-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7264668461769879552',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'Open-Access Survey on Federated Learning Security',
+    excerpt: 'Our team\'s open-access survey examines defense strategies against attacks in federated learning systems, covering data protection, model security, and privacy preservation. The analysis offers insights relevant for designing secure cyber-physical networks in critical national infrastructure.',
+    date: 'Nov 2024',
+    dateSort: new Date('2024-11-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7252355791003774978',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Decentralized Federated Learning Enhances Smart Grid Security',
+    excerpt: 'New research published in Energy and Buildings explores adversarial robustness in federated load forecasting, comparing centralized and decentralized approaches. Findings suggest decentralized methods offer stronger resilience against model poisoning attacks in smart building energy systems.',
+    date: 'Nov 2024',
+    dateSort: new Date('2024-11-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7247990987455676416',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Federated Learning Survey Recognized Among Top Journal Articles',
+    excerpt: 'Grateful that our 2023 paper on edge-native intelligence for 6G communications has been listed among the 50 most popular articles in IEEE Transactions on Emerging Topics in Computational Intelligence. The survey examines federated learning applications across next-generation wireless networks.',
+    date: 'Nov 2024',
+    dateSort: new Date('2024-11-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7191727395278639104',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'PhD Research Presented at BIOSTEC 2024 in Rome',
+    excerpt: 'A team member presented PhD research on automated phonetic classification at the International Conference of Bioimaging in Rome. The work explores AI and machine learning applications for advancements in linguistics and speech therapy.',
+    date: 'Nov 2024',
+    dateSort: new Date('2024-11-01'),
+    link: 'https://www.linkedin.com/posts/saja-al-ani-8266a3a1_biostec2024-bioimaging-fusecdt-activity-7166117782848274432-Q6qe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Mentorship Milestone: Dr. Fahad Ayaz\'s PhD Defense',
+    excerpt: 'Immensely proud to witness Fahad Ayaz\'s successful PhD defense on AI-driven radar-based human activity recognition. His research bridges technical innovation with real human impact—a testament to dedication, collaboration, and the privilege of mentorship.',
+    date: 'Jun 2025',
+    dateSort: new Date('2025-06-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7343616355595673600',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'Strategic Partnership with Pakistan\'s National CERT',
+    excerpt: 'MIMER team meets with Dr. Haider Abbas and National CERT Pakistan to present project progress on tackling deepfakes and digital identity fraud. A significant step toward bridging academic research with national cybersecurity initiatives for public digital safety.',
+    date: 'Jun 2025',
+    dateSort: new Date('2025-06-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7351631224483786752',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'UKRI Awards Funding for MIMER Project on Digital Identity Security',
+    excerpt: 'Honored to receive UKRI funding as Principal Investigator for a two-year project addressing presentation attacks in remote identity proofing, with focus on Pakistan\'s banking sector. Collaborating with UET Taxila and STech.ai to develop AI solutions against deepfakes and banking fraud.',
+    date: 'Jun 2024',
+    dateSort: new Date('2024-06-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7179216209836408833',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Third IEEE Transactions Publication on Federated mmWave Networks',
+    excerpt: 'A team member completed their PhD research with publication of the RaDaR framework in IEEE Transactions on Mobile Computing. The work explores radar-aided dynamic blockage recognition to enhance reliability in federated mmWave networks while considering latency and quality metrics.',
+    date: 'May 2024',
+    dateSort: new Date('2024-05-01'),
+    link: 'https://www.linkedin.com/posts/drmohammadalquraan_ieeetransactions-ieeecs-federatedlearning-activity-7171484559165878272-aUJz?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'PhD Viva Success: Mohammad Al-Quraan',
+    excerpt: 'Proud moment as co-supervisor witnessing Mohammad Al-Quraan successfully pass his PhD examination. Grateful to have been part of his research journey and to see him reach this significant milestone.',
+    date: 'Mar 2024',
+    dateSort: new Date('2024-03-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_i-am-incredibly-overjoyed-to-live-this-activity-7156707216727638016-7Pex?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'External Examiner Role at University of Leeds',
+    excerpt: 'Grateful for the opportunity to serve as external examiner for a PhD thesis on Non-Intrusive Load Monitoring at the University of Leeds. The work explores important intersections between energy efficiency, privacy preservation, and AI-driven energy management.',
+    date: 'Feb 2024',
+    dateSort: new Date('2024-02-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7153797920981467136',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'Recognition in Stanford\'s Top 2% Most Cited Scientists List',
+    excerpt: 'Honored to be included in Stanford University\'s list of the top 2% most cited scientists globally. Grateful to all collaborators and colleagues who have contributed to this shared achievement through our research efforts.',
+    date: 'Dec 2023',
+    dateSort: new Date('2023-12-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7115818024003084288',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'External PhD Examiner at Tallinn University of Technology',
+    excerpt: 'Grateful for the opportunity to serve as external PhD examiner for Taavi Laadung at Taltech University in Tallinn, Estonia. The research represents important work in the field, and it was a privilege to contribute to the examination process.',
+    date: 'Aug 2023',
+    dateSort: new Date('2023-08-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_taltechphd-tallinntales-academicadventures-activity-7100468776810237952-WgnX?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Mentorship' }],
+    category: 'Mentorship',
+    featuredImage: null,
+  },
+  {
+    title: 'Invited Paper on Blockchain-Assisted UAV Communications Published',
+    excerpt: 'Our team\'s invited paper in IEEE Open Journal of Vehicular Technology explores blockchain\'s role in securing UAV communication systems. The work examines how decentralized technologies can enhance data integrity, privacy, and coordination in unmanned aerial vehicle networks.',
+    date: 'May 2023',
+    dateSort: new Date('2023-05-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7087455982359851011',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'FedraTrees Framework Published in Engineering Applications of AI',
+    excerpt: 'Our paper introduces FedraTrees, a lightweight federated learning framework leveraging ensemble learning. The approach shows encouraging efficiency gains, requiring significantly reduced computation time and communication rounds compared to conventional methods.',
+    date: 'Apr 2023',
+    dateSort: new Date('2023-04-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7077593884217765888',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Survey on Edge-Native Intelligence for 6G Published in IEEE',
+    excerpt: 'Our comprehensive survey on federated learning for 6G communications published in IEEE Transactions on Emerging Topics in Computational Intelligence. The work explores fundamentals, enabling technologies, and applications of FL in next-generation wireless networks.',
+    date: 'Mar 2023',
+    dateSort: new Date('2023-03-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7048672865583288320',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'FedBranch Framework for Anomaly-Aware Load Forecasting',
+    excerpt: 'Our research introduces FedBranch, a clustering-based federated learning approach for handling diverse client data in energy networks. The framework uses probabilistic methods to improve short-term load forecasting accuracy across substations while preserving privacy.',
+    date: 'Feb 2023',
+    dateSort: new Date('2023-02-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7046791553637310464',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Presenting Vision-Aided Blockage Prediction at IEEE WCNC Glasgow',
+    excerpt: 'Grateful for the opportunity to present research on federated learning for reliable mmWave systems at IEEE WCNC in Glasgow. The work explores using camera sensors to predict beam blockages in B5G and 6G networks while maintaining quality of experience for users.',
+    date: 'Feb 2023',
+    dateSort: new Date('2023-02-01'),
+    link: 'https://www.linkedin.com/posts/drmohammadalquraan_wcnc-wcnc2023-comsoc-activity-7047155632432422914-46UC?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'First IEEE Transactions Paper on Vision-Aided Wireless Networks',
+    excerpt: 'A team member published their first IEEE Transactions paper on intelligent beam blockage prediction in IEEE Transactions on Network and Service Management. The work explores the integration of computer vision and machine learning for future vehicular communication networks.',
+    date: 'Feb 2023',
+    dateSort: new Date('2023-02-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:6990379937815810050',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Collaborative Research Reaches 1,000 Citation Milestone',
+    excerpt: 'Grateful to see collaborative work with colleagues reaching 1,000 citations, reflecting the continued relevance of the research. A reminder of the value of teamwork and the lasting impact of well-executed research collaborations.',
+    date: 'Dec 2022',
+    dateSort: new Date('2022-12-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:6961337701799182336',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Showcasing 5G Healthcare Innovation at UK 5G Showcase',
+    excerpt: 'Our team demonstrated activity monitoring research from the 5G New Thinking Project at the UK 5G Showcase in Birmingham. The work explores how 5G technology can support healthcare systems and improve quality of life through advanced sensing capabilities.',
+    date: 'Nov 2022',
+    dateSort: new Date('2022-11-01'),
+    link: 'https://www.linkedin.com/posts/ahmad-mahmoud-a-taha_theuk5gshowcase-activity-6912037711717498881-wRy7?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Special Issue on Machine Learning for Energy-Efficient IoT Networks',
+    excerpt: 'Serving as editor for a special issue on machine learning techniques for energy-efficient IoT networks. The call for papers welcomes quality submissions exploring the intersection of ML and sustainable IoT systems.',
+    date: 'Jun 2022',
+    dateSort: new Date('2022-06-01'),
+    link: 'https://www.linkedin.com/posts/ahmedzoha_sensors-activity-6910200505805787136-SCRp?utm_source=share&utm_medium=member_desktop&rcm=ACoAABJdtVEBV1sbD-fOnFZ5A7r6xn0lyugJKQg',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: '5G-Enabled Remote Robotics Featured in National Media',
+    excerpt: 'Our team\'s pioneering work on 5G-enabled remote laboratory access was featured in national technology press. The project demonstrates how students can conduct experiments using robotic systems from anywhere in the world, marking a significant advancement in remote education capabilities.',
+    date: 'Nov 2020',
+    dateSort: new Date('2020-11-01'),
+    link: 'https://www.digit.fyi/5g-tech-is-helping-to-support-a-pioneering-glasgow-uni-robotics-project/',
+    categories: [{ name: 'Media' }],
+    category: 'Media',
+    featuredImage: null,
+  },
+];
+
+// Sort news by date (newest first)
+const posts = newsUpdates.sort((a, b) => b.dateSort - a.dateSort);
+
+const hasNews = posts.length > 0;
+
+// News categories for filtering
+const newsCategories = ['All', 'Research', 'Activity', 'Mentorship', 'Media', 'Recognition'];
+
+// Upcoming events - UPDATE THESE MANUALLY or create WordPress custom post type
+const upcomingEvents = [
+  {
+    title: 'IEEE 5th International Conference on Computing and Machine Intelligence',
+    date: 'April 09-10, 2026',
+    location: 'King Faisal University, Saudi Arabia',
+    type: 'Conference',
+  },
+  {
+    title: 'Biometric Security in the Era of AI',
+    date: 'TBD',
+    location: 'University of Glasgow, Glasgow',
+    type: 'Workshop',
+  },
+];
+---
+
+<BaseLayout title="News & Updates" description="Latest news, events, and announcements">
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-light mb-4">
+        News & <span class="text-accent-yellow">Updates</span>
+      </h1>
+      <p class="text-text-secondary max-w-2xl">
+        Stay updated with my latest research, publications, talks, and other activities.
+      </p>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="mb-16">
+      <h2 class="text-xl font-medium mb-6">Upcoming Events</h2>
+      <div class="bg-dark-700 rounded-2xl border border-dark-500/30 overflow-hidden">
+        {upcomingEvents.map((event, index) => (
+          <div class={`p-6 flex items-center justify-between
+                      ${index !== upcomingEvents.length - 1 ? 'border-b border-dark-500/30' : ''}`}>
+            <div>
+              <span class="text-xs text-accent-yellow uppercase tracking-wider">{event.type}</span>
+              <h3 class="font-medium mt-1">{event.title}</h3>
+              <p class="text-sm text-text-muted">{event.location}</p>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-medium">{event.date}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- All News & Updates -->
+    {hasNews ? (
+      <div class="mb-16">
+        <h2 class="text-xl font-medium mb-6">Recent News</h2>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap gap-2 mb-4 border-b border-dark-500/30 pb-3">
+          {newsCategories.map((cat, index) => (
+            <button
+              class={`news-tab px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                index === 0
+                  ? 'bg-accent-yellow text-dark-900'
+                  : 'bg-dark-700 text-text-secondary hover:bg-dark-600 hover:text-text-primary'
+              }`}
+              data-category={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <!-- News Items -->
+        <div class="space-y-3" id="news-container">
+          {posts.map((item) => (
+            <a
+              href={item.link}
+              class="news-item block p-4 bg-dark-700 rounded-lg border border-dark-500/30
+                     hover:border-accent-yellow/30 hover:bg-dark-600 transition-all group"
+              data-category={item.category}
+            >
+              <div class="flex items-start gap-2 mb-2">
+                {item.categories.length > 0 && (
+                  <span class="px-2 py-0.5 bg-accent-yellow/20 text-accent-yellow rounded text-[10px] font-medium">
+                    {item.categories[0].name}
+                  </span>
+                )}
+                <span class="text-xs text-text-muted">{item.date}</span>
+              </div>
+              <h3 class="font-medium text-base mb-2 group-hover:text-accent-yellow transition-colors leading-tight"
+                  set:html={item.title} />
+              <p class="text-sm text-text-secondary leading-relaxed">
+                {item.excerpt}
+              </p>
+              <div class="mt-3 flex items-center gap-2 text-accent-yellow text-xs opacity-0
+                          group-hover:opacity-100 transition-opacity">
+                <span>Read more</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-6 flex items-center justify-between" id="pagination-container">
+          <button
+            id="prev-page"
+            class="px-4 py-2 bg-dark-700 text-text-secondary rounded-lg border border-dark-500/30
+                   hover:bg-dark-600 hover:border-accent-yellow/30 transition-all disabled:opacity-50
+                   disabled:cursor-not-allowed text-sm"
+            disabled
+          >
+            ← Previous
+          </button>
+
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-text-muted">Page</span>
+            <span id="current-page" class="text-sm font-medium text-accent-yellow">1</span>
+            <span class="text-sm text-text-muted">of</span>
+            <span id="total-pages" class="text-sm font-medium">1</span>
+          </div>
+
+          <button
+            id="next-page"
+            class="px-4 py-2 bg-dark-700 text-text-secondary rounded-lg border border-dark-500/30
+                   hover:bg-dark-600 hover:border-accent-yellow/30 transition-all disabled:opacity-50
+                   disabled:cursor-not-allowed text-sm"
+          >
+            Next →
+          </button>
+        </div>
+      </div>
+    ) : (
+      <!-- No News Yet -->
+      <div class="bg-dark-700 rounded-2xl p-12 border border-dark-500/30 text-center mb-16">
+        <div class="w-16 h-16 bg-dark-600 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-medium mb-3">No News Items Yet</h3>
+        <p class="text-text-secondary mb-6 max-w-md mx-auto">
+          News items will appear here once added.
+        </p>
+      </div>
+    )}
+
+    <!-- Newsletter -->
+    <div class="bg-dark-700 rounded-2xl p-8 border border-dark-500/30 text-center">
+      <h3 class="text-xl font-medium mb-3">Stay Updated</h3>
+      <p class="text-text-secondary mb-6 max-w-xl mx-auto">
+        Subscribe to receive updates on new research, publications, and events.
+      </p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          class="flex-1 px-4 py-3 bg-dark-600 rounded-lg border border-dark-500 
+                 focus:border-accent-yellow focus:outline-none text-sm"
+        />
+        <button 
+          type="submit"
+          class="px-6 py-3 bg-accent-yellow text-dark-900 font-medium rounded-lg 
+                 hover:bg-accent-yellow/90 transition-colors"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Category Filtering & Pagination Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.news-tab');
+      const newsItems = Array.from(document.querySelectorAll('.news-item'));
+      const prevBtn = document.getElementById('prev-page');
+      const nextBtn = document.getElementById('next-page');
+      const currentPageEl = document.getElementById('current-page');
+      const totalPagesEl = document.getElementById('total-pages');
+      const paginationContainer = document.getElementById('pagination-container');
+
+      const ITEMS_PER_PAGE = 5;
+      let currentPage = 1;
+      let currentCategory = 'All';
+      let filteredItems = [];
+
+      function getFilteredItems() {
+        return newsItems.filter(item => {
+          const itemCategory = item.getAttribute('data-category');
+          return currentCategory === 'All' || itemCategory === currentCategory;
+        });
+      }
+
+      function updatePagination() {
+        filteredItems = getFilteredItems();
+        const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+
+        // Hide all items first
+        newsItems.forEach(item => item.style.display = 'none');
+
+        // Show items for current page
+        const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIdx = startIdx + ITEMS_PER_PAGE;
+        filteredItems.slice(startIdx, endIdx).forEach(item => {
+          item.style.display = 'block';
+        });
+
+        // Update pagination UI
+        currentPageEl.textContent = currentPage;
+        totalPagesEl.textContent = totalPages || 1;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage >= totalPages;
+
+        // Hide pagination if only one page or no items
+        if (totalPages <= 1) {
+          paginationContainer.style.display = 'none';
+        } else {
+          paginationContainer.style.display = 'flex';
+        }
+      }
+
+      // Category tab click handler
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const selectedCategory = tab.getAttribute('data-category');
+          currentCategory = selectedCategory;
+          currentPage = 1; // Reset to first page on category change
+
+          // Update active tab styling
+          tabs.forEach(t => {
+            if (t === tab) {
+              t.classList.remove('bg-dark-700', 'text-text-secondary');
+              t.classList.add('bg-accent-yellow', 'text-dark-900');
+            } else {
+              t.classList.remove('bg-accent-yellow', 'text-dark-900');
+              t.classList.add('bg-dark-700', 'text-text-secondary');
+            }
+          });
+
+          updatePagination();
+        });
+      });
+
+      // Pagination button handlers
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updatePagination();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+        if (currentPage < totalPages) {
+          currentPage++;
+          updatePagination();
+        }
+      });
+
+      // Initial pagination setup
+      updatePagination();
+    });
+  </script>
+
+</BaseLayout>

@@ -1,0 +1,427 @@
+---
+// coil-energy-network.astro - COIL Energy Network Project Page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: 'Energy Conscious Network for Independent Living (COIL)',
+  description: 'Advanced Ambient Assisted Living solution combining energy consumption analytics with location and physiological tracking to detect behavioural anomalies indicative of cognitive decline — without requiring wearable devices.',
+  status: 'Completed',
+  year: 'September 2022 – March 2023',
+  period: '2022-2025',
+  role: 'Principal Investigator',
+  funding: '£30,000',
+  funder: 'EPSRC Impact Acceleration Account (IAA)',
+  tags: ['Assisted Living', 'Energy AI', 'Machine Learning', 'Net Zero', 'Healthcare'],
+  team: [
+    { name: 'Dr Ahmed Zoha', role: 'Principal Investigator' },
+    { name: 'Dr Masood Nizami', role: 'Co-Investigator' },
+    { name: 'Dr Muhammad Ali Jamshed', role: 'Co-Investigator' },
+    { name: 'Prof Muhammad Ali Imran', role: 'Co-Investigator' },
+  ],
+  partners: [
+    'Briteyellow Ltd',
+    'NHS Scotland Primary Care Network',
+    'Albyn Housing Society',
+    'University of Glasgow',
+    'Scotland 5G Centre',
+  ],
+  publications: [
+    {
+      title: 'Federated Learning Approach for Anomaly-Aware Load Forecasting',
+      venue: 'Sensors',
+      year: '2023',
+      doi: '10.3390/s23073570',
+    },
+  ],
+  outcomes: [
+    { output: 'MVP Deployed', detail: 'Minimal Viable Product tested in real-world setting (Nov 2022)' },
+    { output: 'Publication', detail: 'Sensors journal paper on federated learning for anomaly-aware load forecasting' },
+    { output: 'Industry Showcase', detail: 'Demonstrated to Nokia, Vodafone, Huawei, Scotland 5G Centre' },
+    { output: 'Scotland 5G Centre Feature', detail: 'Listed as 5G-enabled energy and environmental monitoring solution' },
+    { output: 'Demonstration Video', detail: 'Featured on University of Glasgow YouTube channel' },
+    { output: 'Partner Engagement', detail: 'Briteyellow Ltd, NHS Scotland Primary Care Network, Albyn Housing Society' },
+    { output: 'Academic Visits', detail: 'Demonstrated to UESTC China President, delegation of Vice Chancellors from Pakistan' },
+  ],
+  priorResearch: [
+    { project: 'TIHM (NHS England Test Beds)', contribution: 'AI algorithms developed for 200+ homes now integrated into COIL dashboard' },
+    { project: 'REDUCE (EPSRC EP/I000232/1)', contribution: 'User-centric energy behaviour insights applied to care settings' },
+    { project: 'PECN Testbed', contribution: '60+ monitoring nodes providing foundation infrastructure' },
+  ],
+  strategicAlignment: [
+    'EPSRC Priority Theme: Transforming Health and Healthcare',
+    'UK Net Zero 2050 Strategy: User-centric energy models addressing fuel poverty',
+    'NHS Long-Term Plan: Digital transformation of health and social care',
+    'Scotland 5G Strategy: Demonstrating 5G-enabled healthcare and energy solutions',
+  ],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl lg:text-4xl font-light mb-4">
+        {project.title}
+      </h1>
+
+      <p class="text-xl text-text-secondary max-w-3xl mb-6">
+        {project.description}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-500/20 text-green-400">
+          {project.status}
+        </span>
+        <span>{project.year}</span>
+        <span class="text-accent-yellow font-medium">{project.funding}</span>
+      </div>
+    </div>
+
+    <!-- Project Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-green-500/20 to-emerald-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src="/images/impact/coil-setup.png"
+        alt={project.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">Project Overview</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+
+          <!-- Market Context -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <p class="text-text-secondary leading-relaxed mb-4">
+              With <strong class="text-text-primary">2 million people in the UK</strong> using telecare services — projected to reach 3 million by 2030 — and the Ambient Assisted Living (AAL) market expected to reach <strong class="text-text-primary">USD 13.74 billion by 2027</strong>, there is urgent demand for intelligent, non-intrusive health monitoring solutions.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              Over <strong class="text-text-primary">80% of dementia patients</strong> prefer to remain in their own homes, yet evidence shows that moving people into residential care can actually hasten disease progression. COIL addressed this challenge by developing an advanced AAL solution that combines energy consumption analytics with location and physiological tracking to detect behavioural anomalies indicative of cognitive decline — <strong class="text-text-primary">without requiring wearable devices</strong>.
+            </p>
+          </div>
+
+          <!-- Technical Innovation -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-cyan-500/30">
+            <h3 class="text-lg font-medium text-cyan-400 mb-4">Technical Innovation</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              COIL merged two proven platforms developed through my previous research:
+            </p>
+
+            <div class="space-y-4">
+              <div class="p-4 bg-dark-600 rounded-lg">
+                <h4 class="text-sm font-medium text-text-primary mb-2">1. PECN (Persuasive Energy Conscious Network)</h4>
+                <p class="text-sm text-text-secondary">
+                  A network of <strong class="text-text-primary">60+ LoRa-enabled smart energy monitoring nodes</strong> deployed across University of Glasgow's James Watt South Building, featuring a real-time AI-powered analytics dashboard for energy and space utilisation modelling.
+                </p>
+              </div>
+
+              <div class="p-4 bg-dark-600 rounded-lg">
+                <h4 class="text-sm font-medium text-text-primary mb-2">2. BriteCare Platform (Briteyellow Ltd)</h4>
+                <p class="text-sm text-text-secondary">
+                  A wearable and mobile app for elderly and disabled users that tracks movement, analyses behaviour using AI, and sends alerts to caregivers. <strong class="text-text-primary">Among the first to use 5G technology</strong> for centimetre-level indoor positioning.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 p-4 bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-lg border border-accent-yellow/30">
+              <h4 class="text-sm font-medium text-accent-yellow mb-2">The COIL Innovation</h4>
+              <p class="text-sm text-text-secondary">
+                By augmenting PECN's energy analytics with BriteCare's tracking, the system can detect <strong class="text-text-primary">Activities of Daily Living (ADL)</strong> — food preparation, appliance use, sleep patterns — without requiring patients to wear monitoring devices. For example, repeatedly forgetting to turn off an oven, or increased energy consumption during late evenings, could indicate memory problems or the "sundowning syndrome" associated with dementia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Real-World Deployment -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-blue-500/30">
+            <h3 class="text-lg font-medium text-blue-400 mb-4">Real-World Deployment & Results</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The system was deployed for <strong class="text-text-primary">4 months</strong> at Briteyellow's offices in Cranfield Technology Park, demonstrating:
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Clear correlation between user density, daily routines, and appliance usage patterns</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Anomaly detection capability for identifying unusual energy interactions indicative of potential health issues</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Machine learning algorithms for energy forecasting and alerting when appliances are inadvertently left on</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Integration pipeline successfully merging PECN energy data with BriteCare location tracking</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Key Outcomes & Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">Key Outcomes & Impact</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-500/30">
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Output</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.outcomes.map((outcome, index) => (
+                    <tr class={index !== project.outcomes.length - 1 ? 'border-b border-dark-500/20' : ''}>
+                      <td class="py-3 px-4 text-text-secondary font-medium">{outcome.output}</td>
+                      <td class="py-3 px-4 text-text-secondary">{outcome.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Building on Prior Research -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-violet-500/30">
+            <h3 class="text-lg font-medium text-violet-400 mb-4">Building on Prior Research</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              COIL extended the impact of multiple preceding projects:
+            </p>
+            <ul class="space-y-3">
+              {project.priorResearch.map((research) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                  <span class="text-text-secondary"><strong class="text-text-primary">{research.project}:</strong> {research.contribution}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Strategic Alignment -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-amber-500/30">
+            <h3 class="text-lg font-medium text-amber-400 mb-4">Strategic Alignment</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The project directly supports:
+            </p>
+            <ul class="space-y-3">
+              {project.strategicAlignment.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-2 h-2 mt-2 bg-amber-400 rounded-full flex-shrink-0"></span>
+                  <span class="text-text-secondary">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Why This Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why This Matters</h3>
+            <p class="text-text-secondary leading-relaxed italic">
+              COIL demonstrates that <strong class="text-text-primary">energy consumption patterns are a window into health and wellbeing</strong> — enabling non-intrusive monitoring that respects dignity while detecting early signs of cognitive decline. By identifying when someone forgets to turn off an appliance or shows unusual nighttime activity patterns, caregivers can intervene proactively rather than reactively. This approach supports independent living, reduces hospital admissions, and addresses the dual challenges of an ageing population and climate change through intelligent energy management.
+            </p>
+          </div>
+
+          <!-- Publications -->
+          {project.publications && project.publications.length > 0 && (
+            <div class="mt-10">
+              <h3 class="text-lg font-medium mb-4">Key Publications</h3>
+              <div class="space-y-4">
+                {project.publications.map((pub) => (
+                  <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                      <span class="px-2 py-0.5 bg-accent-yellow/10 text-accent-yellow text-xs rounded">
+                        {pub.year}
+                      </span>
+                      <span class="px-2 py-0.5 bg-cyan-400/10 text-cyan-400 text-xs rounded">
+                        {pub.venue}
+                      </span>
+                    </div>
+                    <h4 class="font-medium text-sm mb-2">{pub.title}</h4>
+                    <a
+                      href={`https://doi.org/${pub.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs text-text-muted hover:text-accent-yellow transition-colors"
+                    >
+                      DOI: {pub.doi}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- References -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium mb-4">References</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">Scotland 5G Centre: <a href="https://scotland5gcentre.org/s5gcprojectglasgow/" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">scotland5gcentre.org/s5gcprojectglasgow/</a></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">Publication: <a href="https://doi.org/10.3390/s23073570" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">doi: 10.3390/s23073570</a></span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Project Info -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Details
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Role</span>
+              <span class="text-text-primary text-right">{project.role}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Value</span>
+              <span class="text-accent-yellow font-medium">{project.funding}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Funding</span>
+              <span class="text-text-primary text-right">EPSRC IAA</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Period</span>
+              <span class="text-text-primary text-right">{project.year}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">IAA Programme</span>
+              <span class="text-text-primary text-right">{project.period}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project Team -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Team
+          </h3>
+          <ul class="space-y-3">
+            {project.team.map((member) => (
+              <li>
+                <div class="text-sm font-medium text-text-primary">{member.name}</div>
+                <div class="text-xs text-text-muted">{member.role}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Market Statistics -->
+        <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl p-6 border border-green-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-green-400">
+            Market Context
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">2M→3M</span>
+              <span class="text-xs text-text-muted">UK Telecare Users (2020→2030)</span>
+            </div>
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">$13.74B</span>
+              <span class="text-xs text-text-muted">AAL Market by 2027</span>
+            </div>
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">80%</span>
+              <span class="text-xs text-text-muted">Dementia Patients Prefer Home Care</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industry Partner -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Industry Partner
+          </h3>
+          <div class="p-4 bg-dark-600 rounded-lg">
+            <span class="text-sm font-medium block text-text-primary mb-1">Briteyellow Ltd</span>
+            <span class="text-xs text-text-muted">Telehealth & Indoor Positioning</span>
+          </div>
+        </div>
+
+        <!-- Key Partners -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Partners & Stakeholders
+          </h3>
+          <ul class="space-y-2">
+            {project.partners.map((partner) => (
+              <li class="text-text-secondary text-sm flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {partner}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Related Impact Story -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Impact Story
+          </h3>
+          <a
+            href="/impact/energy-assisted-living"
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+              AI Energy Monitoring for Net Zero
+            </span>
+            <span class="block text-xs text-text-muted mt-1">Read the full impact story →</span>
+          </a>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl p-6 border border-green-500/20">
+          <h3 class="font-medium mb-2">Interested in this project?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Get in touch to discuss collaboration opportunities.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Contact Me
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

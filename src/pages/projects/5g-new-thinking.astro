@@ -1,0 +1,396 @@
+---
+// 5g-new-thinking.astro - 5G New Thinking Project Page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: '5G New Thinking (UoG)',
+  description: 'Developing 5G testbed networks in remote island locations and delivering use case trials in agriculture and healthcare, exploring how communities can "self-provision" their own next-generation communications networks.',
+  status: 'Completed',
+  year: '2019-2022',
+  role: 'Work Package Lead',
+  funding: '£4.3M',
+  totalConsortium: '£4.3M consortium',
+  funder: 'DCMS UK (Department for Digital, Culture, Media & Sport)',
+  partners: 18,
+  tags: ['5G', 'Healthcare', 'RF Sensing', 'Rural Connectivity', 'Assistive Living'],
+  collaborators: [
+    'CISCO',
+    'University of Strathclyde',
+    'Albyn Housing Society',
+    'Rural communities across Scotland',
+    'Orkney communities',
+    'University of Glasgow',
+  ],
+  publications: [
+    {
+      title: '5G-Enabled Contactless Multi-User Presence and Activity Detection for Independent Assisted Living',
+      venue: 'Nature Scientific Reports',
+      year: '2021',
+      doi: '10.1038/s41598-021-96689-7',
+    },
+  ],
+  datasets: [
+    {
+      title: '5G-Enabled Activity Detection Dataset',
+      doi: '10.5525/gla.researchdata.1151',
+      description: 'First openly available 5G-enabled activity detection dataset',
+    },
+  ],
+  patents: [
+    { id: 'DE-102022128862-A1', year: '2022' },
+    { id: 'DE-102023123138-A1', year: '2023' },
+  ],
+  team: [
+    { name: 'Dr Ahmed Zoha', role: 'Co-Investigator/Work Package Lead' },
+    { name: 'Dr Ahmad Taha', role: 'Postdoctoral Research Associate' },
+    { name: 'Dr Qammer Abbasi', role: 'Co-Investigator' },
+    { name: 'Prof Muhammad Ali Imran', role: 'Principal Investigator' },
+  ],
+  outcomes: [
+    { output: 'Dataset Released', detail: 'First openly available 5G-enabled activity detection dataset' },
+    { output: 'Publication', detail: 'Results published in Nature Scientific Reports' },
+    { output: 'Real-World Trial', detail: '4-month deployment at Albyn Housing Society care home' },
+    { output: 'Technology Validated', detail: 'RF sensing accuracy benchmarked against existing sensor-based systems' },
+    { output: 'Toolkit Contribution', detail: 'Healthcare use case integrated into Rural Connectivity Toolkit' },
+    { output: 'Patents', detail: 'Technology cited in 2 international patents' },
+    { output: 'Policy Relevance', detail: 'Demonstrated how 5G can support NHS remote care and Scotland\'s health priorities' },
+  ],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl lg:text-4xl font-light mb-4">
+        {project.title}
+      </h1>
+
+      <p class="text-xl text-text-secondary max-w-3xl mb-6">
+        {project.description}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-500/20 text-green-400">
+          {project.status}
+        </span>
+        <span>{project.year}</span>
+        <span class="text-accent-yellow font-medium">{project.funding}</span>
+        <span>{project.partners} consortium partners</span>
+      </div>
+    </div>
+
+    <!-- Project Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src="/images/projects/5gnt_cp.png"
+        alt={project.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">Project Overview</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+
+          <!-- Project Overview -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <p class="text-text-secondary leading-relaxed mb-4">
+              5G New Thinking was an ambitious DCMS-funded project involving <strong class="text-text-primary">18 consortium partners</strong> working with rural communities across the UK to address the rural connectivity challenge. The project developed 5G testbed networks in remote island locations in <strong class="text-text-primary">Orkney</strong> and delivered use case trials in agriculture and healthcare, exploring how communities can "self-provision" their own next-generation communications networks.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              A key output was the <strong class="text-text-primary">Rural Connectivity Toolkit</strong> — an online resource enabling remote communities to learn about building and operating their own mobile and wireless networks, covering business planning, network construction, and operational guidance.
+            </p>
+          </div>
+
+          <!-- University of Glasgow's Contribution -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-cyan-500/30">
+            <h3 class="text-lg font-medium text-cyan-400 mb-3">University of Glasgow's Contribution: Healthcare Use Case</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              As <strong class="text-text-primary">Work Package Lead</strong> from the University of Glasgow team led by Prof Muhammad Imran, I directed the development of a <strong class="text-text-primary">Portable Non-Invasive Radio Frequency Sensing System for Assistive Living</strong> — one of the project's flagship use cases demonstrating how 5G can transform remote healthcare delivery.
+            </p>
+
+            <h4 class="text-sm font-medium text-text-primary mb-3 mt-6">Use Case Description</h4>
+            <p class="text-text-secondary leading-relaxed">
+              The system uses <strong class="text-text-primary">Software Defined Radio (SDR)</strong> devices to extract Channel State Information from RF signals, enabling detection of daily activity patterns through advanced gait and motion analysis — without requiring wearable sensors or invasive monitoring equipment. This addressed key limitations of existing remote monitoring approaches: camera-based systems raise privacy concerns, ambient sensors are expensive, and wearables require proper mounting and user compliance.
+            </p>
+          </div>
+
+          <!-- The Role of 5G -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-blue-500/30">
+            <h3 class="text-lg font-medium text-blue-400 mb-4">The Role of 5G</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">5G Frequency for Sensing:</strong> The system operated in the 5G band at 3.75 GHz, demonstrating that activity patterns captured at 5G frequencies show higher recognition accuracy compared to Wi-Fi bands</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Low-Latency Connectivity:</strong> 5G's speed enables split-second health emergency decisions; latency analysis confirmed feasibility of integrating actuating systems for future applications</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-blue-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Network Virtualisation:</strong> 5G's ability to dynamically configure services without human intervention is critical for portable, pop-up health sensing deployments</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Trial Implementation -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-violet-500/30">
+            <h3 class="text-lg font-medium text-violet-400 mb-4">Trial Implementation</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Secured <strong class="text-text-primary">Ofcom licensing approval</strong> to operate at 3.75 GHz</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Conducted lab trials at University of Glasgow with results published in <strong class="text-text-primary">Nature Scientific Reports</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Partnered with <strong class="text-text-primary">Albyn Housing Society</strong> to deploy the system in a remote care home setting in Alness, Scotland</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Released one of the first <strong class="text-text-primary">5G-enabled activity detection research datasets</strong> (DOI: 10.5525/gla.researchdata.1151) for the global research community</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Technical Architecture -->
+          <div class="mt-8">
+            <h3 class="text-lg font-medium mb-4">Technical Architecture</h3>
+            <div class="rounded-xl overflow-hidden border border-dark-500/30">
+              <img
+                src="/images/impact/5g-tech.png"
+                alt="5G RF Sensing Technical Architecture"
+                class="w-full h-auto"
+              />
+            </div>
+          </div>
+
+          <!-- Key Outcomes & Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">Key Outcomes & Impact</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-500/30">
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Output</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.outcomes.map((outcome, index) => (
+                    <tr class={index !== project.outcomes.length - 1 ? 'border-b border-dark-500/20' : ''}>
+                      <td class="py-3 px-4 text-text-secondary font-medium">{outcome.output}</td>
+                      <td class="py-3 px-4 text-text-secondary">{outcome.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Why This Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-cyan-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why This Matters</h3>
+            <p class="text-text-secondary leading-relaxed italic">
+              The 5G New Thinking project demonstrated that rural connectivity challenges are surmountable when communities, academia, and industry work together. The University of Glasgow's healthcare use case proved that <strong class="text-text-primary">5G-native sensing can enable dignified, non-invasive remote care</strong> for vulnerable populations — particularly in remote and rural locations where traditional healthcare infrastructure is limited. The openly released dataset ensures this research accelerates global innovation in human-fidelity remote healthcare.
+            </p>
+          </div>
+
+          <!-- Publications -->
+          {project.publications && project.publications.length > 0 && (
+            <div class="mt-10">
+              <h3 class="text-lg font-medium mb-4">Key Publications</h3>
+              <div class="space-y-4">
+                {project.publications.map((pub) => (
+                  <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                      <span class="px-2 py-0.5 bg-accent-yellow/10 text-accent-yellow text-xs rounded">
+                        {pub.year}
+                      </span>
+                      <span class="px-2 py-0.5 bg-cyan-400/10 text-cyan-400 text-xs rounded">
+                        {pub.venue}
+                      </span>
+                    </div>
+                    <h4 class="font-medium text-sm mb-2">{pub.title}</h4>
+                    <a
+                      href={`https://doi.org/${pub.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs text-text-muted hover:text-accent-yellow transition-colors"
+                    >
+                      DOI: {pub.doi}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Project Info -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Details
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Role</span>
+              <span class="text-text-primary text-right">{project.role}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Total Value</span>
+              <span class="text-accent-yellow font-medium">{project.totalConsortium}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Funder</span>
+              <span class="text-text-primary text-right">DCMS UK</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Period</span>
+              <span class="text-text-primary">{project.year}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Partners</span>
+              <span class="text-text-primary">{project.partners} organizations</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project Team -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Team (UofG)
+          </h3>
+          <ul class="space-y-3">
+            {project.team.map((member) => (
+              <li>
+                <div class="text-sm font-medium text-text-primary">{member.name}</div>
+                <div class="text-xs text-text-muted">{member.role}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Patent Citations -->
+        <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-cyan-400">
+            International Patent Citations
+          </h3>
+          <div class="space-y-3">
+            {project.patents.map((patent) => (
+              <div class="p-3 bg-dark-700 rounded-lg">
+                <span class="text-sm font-mono block">{patent.id}</span>
+                <span class="text-xs text-text-muted">{patent.year}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Open Dataset -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Open Dataset
+          </h3>
+          {project.datasets.map((dataset) => (
+            <a
+              href={`https://doi.org/${dataset.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+            >
+              <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors block mb-1">
+                {dataset.title}
+              </span>
+              <span class="text-xs text-text-muted block mb-2">{dataset.description}</span>
+              <span class="block text-xs text-accent-yellow">Open access →</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Key Partners -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Key Partners
+          </h3>
+          <ul class="space-y-2">
+            {project.collaborators.map((collab) => (
+              <li class="text-text-secondary text-sm flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {collab}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Related Impact Story -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Impact Story
+          </h3>
+          <a
+            href="/impact/5g-remote-learning"
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+              5G for Remote Care: Sensor-Free Activity Monitoring
+            </span>
+            <span class="block text-xs text-text-muted mt-1">Read the full impact story →</span>
+          </a>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+          <h3 class="font-medium mb-2">Interested in this project?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Get in touch to discuss collaboration opportunities.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Contact Me
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,279 @@
+---
+// nhs-dementia-care.astro - Impact Story: NHS Dementia Care
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const story = {
+  title: 'Transforming Dementia Care: From Research to NHS Service',
+  subtitle: 'Award-winning NHS-deployed AI system for remote dementia monitoring',
+  year: '2017-2020',
+  category: 'Healthcare Innovation',
+  image: '/images/impact/dementia-care.png',
+  projectLink: '/projects/tihm-healthcare',
+};
+
+const highlights = [
+  { value: '650+', label: 'Participants Deployed' },
+  { value: '£4.4M', label: 'Project Funding' },
+  { value: '20+', label: 'Media Features' },
+  { value: 'Top 5%', label: 'Altmetric Score' },
+];
+
+const awards = [
+  { title: 'HSJ 2018 Award for Innovation', year: '2018' },
+  { title: 'NHS70 Parliamentary Award', year: '2018' },
+];
+
+const policyCitations = [
+  { name: 'UK Parliament - Ageing Science and Technology', link: 'https://cutt.ly/UKparliamnt', year: '2019' },
+  { name: 'EU Policy Paper on Digital Health and AI', doi: '10.2875/702007', year: '2022' },
+];
+
+const relatedMedia = [
+  { outlet: 'Daily Mail', year: '2018' },
+  { outlet: 'BBC', year: '2018' },
+  { outlet: 'Science Daily', year: '2018' },
+  { outlet: 'MPR', year: '2019' },
+  { outlet: 'Medindia', year: '2019' },
+];
+---
+
+<BaseLayout title={story.title} description={story.subtitle}>
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a 
+      href="/impact"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Impact
+    </a>
+
+    <!-- Story Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm font-medium">
+          {story.category}
+        </span>
+        <span class="text-text-muted">{story.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-5xl font-light mb-4">
+        {story.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {story.subtitle}
+      </p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-500/20 to-teal-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img 
+        src={story.image} 
+        alt={story.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Impact Highlights -->
+    <div class="mb-12">
+      <div class="stats-gradient rounded-2xl p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {highlights.map((item) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent-yellow mb-1">{item.value}</div>
+              <div class="text-sm text-text-secondary">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+          
+          <!-- The Challenge -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">The Challenge</h3>
+            <p class="text-text-secondary leading-relaxed">
+              Dementia affects nearly 1 million people in the UK, with carers and healthcare systems 
+              struggling to provide effective remote monitoring without intrusive, expensive sensor deployments.
+            </p>
+          </div>
+
+          <!-- My Contribution -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">My Contribution</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              As AI Research Fellow on the NHS-funded Technology Integrated Health Management (TIHM) project 
+              — led by <strong class="text-text-primary">Professor Payam Barnaghi</strong> — I developed machine 
+              learning algorithms that detect early signs of urinary tract infections and monitor daily living 
+              patterns in dementia patients — conditions that, if missed, lead to hospitalizations and 
+              accelerated cognitive decline.
+            </p>
+            <p class="text-xs text-text-muted">
+              Project Lead: Professor Payam Barnaghi | 
+              <a href="https://www.sabp.nhs.uk/TIHM" target="_blank" rel="noopener noreferrer" 
+                 class="text-accent-yellow hover:underline">SABP NHS TIHM →</a>
+            </p>
+          </div>
+
+          <!-- The Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">The Impact</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">System deployed to <strong class="text-text-primary">650+ participants</strong> in Surrey, now operating as an NHS remote monitoring service since 2020</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">During the <strong class="text-text-primary">COVID-19 pandemic</strong>, SABP NHS offered remote services to <strong class="text-text-primary">1,000+ individuals</strong> across Surrey, UK using the TIHM system</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Won <strong class="text-text-primary">HSJ 2018 Award for Innovation</strong> and <strong class="text-text-primary">NHS70 Parliamentary Award</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Research cited in <strong class="text-text-primary">UK Parliament</strong> and <strong class="text-text-primary">EU Commission</strong> healthcare policy reports</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Featured in <strong class="text-text-primary">20+ media outlets</strong> including Daily Mail and BBC</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Ranked in <strong class="text-text-primary">top 5%</strong> of all research outputs by Altmetric</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">5 patent citations</strong> from international technology companies</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Economic evaluation confirmed <strong class="text-text-primary">positive ROI</strong> with reduced hospital admissions and social care strain</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Why It Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why It Matters</h3>
+            <p class="text-text-secondary leading-relaxed italic">
+              This work demonstrates how academic AI research can translate directly into deployed 
+              healthcare systems that improve lives at scale.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Awards -->
+        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl p-6 border border-amber-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-amber-400">
+            Awards Won
+          </h3>
+          <div class="space-y-3">
+            {awards.map((award) => (
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium block">{award.title}</span>
+                  <span class="text-xs text-text-muted">{award.year}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Policy Citations -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Policy Citations
+          </h3>
+          <div class="space-y-3">
+            {policyCitations.map((policy) => (
+              <div class="p-3 bg-dark-600 rounded-lg">
+                <span class="text-sm font-medium block mb-1">{policy.name}</span>
+                <div class="flex justify-between items-center">
+                  {policy.link && (
+                    <a href={policy.link} target="_blank" rel="noopener noreferrer" 
+                       class="text-xs text-accent-yellow hover:underline">View Document →</a>
+                  )}
+                  {policy.doi && (
+                    <a href={`https://doi.org/${policy.doi}`} target="_blank" rel="noopener noreferrer" 
+                       class="text-xs text-accent-yellow hover:underline">DOI →</a>
+                  )}
+                  <span class="text-xs text-text-muted">{policy.year}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Related Project -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Related Project
+          </h3>
+          <a 
+            href={story.projectLink}
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+              Technology Integrated Health Management (TIHM)
+            </span>
+            <span class="block text-xs text-text-muted mt-1">View full project details →</span>
+          </a>
+        </div>
+
+        <!-- Media Coverage -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Media Coverage (20+)
+          </h3>
+          <ul class="space-y-2">
+            {relatedMedia.map((media) => (
+              <li class="text-sm text-text-secondary flex justify-between">
+                <span>{media.outlet}</span>
+                <span class="text-text-muted">{media.year}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-text-muted mt-3 italic">...and 15+ more outlets</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+          <h3 class="font-medium mb-2">Interested in Healthcare AI?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Let's discuss potential collaborations in healthcare innovation.
+          </p>
+          <a 
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>
+

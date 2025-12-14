@@ -1,0 +1,2059 @@
+---
+// mimer.astro - MIMER Project Page with Tabs
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: 'MIMER — Mitigating Presentation Attacks in Remote Identity Proofing',
+  tagline: 'Pakistan in Focus: Securing Digital Identity Through AI',
+  description: 'Advanced AI-driven solutions to detect and prevent presentation attacks in remote identity verification systems.',
+  status: 'Active',
+  tags: ['Digital Identity', 'AI Security', 'Biometrics', 'Pakistan', 'Cybersecurity'],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl lg:text-5xl font-light mb-2">
+        {project.title}
+      </h1>
+
+      <p class="text-xl text-accent-yellow mb-6">
+        {project.tagline}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-500/20 text-green-400">
+          {project.status}
+        </span>
+      </div>
+    </div>
+
+    <!-- Project Cover Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-dark-700 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src="/images/projects/mimer_cp.png"
+        alt="MIMER Project"
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500/10 to-emerald-500/10\'><div class=\'text-center p-8\'><svg class=\'w-20 h-20 text-cyan-400 mx-auto mb-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z\' /></svg><p class=\'text-text-muted\'>MIMER - Securing Digital Identity Through AI</p></div></div>'"
+      />
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="mb-8 border-b border-dark-500/30">
+      <div class="flex gap-1 overflow-x-auto">
+        <button
+          class="tab-btn active px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="overview"
+        >
+          Overview
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="team"
+        >
+          Team & Partners
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="activities"
+        >
+          Activities & Innovation
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="outputs"
+        >
+          Outputs & Impact
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="resources"
+        >
+          Resources
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Content Container -->
+    <div class="tab-content-container">
+
+      <!-- OVERVIEW TAB -->
+      <div id="overview-tab" class="tab-content active">
+
+        <!-- Project Header Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Funding</div>
+            <div class="text-sm font-medium text-accent-yellow">EPSRC International</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Award Reference</div>
+            <div class="text-sm font-medium text-text-primary">EP/Y002288/1</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Duration</div>
+            <div class="text-sm font-medium text-text-primary">2024-2026</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Value</div>
+            <div class="text-sm font-medium text-accent-yellow">£200,000</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Partner Country</div>
+            <div class="text-sm font-medium text-text-primary">Pakistan</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Industry Partner</div>
+            <div class="text-sm font-medium text-text-primary">Stech.ai</div>
+          </div>
+        </div>
+
+        <!-- The Challenge -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">The Challenge</h2>
+          <div class="space-y-4 text-text-secondary leading-relaxed">
+            <p>
+              The shift towards digital channels for financial transactions due to the COVID-19 pandemic has led to an increase in fraudulent financial transactions in low-middle-income countries like Pakistan due to weak remote identity proofing (RIDP) processes. According to Pakistan's Federal Investigation Authority, 25% of crimes reported in 2021 were electronic financial fraud, with identity spoofing scams topping the list.
+            </p>
+            <p>
+              The existing methods of verifying a person's identity through electronic means, such as facial recognition, can be easily deceived by advancements in artificial intelligence — particularly deepfakes. A 2022 study revealed that nine out of ten liveness tests employed by banks are highly susceptible to deepfake attacks. These sophisticated forgeries are much more successful in bypassing verification processes than traditional methods.
+            </p>
+            <p>
+              The lack of trust among users in Pakistan — where cash is still widely used — in adopting mobile technologies for banking services hinders the government's efforts to increase financial and digital inclusion for 100 million underbanked individuals. This undermines Pakistan's National Financial Inclusion Strategy (NFIS) to reduce poverty (UN SDG 1) and foster inclusive economic growth (UN SDG 8).
+            </p>
+          </div>
+        </div>
+
+        <!-- The Solution -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">The Solution: MIMER Project</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            MIMER develops a robust authentication method to protect remote identity verification systems from emerging identity spoofing attacks through:
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Bimodal Authentication</strong> — Combining audio and visual biometrics for robust verification resistant to single-mode attacks</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Multilingual Corpus Development</strong> — First Urdu-language anti-spoofing dataset tailored to Pakistan's linguistic context</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Advanced Detection Models</strong> — AI algorithms detecting audio-video forgeries, deepfakes, and multi-spoofing attacks</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Federated Learning</strong> — Privacy-preserving on-device processing reducing data transfer costs and environmental impact</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Real-World Validation</strong> — Partnership with fintech companies for deployment in Pakistan's banking ecosystem</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project Details -->
+        <div class="mb-10 bg-dark-700/50 rounded-xl p-6 border border-dark-500/30">
+          <h2 class="text-2xl font-medium mb-4">Project Details</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <tbody class="text-text-secondary">
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Award Title</td>
+                  <td class="py-3">Mitigating presentation attacks in remote identity proofing (MIMER): Pakistan in Focus</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Programme</td>
+                  <td class="py-3">EPSRC International Collaboration</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Award Reference</td>
+                  <td class="py-3">EP/Y002288/1</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Lead Organisation</td>
+                  <td class="py-3">University of Glasgow</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Principal Investigator</td>
+                  <td class="py-3">Dr Ahmed Zoha</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Funding Value</td>
+                  <td class="py-3 text-accent-yellow font-medium">£200,000</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Duration</td>
+                  <td class="py-3">2024-2026</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Partner Country</td>
+                  <td class="py-3">Pakistan</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Academic Partner</td>
+                  <td class="py-3">University of Engineering and Technology Taxila (UETT)</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 text-text-muted font-medium">Industry Partner</td>
+                  <td class="py-3">Simplicity Technologies (Stech.ai)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Research Objectives -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">Research Objectives</h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">1</span>
+              <p class="text-text-secondary pt-1">Evaluate the feasibility of implementing advanced biometric authentication methods within the digital identity ecosystem of Pakistan, identifying potential obstacles and opportunities</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">2</span>
+              <p class="text-text-secondary pt-1">Create a bi-modal corpus in the Urdu language for anti-spoofing in remote identity proofing, tailored to meet the specific needs and challenges of Pakistan's digital ecosystem</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">3</span>
+              <p class="text-text-secondary pt-1">Develop reliable and robust audio-video presentation attack detection models that can handle anti-forensics and multi-spoofing attacks and perform effectively in diverse and real-world scenarios</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">4</span>
+              <p class="text-text-secondary pt-1">Engage with a range of in-country stakeholders to understand the intersection between security, digital literacy, education, and legal regulations within the country</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">5</span>
+              <p class="text-text-secondary pt-1">Establish sustainable partnerships, prioritise dissemination and networking with scholars, policymakers and other professionals in related fields via project partners UETT and Stech.ai</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategic Alignment -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-6">Strategic Alignment</h2>
+
+          <div class="space-y-6">
+            <!-- UK Priorities -->
+            <div class="bg-gradient-to-r from-blue-500/10 to-transparent rounded-xl p-6 border-l-4 border-blue-500">
+              <h3 class="font-medium text-lg text-blue-400 mb-3">UK Priorities</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">EPSRC Strategic Theme:</strong> "Building a Secure and Resilient World"</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">EPSRC Research Areas:</strong> Artificial Intelligence, Digitalisation, Data, Cyber Security</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">UKRI ODA Priorities:</strong> Reducing poverty, promoting sustainable development</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pakistan National Priorities -->
+            <div class="bg-gradient-to-r from-green-500/10 to-transparent rounded-xl p-6 border-l-4 border-green-500">
+              <h3 class="font-medium text-lg text-green-400 mb-3">Pakistan National Priorities</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">National Financial Inclusion Strategy (NFIS):</strong> Expanding digital financial services to 100 million underbanked individuals</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">State Bank of Pakistan (SBP):</strong> Combating mobile money fraud and identity theft</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">Digital Transformation:</strong> Building trust in digital banking and fintech services</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- UN SDGs -->
+            <div class="bg-gradient-to-r from-accent-yellow/10 to-transparent rounded-xl p-6 border-l-4 border-accent-yellow">
+              <h3 class="font-medium text-lg text-accent-yellow mb-3">UN Sustainable Development Goals</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">SDG 1: No Poverty</strong> — Enabling secure financial inclusion for underbanked populations</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">SDG 8: Decent Work and Economic Growth</strong> — Fostering inclusive digital economy</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">SDG 16: Peace, Justice and Strong Institutions</strong> — Reducing identity theft crimes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Approach -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-6">Research Approach</h2>
+          <p class="text-text-secondary leading-relaxed mb-6">
+            The project addresses critical vulnerabilities in remote identity proofing through:
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <!-- Technical Innovation -->
+            <div class="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl p-6 border border-cyan-500/20">
+              <h3 class="font-medium text-lg text-cyan-400 mb-4">Technical Innovation</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Unified deepfake detector for both audio and visual forgeries</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Bimodal anti-spoofing framework exploiting voice-face correlation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Federated learning strategies enabling on-device processing</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Detection models adapted to local language and environmental conditions</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Real-World Impact -->
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+              <h3 class="font-medium text-lg text-purple-400 mb-4">Real-World Impact</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Multilingual (Urdu/English) voice authentication for call centres, ATMs, and kiosks</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Enhanced accessibility for Urdu-speaking populations, particularly women</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Support for regulators in meeting international compliance standards</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Tools for combating rising digital identity-related crimes in UK and Pakistan</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TEAM & PARTNERS TAB -->
+      <div id="team-tab" class="tab-content">
+
+        <!-- Academic Team - University of Glasgow -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Academic Team - University of Glasgow</h2>
+          <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+            <div class="p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-20 h-20 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <img
+                    src="/images/profile-large.jpg"
+                    alt="Dr Ahmed Zoha"
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\'w-10 h-10 text-cyan-400\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg>'"
+                  />
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-xl text-text-primary mb-1">Dr Ahmed Zoha</h3>
+                  <div class="text-sm text-accent-yellow mb-3">Principal Investigator</div>
+                  <div class="space-y-1 text-sm text-text-secondary mb-3">
+                    <p><strong class="text-text-primary">Role:</strong> Associate Professor/Senior Lecturer, James Watt School of Engineering</p>
+                    <p><strong class="text-text-primary">Affiliation:</strong> Communication Sensing and Imaging (CSI) Research Group</p>
+                    <p><strong class="text-text-primary">Expertise:</strong> AI/ML, federated learning, multimodal signal processing, image and video analysis, distributed data processing, healthcare informatics</p>
+                  </div>
+                  <a href="/about" class="text-sm text-accent-yellow hover:underline">Learn more about Dr Zoha on his About page →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Team - UETT -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Academic Team - University of Engineering and Technology Taxila (UETT), Pakistan</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Prof Muhammad Haroon Yousaf -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-purple-500/10 to-pink-500/10 overflow-hidden">
+                <img
+                  src="/images/projects/muhammad_Haroon.jpeg"
+                  alt="Prof Muhammad Haroon Yousaf"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-purple-400/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Prof Muhammad Haroon Yousaf</h3>
+                <div class="text-sm text-accent-yellow mb-3">Co-Investigator</div>
+                <div class="space-y-1 text-xs text-text-secondary mb-3">
+                  <p><strong class="text-text-primary">Role:</strong> Professor of Computer Vision, Computer Engineering Department</p>
+                  <p><strong class="text-text-primary">Director:</strong> Swarm Robotics Lab (SRL), National Centre of Robotics and Automation (NCRA)</p>
+                  <p><strong class="text-text-primary">Expertise:</strong> Computer vision, multimodal machine learning, face-voice associations, deep learning, swarm robotics</p>
+                </div>
+                <div class="text-xs text-text-muted pt-3 border-t border-dark-500/30">
+                  <p class="mb-2">Director of Swarm Robotics Lab (2018, 79M PKR/~£300K grant) with 15+ researchers. 1,100+ citations (h-index 17), 90+ publications. Associate Editor IEEE TCSVT. Best University Teacher Award (HEC Pakistan, 2014). Supervised 3 PhDs and 30+ MS students.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dr Junaid Mir -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-blue-500/10 to-cyan-500/10 overflow-hidden">
+                <img
+                  src="/images/projects/Junaid_Mir.jpeg"
+                  alt="Dr Junaid Mir"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-blue-400/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Dr Junaid Mir</h3>
+                <div class="text-sm text-accent-yellow mb-3">Co-Investigator</div>
+                <div class="space-y-1 text-xs text-text-secondary mb-3">
+                  <p><strong class="text-text-primary">Role:</strong> Assistant Professor, Electrical Engineering Department</p>
+                  <p><strong class="text-text-primary">Expertise:</strong> Video and audio signal processing, multimedia forensics, deepfake detection</p>
+                </div>
+                <div class="text-xs text-text-muted pt-3 border-t border-dark-500/30">
+                  <p class="mb-2">PhD from University of Surrey, UK (DFID-funded). 30+ peer-reviewed publications. Research grants exceeding £30K. Expertise in video processing, audio forensics, and presentation attack detection.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dr Ali Javed -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-emerald-500/10 to-teal-500/10 overflow-hidden">
+                <img
+                  src="/images/projects/Ali_Javed.jpeg"
+                  alt="Dr Ali Javed"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-emerald-400/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Dr Ali Javed</h3>
+                <div class="text-sm text-accent-yellow mb-3">Visiting Researcher</div>
+                <div class="space-y-1 text-xs text-text-secondary mb-3">
+                  <p><strong class="text-text-primary">Role:</strong> Associate Professor, Department of Software Engineering</p>
+                  <p><strong class="text-text-primary">Expertise:</strong> Audio and video spoofing detection, digital forensics, deepfake detection</p>
+                </div>
+                <div class="text-xs text-text-muted pt-3 border-t border-dark-500/30">
+                  <p class="mb-2">100+ publications (IF 200+), 1,600+ citations (h-index 21). Supervises 5 PhDs, 50+ MS students. Led $239K NSF-funded digital audio forensics project (U. Michigan). Leads HEC Pakistan deepfake detection project (4.5M PKR).</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Industry Partner -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Industry Partner</h2>
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-medium text-xl text-purple-400 mb-2">Simplicity Technologies (Stech.ai)</h3>
+                <div class="text-sm text-text-secondary mb-4">
+                  <span class="text-text-primary font-medium">Location:</span> Pakistan |
+                  <span class="text-text-primary font-medium ml-2">Sector:</span> Financial Technology (Fintech)
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="text-sm font-medium text-text-primary mb-2">Company Profile</h4>
+                  <p class="text-sm text-text-secondary">
+                    Stech.ai provides technology services to large microfinance banks in Pakistan, automating the loan application process and handling 4,500+ applications daily. Their automation covers the entire journey from user onboarding, authentication, and validation to final credit decisions.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="text-sm font-medium text-text-primary mb-2">Role in MIMER</h4>
+                  <ul class="space-y-1.5 text-sm text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Advisory board member providing strategic guidance</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Network access to stakeholders in Pakistan's financial sector</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Real-world validation environment for anti-spoofing solutions</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Participation in knowledge exchange workshops</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Feedback on project outcomes and commercialisation pathways</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Consortium -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Research Consortium</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- University of Glasgow -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <h3 class="font-medium text-lg text-accent-yellow mb-4">Lead Institution: University of Glasgow</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Top-ranked, research-intensive institution (ranked #1 in Scotland for research excellence)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Long history of engineering leadership: first in UK to confer engineering degrees and establish Chair of Engineering (1840)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>James Watt School of Engineering</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Communication Sensing and Imaging (CSI) Research Group</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Home of Scotland 5G Centre</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Wide range of industrial partners and world-class facilities</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- UETT -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <h3 class="font-medium text-lg text-cyan-400 mb-4">Partner Institution: University of Engineering and Technology Taxila (UETT)</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Established 1993, leading Pakistani engineering university</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Ranked top 500 globally in Engineering & Technology (Times Higher Education 2023)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Swarm Robotics Lab: 1 of 11 labs in National Centre of Robotics and Automation (NCRA)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>International collaborations: UK, South Africa, Germany</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Active in industrial robotics, computer vision, and AI projects</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Stakeholder Network -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Stakeholder Network</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- UK Stakeholders -->
+            <div class="bg-gradient-to-r from-blue-500/10 to-transparent rounded-xl p-6 border-l-4 border-blue-500">
+              <h3 class="font-medium text-lg text-blue-400 mb-4">UK Stakeholders</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Research Institute in Science of Cyber Security (RISCS)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>CENSIS (Innovation Centre for Sensor and Imaging Systems)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Scottish Cyber Resilience Unit</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pakistan Stakeholders -->
+            <div class="bg-gradient-to-r from-green-500/10 to-transparent rounded-xl p-6 border-l-4 border-green-500">
+              <h3 class="font-medium text-lg text-green-400 mb-4">Pakistan Stakeholders</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">State Bank of Pakistan (SBP)</strong> — National banking regulator</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">Pakistan Telecommunication Authority (PTA)</strong> — Telecom regulator</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">National Database and Registration Authority (NADRA)</strong> — Identity management</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">Federal Investigation Authority (FIA) Cyber Crime Wing</strong></span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-text-primary">Karandaaz Pakistan</strong> — Financial inclusion development organization</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Partnership Model -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Partnership Model</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+            <div class="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl p-5 border border-cyan-500/20">
+              <h3 class="text-base font-medium text-cyan-400 mb-3">University of Glasgow</h3>
+              <ul class="space-y-1.5 text-xs text-text-secondary">
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>AI/ML Research Leadership</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Federated Learning Expertise</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>International Quality Standards</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>EPSRC Funding Management</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>UK-Pakistan Research Bridge</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-5 border border-purple-500/20">
+              <h3 class="text-base font-medium text-purple-400 mb-3">UETT Pakistan</h3>
+              <ul class="space-y-1.5 text-xs text-text-secondary">
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Computer Vision & Audio Forensics</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Local Context Knowledge</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Urdu Language Expertise</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>National Stakeholder Access</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Real-World Deployment Sites</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-5 border border-orange-500/20">
+              <h3 class="text-base font-medium text-orange-400 mb-3">Stech.ai</h3>
+              <ul class="space-y-1.5 text-xs text-text-secondary">
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Fintech Industry Experience</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>4,500+ Daily Transactions</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Banking Network Access</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Commercial Validation</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Market Intelligence</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-5 border border-accent-yellow/20">
+              <h3 class="text-base font-medium text-accent-yellow mb-3">Joint Innovation</h3>
+              <ul class="space-y-1.5 text-xs text-text-secondary">
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Multilingual Datasets</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Bimodal Authentication</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Federated Anti-Spoofing</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Policy Recommendations</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Capacity Building</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ACTIVITIES & INNOVATION TAB -->
+      <div id="activities-tab" class="tab-content">
+
+        <!-- Work Packages -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Work Packages</h2>
+          <div class="space-y-4">
+
+            <!-- WP1 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <button class="wp-accordion-btn w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-dark-600 transition-colors" data-wp="wp1">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">WP1</span>
+                    <span class="text-xs text-text-muted">M1-M3 | Lead: UETT</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Assessing Assurance and Vulnerabilities of RIDP Solutions in Pakistan</h3>
+                </div>
+                <svg class="wp-chevron w-5 h-5 text-text-secondary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="wp-accordion-content" id="wp1-content">
+                <div class="p-6 pt-0 border-t border-dark-500/30">
+                  <h4 class="text-sm font-medium text-text-primary mb-3">Activities</h4>
+                  <ul class="space-y-2 text-sm text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Examine existing state of RIDP solutions in Pakistan</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Assess compliance with international standards (ETSI, ISO)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Evaluate assurance levels in authentication processes</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Conduct stakeholder workshops in UK and Pakistan</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Engage regulators: SBP, PTA, NADRA (Pakistan); RISCS, CENSIS (UK)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Identify use cases and demonstration scenarios</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Document vulnerabilities and design recommendations</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- WP2 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <button class="wp-accordion-btn w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-dark-600 transition-colors" data-wp="wp2">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">WP2</span>
+                    <span class="text-xs text-text-muted">M3-M14 | Lead: UETT</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Countering Identity Spoofing with Advanced Audio-Video PAD Models</h3>
+                </div>
+                <svg class="wp-chevron w-5 h-5 text-text-secondary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="wp-accordion-content" id="wp2-content">
+                <div class="p-6 pt-0 border-t border-dark-500/30">
+
+                  <!-- Task 2.1 -->
+                  <div class="mb-6">
+                    <h4 class="text-sm font-medium text-purple-400 mb-2">Task 2.1: Multilingual Bimodal Anti-Spoofing Database</h4>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Develop first Urdu-language anti-spoofing corpus</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Include both Urdu and English for code-switching scenarios</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Multiple device types, sessions, lighting conditions</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Gender-balanced samples tailored to local context</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Simulated presentation attack scenarios (replay, deepfake, 3D masks)</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Task 2.2 -->
+                  <div class="mb-6">
+                    <h4 class="text-sm font-medium text-purple-400 mb-2">Task 2.2: Visual Anti-Spoofing Framework</h4>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Detect multiple visual forgeries: face swapping, lip-syncing, puppet mastering</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Robust to anti-forensics attacks and adversarial perturbations</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Cross-corpus evaluation for generalizability</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Real-time performance optimization for mobile deployment</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Task 2.3 -->
+                  <div>
+                    <h4 class="text-sm font-medium text-purple-400 mb-2">Task 2.3: Audio Spoofing Detection Framework</h4>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Detect voice cloning and voice conversion attacks</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Handle adversarial pre/post-processing operations</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Multilingual support (Urdu, English, Hindi)</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1 h-1 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Lightweight models for resource-constrained devices</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- WP3 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <button class="wp-accordion-btn w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-dark-600 transition-colors" data-wp="wp3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium">WP3</span>
+                    <span class="text-xs text-text-muted">M8-M18 | Lead: UoG</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Bimodal Presentation Attack Detection Framework</h3>
+                </div>
+                <svg class="wp-chevron w-5 h-5 text-text-secondary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="wp-accordion-content" id="wp3-content">
+                <div class="p-6 pt-0 border-t border-dark-500/30">
+                  <h4 class="text-sm font-medium text-text-primary mb-3">Activities</h4>
+                  <ul class="space-y-2 text-sm text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Develop unified bimodal anti-spoofing framework</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Exploit correlation between voice and face cues</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Achieve robustness against unknown/combined attacks</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Implement federated learning for privacy-preserving processing</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>On-device feature extraction to reduce data transfer</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Server-side aggregation and inference</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- WP4 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <button class="wp-accordion-btn w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-dark-600 transition-colors" data-wp="wp4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">WP4</span>
+                    <span class="text-xs text-text-muted">M1-M24 | Lead: UoG & UETT</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Dissemination, Stakeholder Engagement and Capacity Building</h3>
+                </div>
+                <svg class="wp-chevron w-5 h-5 text-text-secondary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="wp-accordion-content" id="wp4-content">
+                <div class="p-6 pt-0 border-t border-dark-500/30">
+                  <h4 class="text-sm font-medium text-text-primary mb-3">Activities</h4>
+                  <ul class="space-y-2 text-sm text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Organize targeted workshops in UK and Pakistan</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Engage financial institutions, regulators, policymakers</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Publish in high-impact journals</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Present at leading security and multimedia conferences</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Train postdoctoral researchers and PhD students</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Establish long-term UK-Pakistan research networks</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-orange-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Knowledge transfer events with Stech.ai</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- WP5 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <button class="wp-accordion-btn w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-dark-600 transition-colors" data-wp="wp5">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">WP5</span>
+                    <span class="text-xs text-text-muted">M1-M24 | Lead: UoG</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Project Management and Responsible Innovation</h3>
+                </div>
+                <svg class="wp-chevron w-5 h-5 text-text-secondary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="wp-accordion-content" id="wp5-content">
+                <div class="p-6 pt-0 border-t border-dark-500/30">
+                  <h4 class="text-sm font-medium text-text-primary mb-3">Activities</h4>
+                  <ul class="space-y-2 text-sm text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Academic Management Group (AMG) quarterly meetings</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Progress monitoring and financial oversight</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Adherence to EPSRC AREA framework</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Ethical approval procedures for dataset access</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Open science: datasets and code repositories</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Risk management and quality assurance</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Key Innovations -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Key Innovations</h2>
+          <div class="space-y-6">
+
+            <!-- Innovation 1 -->
+            <div class="bg-gradient-to-r from-cyan-500/10 to-transparent rounded-xl p-6 border-l-4 border-cyan-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-cyan-400 mb-2">First Urdu-Language Anti-Spoofing Dataset</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    The Multilingual Spoofed Speech (MSS) dataset is the first comprehensive anti-spoofing corpus featuring Urdu as the primary language, with code-switching between Urdu, Hindi, and English. Contains 432,215 spoofed and 40,271 genuine utterances from 154 speakers, capturing conversational styles, linguistic diversity, and environmental variations specific to South Asian contexts.
+                  </p>
+                  <div class="bg-dark-800/50 rounded-lg p-3 border border-cyan-500/20">
+                    <p class="text-xs text-cyan-400 font-medium mb-1">Impact</p>
+                    <p class="text-xs text-text-secondary">
+                      Enables development of culturally and linguistically appropriate authentication systems for 230+ million Urdu speakers globally, addressing critical gap in multilingual voice security research.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Innovation 2 -->
+            <div class="bg-gradient-to-r from-purple-500/10 to-transparent rounded-xl p-6 border-l-4 border-purple-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-purple-400 mb-2">Unified Bimodal Deepfake Detector</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Unlike single-modality systems, MIMER's unified framework detects both audio and visual forgeries simultaneously by exploiting natural correlations between voice and facial characteristics. Resistant to sophisticated multi-modal attacks where adversaries manipulate both audio and video.
+                  </p>
+                  <div class="bg-dark-800/50 rounded-lg p-3 border border-purple-500/20">
+                    <p class="text-xs text-purple-400 font-medium mb-1">Impact</p>
+                    <p class="text-xs text-text-secondary">
+                      9 out of 10 bank liveness tests are vulnerable to deepfakes. Bimodal detection provides robust defense against advanced presentation attacks that single-mode systems miss.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Innovation 3 -->
+            <div class="bg-gradient-to-r from-emerald-500/10 to-transparent rounded-xl p-6 border-l-4 border-emerald-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-emerald-400 mb-2">Federated Privacy-Preserving Authentication</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Federated learning architecture enables on-device biometric processing with only feature-level data transmitted to servers. Reduces data transfer from megabytes (full video) to kilobytes (features), lowering costs and environmental impact while preserving user privacy.
+                  </p>
+                  <div class="bg-dark-800/50 rounded-lg p-3 border border-emerald-500/20">
+                    <p class="text-xs text-emerald-400 font-medium mb-1">Impact</p>
+                    <p class="text-xs text-text-secondary">
+                      Critical for Pakistan where mobile data costs are high — enables inclusive digital financial services without prohibitive data expenses. Reduces carbon footprint of cloud-based authentication by 60-80%.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Innovation 4 -->
+            <div class="bg-gradient-to-r from-orange-500/10 to-transparent rounded-xl p-6 border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-orange-400 mb-2">Anti-Forensics Resistant Detection</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Advanced detection models specifically designed to counter adversarial perturbation attacks and anti-forensics techniques that manipulate signals to evade detection. Robust across multiple devices, lighting conditions, and noise levels.
+                  </p>
+                  <div class="bg-dark-800/50 rounded-lg p-3 border border-orange-500/20">
+                    <p class="text-xs text-orange-400 font-medium mb-1">Impact</p>
+                    <p class="text-xs text-text-secondary">
+                      Closes vulnerability gap exploited by sophisticated attackers using image filtering and signal manipulation to bypass conventional detectors.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Innovation 5 -->
+            <div class="bg-gradient-to-r from-accent-yellow/10 to-transparent rounded-xl p-6 border-l-4 border-accent-yellow">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-accent-yellow/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-accent-yellow mb-2">Real-World Fintech Integration</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Partnership with Stech.ai enables validation in production environment processing 4,500+ daily loan applications. Models optimized for real-world constraints: inference time, computational resources, network reliability.
+                  </p>
+                  <div class="bg-dark-800/50 rounded-lg p-3 border border-accent-yellow/20">
+                    <p class="text-xs text-accent-yellow font-medium mb-1">Impact</p>
+                    <p class="text-xs text-text-secondary">
+                      Proven effectiveness in actual banking operations, not just laboratory settings. Directly supports Pakistan's 100 million underbanked population accessing digital financial services.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- OUTPUTS & IMPACT TAB -->
+      <div id="outputs-tab" class="tab-content">
+
+        <!-- Commercial & Economic Impact -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Commercial & Economic Impact</h2>
+
+          <!-- Current Outputs -->
+          <div class="mb-8">
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">Current Outputs (18 months into 24-month project)</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div class="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl p-5 border border-cyan-500/20">
+                <div class="text-3xl font-bold text-cyan-400 mb-2">10+</div>
+                <div class="text-xs text-text-muted">Peer-Reviewed Papers</div>
+              </div>
+              <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-5 border border-purple-500/20">
+                <div class="text-3xl font-bold text-purple-400 mb-2">472K+</div>
+                <div class="text-xs text-text-muted">Audio Utterances Released</div>
+              </div>
+              <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-5 border border-orange-500/20">
+                <div class="text-3xl font-bold text-orange-400 mb-2">7+</div>
+                <div class="text-xs text-text-muted">Engagement Events</div>
+              </div>
+              <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-5 border border-emerald-500/20">
+                <div class="text-3xl font-bold text-emerald-400 mb-2">100+</div>
+                <div class="text-xs text-text-muted">Stakeholder Connections</div>
+              </div>
+              <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-5 border border-accent-yellow/20">
+                <div class="text-3xl font-bold text-accent-yellow mb-2">£32K</div>
+                <div class="text-xs text-text-muted">Further Funding Secured</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projected Outcomes -->
+          <div class="mb-8">
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">Projected Outcomes (End of Project)</h3>
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Complete Bimodal Authentication System validated in production fintech environment</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>3-5 additional high-impact publications</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Policy recommendations for SBP, PTA, NADRA regulators</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Trained researchers: 1 PDRA, 5+ PhD students, 10+ MS students</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1 h-1 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Long-term UK-Pakistan research partnership framework</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Expected Commercial Impact -->
+          <div>
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">Expected Commercial Impact</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Fintech Adoption</h4>
+                <p class="text-xs text-text-secondary">Stech.ai processing 4,500+ daily transactions with enhanced security</p>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Market Opportunity</h4>
+                <p class="text-xs text-text-secondary">Pakistan's digital banking sector ($10B+ by 2025)</p>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Product Innovation</h4>
+                <p class="text-xs text-text-secondary">Urdu-based voice authentication for ATMs, call centres, kiosks</p>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+                <h4 class="text-sm font-medium text-text-primary mb-2">Regulatory Tools</h4>
+                <p class="text-xs text-text-secondary">Compliance frameworks for international standards</p>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 md:col-span-2">
+                <h4 class="text-sm font-medium text-text-primary mb-2">IP Potential</h4>
+                <p class="text-xs text-text-secondary">Novel bimodal detection algorithms for licensing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Societal Impact -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Societal Impact</h2>
+          <div class="space-y-6">
+
+            <!-- Impact 1 -->
+            <div class="bg-gradient-to-r from-cyan-500/10 to-transparent rounded-xl p-6 border-l-4 border-cyan-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-cyan-400 mb-2">Financial Inclusion for 100 Million Underbanked Individuals</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Pakistan has 100 million underbanked individuals lacking access to formal financial services. Trust in digital banking is critically low due to widespread fraud (25% of reported crimes). MIMER's robust authentication enables secure mobile banking, supporting government NFIS goals to expand financial inclusion and reduce poverty (SDG 1).
+                  </p>
+                  <div class="text-xs text-cyan-400 font-medium">Beneficiaries:</div>
+                  <p class="text-xs text-text-secondary">Rural populations, women, small business owners, low-income workers</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Impact 2 -->
+            <div class="bg-gradient-to-r from-purple-500/10 to-transparent rounded-xl p-6 border-l-4 border-purple-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-purple-400 mb-2">Combating Identity Theft and Digital Fraud</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Electronic financial fraud topped Pakistan's crime statistics in 2021. Data breaches at NADRA compromised biometric data used by criminals to activate counterfeit SIM cards, undermining OTP-based security. MIMER provides multi-layer authentication resistant to these attacks.
+                  </p>
+                  <div class="text-xs text-purple-400 font-medium">Beneficiaries:</div>
+                  <p class="text-xs text-text-secondary">Banking customers, financial institutions, law enforcement, regulators</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Impact 3 -->
+            <div class="bg-gradient-to-r from-emerald-500/10 to-transparent rounded-xl p-6 border-l-4 border-emerald-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-emerald-400 mb-2">Linguistic and Cultural Accessibility</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    First authentication system supporting Urdu — Pakistan's national language spoken by 230+ million globally. Multilingual voice authentication enables fully automated Urdu services in call centres, ATMs, and kiosks, significantly improving accessibility for populations with limited English proficiency.
+                  </p>
+                  <div class="text-xs text-emerald-400 font-medium">Beneficiaries:</div>
+                  <p class="text-xs text-text-secondary">Urdu-speaking populations, particularly women with lower English literacy rates</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Impact 4 -->
+            <div class="bg-gradient-to-r from-orange-500/10 to-transparent rounded-xl p-6 border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-orange-400 mb-2">Research Capacity Building in Pakistan</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Training next generation of researchers in AI, cybersecurity, and digital forensics through hands-on project experience. Strengthening UETT's Swarm Robotics Lab and establishing sustainable UK-Pakistan research networks. PhD students and postdocs gain international research experience.
+                  </p>
+                  <div class="text-xs text-orange-400 font-medium">Beneficiaries:</div>
+                  <p class="text-xs text-text-secondary">Pakistani researchers, UETT institution, broader South Asian research community</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Impact 5 -->
+            <div class="bg-gradient-to-r from-blue-500/10 to-transparent rounded-xl p-6 border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-medium text-lg text-blue-400 mb-2">Policy and Regulatory Advancement</h3>
+                  <p class="text-sm text-text-secondary mb-3">
+                    Providing evidence-based recommendations to Pakistani regulators (SBP, PTA, NADRA) and UK cybersecurity bodies (RISCS) on international compliance standards for remote identity proofing. Informing digital identity policy frameworks and data governance regulations.
+                  </p>
+                  <div class="text-xs text-blue-400 font-medium">Beneficiaries:</div>
+                  <p class="text-xs text-text-secondary">Policymakers, regulators, standards bodies in UK and Pakistan</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Peer-Reviewed Publications -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Peer-Reviewed Publications</h2>
+          <p class="text-sm text-text-secondary mb-6">10+ peer-reviewed papers published to date:</p>
+
+          <!-- 2025 Publications -->
+          <div class="mb-8">
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">2025 Publications</h3>
+            <div class="space-y-3">
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent-yellow/20 flex items-center justify-center flex-shrink-0 text-accent-yellow text-xs font-bold mt-0.5">1</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Hamza et al.</strong> "MSS: A Multilingual Spoofed Speech dataset with code-switching for anti-spoofing measures"</p>
+                    <p class="text-xs text-text-muted mt-1">IEEE CBMI 2025</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent-yellow/20 flex items-center justify-center flex-shrink-0 text-accent-yellow text-xs font-bold mt-0.5">2</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Hamza et al.</strong> "Lightweight MFCC-EffNet for Spoofing Detection in Low-Resource South Asian Languages"</p>
+                    <p class="text-xs text-text-muted mt-1">BMVC 2025 Workshop</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent-yellow/20 flex items-center justify-center flex-shrink-0 text-accent-yellow text-xs font-bold mt-0.5">3</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Khan et al.</strong> "Similarity-driven truncated aggregation framework for privacy-preserving short term load forecasting"</p>
+                    <p class="text-xs text-text-muted mt-1">IoT Journal, 2025</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent-yellow/20 flex items-center justify-center flex-shrink-0 text-accent-yellow text-xs font-bold mt-0.5">4</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Zoha et al.</strong> "A hybrid CNN and vision transformer based deepfake detection approach"</p>
+                    <p class="text-xs text-text-muted mt-1">IBCAST 2025</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent-yellow/20 flex items-center justify-center flex-shrink-0 text-accent-yellow text-xs font-bold mt-0.5">5</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Zoha et al.</strong> "LGSFNet: A Local–Global Semantic Fusion Network for robust cross-domain deepfake detection"</p>
+                    <p class="text-xs text-text-muted mt-1">BMVC 2025 Workshop</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2024 Publications -->
+          <div>
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">2024 Publications</h3>
+            <div class="space-y-3">
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xs font-bold mt-0.5">6</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Manzoor et al.</strong> "A Survey of Security Strategies in Federated Learning: Defending Models, Data, and Privacy"</p>
+                    <p class="text-xs text-text-muted mt-1">Future Internet, 2024</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xs font-bold mt-0.5">7</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Manzoor et al.</strong> "Centralised vs. decentralised federated load forecasting: adversarial attack robustness"</p>
+                    <p class="text-xs text-text-muted mt-1">Energy and Buildings, 2024</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xs font-bold mt-0.5">8</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Sajjad et al.</strong> "Deepfake Urdu Audio Detection using Spectral Features for Automatic Speaker Verification"</p>
+                    <p class="text-xs text-text-muted mt-1">INMIC 2024</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xs font-bold mt-0.5">9</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Shabbir et al.</strong> "Robustness Against Data Integrity Attacks in Decentralized Federated Load Forecasting"</p>
+                    <p class="text-xs text-text-muted mt-1">Electronics, 2024</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30">
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400 text-xs font-bold mt-0.5">10</span>
+                  <div class="flex-1">
+                    <p class="text-sm text-text-secondary"><strong class="text-text-primary">Shabbir et al.</strong> "Smart grid security through fusion-enhanced federated learning against adversarial attacks"</p>
+                    <p class="text-xs text-text-muted mt-1">Engineering Applications of AI, 2025</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recognition -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Recognition (To Date)</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Recognition 1 -->
+            <div class="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl p-6 border border-cyan-500/20">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs font-medium">Continental/International</span>
+              </div>
+              <h3 class="font-medium text-lg text-cyan-400 mb-2">IEEE ICIP 2024 Tutorial Invitation</h3>
+              <div class="space-y-1 text-sm text-text-secondary mb-2">
+                <p><strong class="text-text-primary">Recipient:</strong> Prof Muhammad Haroon Yousaf</p>
+                <p><strong class="text-text-primary">Event:</strong> IEEE International Conference on Image Processing, Abu Dhabi, UAE</p>
+                <p><strong class="text-text-primary">Title:</strong> "Imagining Beyond Pixels: Bridging Modalities for Multimodal Representation and Learning"</p>
+              </div>
+              <p class="text-xs text-text-muted">Engaged global research community, projected MIMER research to international audience</p>
+            </div>
+
+            <!-- Recognition 2 -->
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded text-xs font-medium">Regional</span>
+              </div>
+              <h3 class="font-medium text-lg text-purple-400 mb-2">INCCST'25 Keynote Speaker</h3>
+              <div class="space-y-1 text-sm text-text-secondary mb-2">
+                <p><strong class="text-text-primary">Recipient:</strong> Prof Muhammad Haroon Yousaf</p>
+                <p><strong class="text-text-primary">Event:</strong> 4th International Conference on Computational Science and Technology, Pakistan</p>
+                <p><strong class="text-text-primary">Title:</strong> "Bridging Audio-Visual Modalities for Multimodal Learning"</p>
+              </div>
+              <p class="text-xs text-text-muted">Showcased MIMER project and FAME Grand Challenge from ACM Multimedia 2024</p>
+            </div>
+
+            <!-- Recognition 3 -->
+            <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-6 border border-orange-500/20">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded text-xs font-medium">Continental/International</span>
+              </div>
+              <h3 class="font-medium text-lg text-orange-400 mb-2">IBCAST 2025 Invited Speaker</h3>
+              <div class="space-y-1 text-sm text-text-secondary mb-2">
+                <p><strong class="text-text-primary">Recipient:</strong> Prof Muhammad Haroon Yousaf</p>
+                <p><strong class="text-text-primary">Event:</strong> International Bhurban Conference on Applied Sciences and Technology — AI Track</p>
+                <p><strong class="text-text-primary">Title:</strong> "From UAV Swarms to Spoofs: AI and Multimodal Learning for a Secure Future"</p>
+              </div>
+              <p class="text-xs text-text-muted">Presented project progress to national and international academia/industry gathering</p>
+            </div>
+
+            <!-- Recognition 4 -->
+            <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium">Regional</span>
+              </div>
+              <h3 class="font-medium text-lg text-emerald-400 mb-2">INMIC 2024 Panel Invitation</h3>
+              <div class="space-y-1 text-sm text-text-secondary mb-2">
+                <p><strong class="text-text-primary">Recipient:</strong> Dr Junaid Mir</p>
+                <p><strong class="text-text-primary">Event:</strong> 26th IEEE International Multitopic Conference, Karachi</p>
+                <p><strong class="text-text-primary">Panel:</strong> "Digital Transformation in Engineering Education"</p>
+              </div>
+              <p class="text-xs text-text-muted">Showcased MIMER achievements to 200+ academics including international researchers</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Public Engagement Activities -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Public Engagement Activities</h2>
+          <div class="space-y-4">
+
+            <!-- Activity 1 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-accent-yellow/20 text-accent-yellow rounded text-xs font-medium">National</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Allied Bank Limited Fintech Hackathon 2024</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> 1,200 participants including fintech innovators and banking officials</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Partnership opportunity to test anti-spoofing solution using Allied Bank's Open-Banking APIs. Bank reported increased interest in implementing security measures. Multiple fintech startups expressed collaboration interest.</p>
+              </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs font-medium">National</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">2nd AI Innovation Ideas Competition (AIIC'25)</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Venue:</strong> Centre of Excellence on AI Technology (AITech), National Centre for Physics</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> 51-100 professional practitioners, industry, postgraduate students</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Audience reported change in views and behaviors regarding AI security</p>
+              </div>
+            </div>
+
+            <!-- Activity 3 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded text-xs font-medium">National</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Computer Project Exhibition (COMPPEC'25)</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Venue:</strong> NUST College of Electrical & Mechanical Engineering, Rawalpindi</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> 101-500 students, professionals, industry representatives</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Plans made for future related activities; inspired students on AI applications in digital security</p>
+              </div>
+            </div>
+
+            <!-- Activity 4 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium">International</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Invited Talk on Deepfakes — Birmingham City University</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> 11-50 postgraduate students and faculty</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Topics:</strong> Deepfake fundamentals, risks, MIMER research framework</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Several attendees requested research opportunities in multimedia forensics and AI safety</p>
+              </div>
+            </div>
+
+            <!-- Activity 5 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded text-xs font-medium">International</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Invited Talk on Deepfakes — University of East London</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> 11-50 postgraduate students and academics</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Topics:</strong> Synthetic media, detection methods, digital trust</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Plans for future collaborations and student research projects</p>
+              </div>
+            </div>
+
+            <!-- Activity 6 -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-pink-500/20 text-pink-400 rounded text-xs font-medium">National</span>
+                  </div>
+                  <h3 class="font-medium text-lg text-text-primary">Keynote on MIMER — Rawalpindi Women University</h3>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <p class="text-text-secondary"><strong class="text-text-primary">Audience:</strong> Female undergraduate/postgraduate students and academic staff</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Purpose:</strong> Empower female students in AI and cybersecurity fields</p>
+                <p class="text-text-secondary"><strong class="text-text-primary">Outcome:</strong> Strong engagement; students expressed interest in research projects; faculty reported increased confidence among female students in pursuing tech careers</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Further Funding Secured -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Further Funding Secured</h2>
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-8 border border-accent-yellow/20">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 rounded-lg bg-accent-yellow/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-medium text-2xl text-accent-yellow mb-4">DeAPGuARD</h3>
+                <p class="text-sm text-text-primary mb-4">Deepfake Audio exploitation Prevention and Guarding Against Real-time Deception</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <p class="text-xs text-text-muted mb-1">Funder</p>
+                    <p class="text-sm text-text-primary">Higher Education Commission (HEC) Pakistan</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-text-muted mb-1">Programme</p>
+                    <p class="text-sm text-text-primary">NRPU (National Research Programme for Universities)</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-text-muted mb-1">Reference</p>
+                    <p class="text-sm text-text-primary">87309/R-ID/HEC/NRPU/HEC/2024-25</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-text-muted mb-1">Value</p>
+                    <p class="text-sm text-accent-yellow font-medium">11,902,000 PKR (~£32,000)</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-text-muted mb-1">Duration</p>
+                    <p class="text-sm text-text-primary">24 months (July 2025 - June 2027)</p>
+                  </div>
+                </div>
+
+                <p class="text-sm text-text-secondary mb-4">
+                  Building on MIMER foundations to develop real-time deepfake audio prevention systems
+                </p>
+
+                <div class="bg-dark-800/50 rounded-lg p-4 border border-accent-yellow/20">
+                  <p class="text-xs text-accent-yellow font-medium mb-1">Impact</p>
+                  <p class="text-xs text-text-secondary">
+                    Demonstrates MIMER's success in catalyzing further research funding and establishing research momentum in Pakistan's AI security ecosystem.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Open Science & Data Sharing -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Open Science & Data Sharing</h2>
+
+          <!-- Dataset Card -->
+          <div class="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl p-6 border border-cyan-500/20 mb-6">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-medium text-xl text-cyan-400 mb-2">MSS — Multilingual Spoofed Speech Dataset</h3>
+                <p class="text-sm text-text-secondary mb-4">
+                  Open dataset for research community
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                  <div class="bg-dark-800/50 rounded-lg p-3">
+                    <p class="text-xs text-text-muted mb-1">Content</p>
+                    <p class="text-sm text-text-primary">432,215 spoofed + 40,271 genuine utterances from 154 speakers</p>
+                  </div>
+                  <div class="bg-dark-800/50 rounded-lg p-3">
+                    <p class="text-xs text-text-muted mb-1">Languages</p>
+                    <p class="text-sm text-text-primary">Urdu, Hindi, English with code-switching</p>
+                  </div>
+                  <div class="bg-dark-800/50 rounded-lg p-3">
+                    <p class="text-xs text-text-muted mb-1">Usage</p>
+                    <p class="text-sm text-text-primary">Anti-spoofing research, automatic speaker verification benchmarking</p>
+                  </div>
+                  <div class="bg-dark-800/50 rounded-lg p-3">
+                    <p class="text-xs text-text-muted mb-1">Availability</p>
+                    <p class="text-sm text-cyan-400 font-medium">Public release (2025)</p>
+                  </div>
+                </div>
+
+                <div class="bg-dark-800/50 rounded-lg p-4 border border-cyan-500/20">
+                  <p class="text-xs text-cyan-400 font-medium mb-2">Impact</p>
+                  <ul class="space-y-1.5 text-xs text-text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                      <span>Enhanced multilingual voice security research</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                      <span>Improved real-world anti-spoofing performance</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                      <span>Benchmark for evaluating detection methods</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 bg-cyan-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                      <span>First comprehensive Urdu-language anti-spoofing resource</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESOURCES TAB -->
+      <div id="resources-tab" class="tab-content">
+
+        <!-- Project Documents -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Project Documents</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">Project Overview</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon</p>
+                  <p class="text-sm text-text-secondary mb-3">Comprehensive project documentation</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">Technical Report</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon</p>
+                  <p class="text-sm text-text-secondary mb-3">Technical methodology and findings</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- News & Updates -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">News & Updates</h2>
+          <div class="space-y-4">
+
+            <!-- Update 1: Project Launch -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs text-accent-yellow font-medium mb-1">June 2024</div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">MIMER Project Begins: UK-Pakistan Collaboration to Combat Digital Fraud</h3>
+                  <p class="text-sm text-text-secondary">
+                    University of Glasgow and UETT launch EPSRC-funded international collaboration developing AI-powered authentication systems to protect Pakistan's 100 million underbanked population from identity theft.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Update 2: International Recognition -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-purple-500/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs text-purple-400 font-medium mb-1">October 2024 - January 2025</div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">MIMER Team Delivers Keynotes at Major International Conferences</h3>
+                  <p class="text-sm text-text-secondary">
+                    Prof Yousaf presents MIMER research at IEEE ICIP (Abu Dhabi), IBCAST (Pakistan), and INCCST (Pakistan), reaching 500+ researchers and practitioners globally.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Update 3: Dataset Release -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-cyan-500/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs text-cyan-400 font-medium mb-1">January 2025</div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">First Urdu-Language Anti-Spoofing Dataset Released</h3>
+                  <p class="text-sm text-text-secondary">
+                    MIMER team releases Multilingual Spoofed Speech (MSS) dataset — the first comprehensive anti-spoofing corpus featuring Urdu, supporting research for 230+ million speakers globally.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Update 4: Further Funding -->
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-emerald-500/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs text-emerald-400 font-medium mb-1">July 2025</div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">DeAPGuARD Project Awarded by HEC Pakistan</h3>
+                  <p class="text-sm text-text-secondary">
+                    Building on MIMER success, team secures 11.9M PKR funding from Higher Education Commission Pakistan for real-time deepfake audio prevention research (2025-2027).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-8 border border-accent-yellow/20">
+          <h2 class="text-2xl font-medium mb-4 text-accent-yellow">Interested in Collaboration?</h2>
+          <p class="text-text-secondary mb-6">
+            For inquiries about the MIMER project, research collaboration, or partnership opportunities,
+            please get in touch.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors"
+          >
+            Get in Touch
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Tab Button Styles */
+  .tab-btn {
+    color: var(--text-secondary, #a1a1aa);
+    border-bottom: 2px solid transparent;
+    position: relative;
+  }
+
+  .tab-btn.active {
+    color: var(--accent-yellow, #d4e931);
+    border-bottom-color: var(--accent-yellow, #d4e931);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--text-primary, #ffffff);
+  }
+
+  /* Tab Content Styles */
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Work Package Accordion Styles */
+  .wp-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .wp-accordion-content.active {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  .wp-accordion-btn .wp-chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .wp-accordion-btn.active .wp-chevron {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Tab Switching Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(`${targetTab}-tab`).classList.add('active');
+      });
+    });
+
+    // Work Package Accordion Functionality
+    const wpButtons = document.querySelectorAll('.wp-accordion-btn');
+
+    wpButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const wpId = button.getAttribute('data-wp');
+        const content = document.getElementById(`${wpId}-content`);
+        const isActive = button.classList.contains('active');
+
+        // Toggle active state
+        if (isActive) {
+          button.classList.remove('active');
+          content.classList.remove('active');
+        } else {
+          button.classList.add('active');
+          content.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,339 @@
+---
+// global-collaboration.astro - Impact Story: Building Global Reach
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const story = {
+  title: 'Building Global Reach: Research Without Borders',
+  subtitle: '100+ joint publications with 60+ collaborators across continents',
+  year: '2014-Present',
+  category: 'International Collaboration',
+  image: '/images/impact/collaboration.jpg',
+};
+
+const highlights = [
+  { value: '100+', label: 'Joint Publications' },
+  { value: '60+', label: 'International Collaborators' },
+  { value: '4,600+', label: 'Citations' },
+  { value: 'Top 2%', label: 'Most Cited Scientists' },
+];
+
+const phdExaminations = [
+  'Tallinn University of Technology (Estonia)',
+  'United Arab Emirates University (UAEU, UAE)',
+  'University of Leeds (UK)',
+  'University of Strathclyde (UK)',
+  'NED University of Engineering and Technology, Pakistan',
+  'University of Engineering and Technology, Taxila, Pakistan',
+  'University of Engineering and Technology, Lahore, Pakistan',
+];
+
+const grantReviewBodies = [
+  'UKRI Future Leadership Fellowship',
+  'EPSRC College (UK)',
+  'NCSTE (Kyrgyzstan)',
+  'HBKU (Qatar)',
+  'HEC (Pakistan)',
+  'Ajman University (UAE)',
+];
+
+const fundingPartners = [
+  'Qatar National Research Foundation',
+  'Higher Education Commission Pakistan',
+  'European Union (FP7)',
+  'Scottish Government',
+  'EPSRC',
+  'Innovate UK',
+];
+
+const governmentPartners = [
+  'National Cyber Security Centre Pakistan',
+  'State Bank of Pakistan',
+  'Ministry of Education China',
+];
+
+const impactMetrics = [
+  { dimension: 'Joint Publications', reach: '100+ with 60+ international collaborators' },
+  { dimension: 'Active Collaborations', reach: 'UK, USA, UAE, Qatar, Pakistan, Singapore, China, Estonia' },
+  { dimension: 'PhD/MSc Examinations', reach: '8+ universities across 5 countries' },
+  { dimension: 'Grant Review Panels', reach: '7 funding bodies across 4 continents' },
+  { dimension: 'Patent Citations', reach: '33 international' },
+  { dimension: 'Policy Citations', reach: 'UK Parliament, EU Commission' },
+];
+---
+
+<BaseLayout title={story.title} description={story.subtitle}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/impact"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Impact
+    </a>
+
+    <!-- Story Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm font-medium">
+          {story.category}
+        </span>
+        <span class="text-text-muted">{story.year}</span>
+      </div>
+
+      <h1 class="text-3xl lg:text-4xl font-light mb-4">
+        {story.title}
+      </h1>
+
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {story.subtitle}
+      </p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-500/20 to-orange-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src={story.image}
+        alt={story.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Impact Highlights -->
+    <div class="mb-12">
+      <div class="stats-gradient rounded-2xl p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {highlights.map((item) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent-yellow mb-1">{item.value}</div>
+              <div class="text-sm text-text-secondary">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+
+          <!-- The Vision -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">The Vision</h3>
+            <p class="text-text-secondary leading-relaxed">
+              The most pressing challenges — healthcare access, climate action, digital infrastructure — require
+              solutions developed through international collaboration. My research network spans <strong class="text-text-primary">100+
+              joint publications</strong> with <strong class="text-text-primary">60+ collaborators</strong> across institutions in
+              Europe, North America, Asia, and the Middle East.
+            </p>
+          </div>
+
+          <!-- Global Recognition -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-amber-500/30">
+            <h3 class="text-lg font-medium text-amber-400 mb-3">Global Recognition</h3>
+            <p class="text-text-secondary leading-relaxed">
+              Recognition among <strong class="text-text-primary">Stanford's Top 2% Most Cited Scientists (2022-2023)</strong>
+              with <strong class="text-text-primary">4,600+ citations</strong> reflects genuine global engagement. Combined
+              with my <strong class="text-text-primary">UK Exceptional Talent Endorsement (Royal Academy of Engineering, 2017)</strong>,
+              this has enabled meaningful partnerships translating research into real-world applications across continents.
+            </p>
+          </div>
+
+          <!-- International Research & Institutional Partnerships -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-blue-500/30">
+            <h3 class="text-lg font-medium text-blue-400 mb-3">International Research & Institutional Partnerships</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              I have led and contributed to research programmes funded by and developed in partnership with major international bodies:
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 mb-4">
+              {fundingPartners.map((partner) => (
+                <div class="p-3 bg-dark-600 rounded-lg flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full flex-shrink-0"></span>
+                  <span class="text-sm text-text-secondary">{partner}</span>
+                </div>
+              ))}
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              My collaborations extend to governmental organisations including <strong class="text-text-primary">National Cyber
+              Security Centre Pakistan, State Bank of Pakistan, and Ministry of Education China</strong> — working across sectors
+              from financial security to educational technology and critical infrastructure protection.
+            </p>
+          </div>
+
+          <!-- Shaping International Research Standards -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-violet-500/30">
+            <h3 class="text-lg font-medium text-violet-400 mb-4">Shaping International Research Standards</h3>
+
+            <!-- PhD Examinations -->
+            <div class="mb-6">
+              <h4 class="text-sm font-medium text-text-primary mb-3">External PhD/MSc Examiner</h4>
+              <div class="space-y-2">
+                {phdExaminations.map((institution) => (
+                  <div class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                    <span class="text-sm text-text-secondary">{institution}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Grant Reviewer -->
+            <div>
+              <h4 class="text-sm font-medium text-text-primary mb-3">International Grant Reviewer</h4>
+              <div class="grid sm:grid-cols-2 gap-2">
+                {grantReviewBodies.map((body) => (
+                  <div class="p-2 bg-dark-600 rounded text-xs text-text-secondary">
+                    {body}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Knowledge Exchange -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-green-500/30">
+            <h3 class="text-lg font-medium text-green-400 mb-4">Knowledge Exchange</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Visiting Researcher:</strong> AI4Networks Research Centre (University of Oklahoma, USA, 2016-Present)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Keynotes & Tutorials:</strong> Qatar University, Qatar; ICETEMS, Pakistan; IEEE MECOM 2024 (Abu Dhabi); IEEE PIMRC 2024 (Toronto)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Guest Lectures:</strong> University of Oklahoma (USA), Nanjing University of Science & Technology (China)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Global Online Education:</strong> Coursera module reaching learners worldwide</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Policy Advisor:</strong> CSC Academic Advisor for FCDO (UK)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- The Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">The Impact</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-500/30">
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Dimension</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Reach</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {impactMetrics.map((metric, index) => (
+                    <tr class={index !== impactMetrics.length - 1 ? 'border-b border-dark-500/20' : ''}>
+                      <td class="py-3 px-4 text-text-secondary font-medium">{metric.dimension}</td>
+                      <td class="py-3 px-4 text-text-secondary">{metric.reach}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Why It Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why It Matters</h3>
+            <p class="text-text-secondary leading-relaxed italic">
+              Research that travels — through genuine collaboration, capacity building, and knowledge exchange —
+              strengthens the global research ecosystem and ensures AI solutions reach communities where they're needed most.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Global Partnerships -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Global Partnerships
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block text-text-primary">Funding Bodies</span>
+              <span class="text-xs text-text-muted">6 international organizations</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block text-text-primary">Governmental Partners</span>
+              <span class="text-xs text-text-muted">3 national bodies</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block text-text-primary">Academic Institutions</span>
+              <span class="text-xs text-text-muted">8+ universities globally</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recognition -->
+        <div class="bg-gradient-to-br from-amber-500/10 to-yellow-500/10 rounded-xl p-6 border border-amber-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-amber-400">
+            International Recognition
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">Top 2%</span>
+              <span class="text-xs text-text-muted">Most Cited Scientists (Stanford)</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">4,600+</span>
+              <span class="text-xs text-text-muted">Total Citations</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block">UK Exceptional Talent</span>
+              <span class="text-xs text-text-muted">Royal Academy of Engineering (2017)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geographic Reach -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Geographic Reach
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {['UK', 'USA', 'UAE', 'Qatar', 'Pakistan', 'Singapore', 'China', 'Estonia', 'Canada'].map((country) => (
+              <span class="px-3 py-1 bg-dark-600 rounded-full text-sm text-text-secondary">
+                {country}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-xl p-6 border border-amber-500/20">
+          <h3 class="font-medium mb-2">Join Our Network?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Interested in research collaboration? Let's explore opportunities together.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

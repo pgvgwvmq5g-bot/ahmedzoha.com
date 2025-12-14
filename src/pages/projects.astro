@@ -1,0 +1,170 @@
+---
+// projects.astro - Projects portfolio page
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Projects data
+const projects = [
+  {
+    title: 'MIMER — Mitigating Presentation Attacks in Remote Identity Proofing',
+    description: 'Pakistan in Focus: Securing Digital Identity Through AI. Developing advanced biometric security solutions to combat presentation attacks in remote identity verification.',
+    image: '/images/projects/mimer_cp.png',
+    tags: ['Digital Identity', 'AI Security', 'Biometrics', 'Pakistan', 'Cybersecurity'],
+    status: 'Active',
+    year: 'TBD',
+    link: '/projects/mimer',
+  },
+  {
+    title: 'LEAP — Learning Enhancement through Adaptive Personalisation',
+    description: 'Innovate UK KTP developing adaptive AI algorithms and real-time analytics for personalised learning in higher education.',
+    image: '/images/projects/leap_cp.png',
+    tags: ['EdTech', 'AI/ML', 'Adaptive Learning', 'KTP'],
+    status: 'Active',
+    year: '24 months',
+    link: '/projects/leap',
+  },
+  {
+    title: 'Energy Conscious Network for Independent Living (COIL)',
+    description: 'AI-driven energy monitoring for assisted living and net zero. 60+ nodes, COP26 showcase, demonstrated to Nokia, Vodafone & Huawei.',
+    image: '/images/projects/coil_cp.png',
+    tags: ['Energy AI', 'Assisted Living', 'Net Zero', 'IoT'],
+    status: 'Completed',
+    year: '2018-2022',
+    link: '/projects/coil-energy-network',
+  },
+  {
+    title: '5G New Thinking (UoG)',
+    description: 'Developed sensor-free 5G activity monitoring for remote healthcare. Published in Nature, 2 patent citations, open dataset.',
+    image: '/images/projects/5gnt_cp.png',
+    tags: ['5G', 'Healthcare', 'RF Sensing', 'Patents'],
+    status: 'Completed',
+    year: '2019-2022',
+    link: '/projects/5g-new-thinking',
+  },
+  {
+    title: 'Scotland 5G Centre Testbed Phase I/II',
+    description: 'Co-investigator of the £1.6M Scotland 5G Centre UoG Testbed enabling immersive remote robotics-powered learning experiences for students worldwide.',
+    image: '/images/projects/5gcentre_cp.png',
+    tags: ['5G', 'Robotics', 'AR/VR', 'IoT'],
+    status: 'Completed',
+    year: '2019-2022',
+    link: '/projects/scotland-5g-centre',
+  },
+  {
+    title: 'Technology Integrated Health Management (TIHM)',
+    description: 'Partnered with NHS England to develop and deploy an AI-driven platform for enhancing dementia care, supporting over 1,000 patients.',
+    image: '/images/projects/tihm_cp.png',
+    tags: ['Healthcare AI', 'IoT', 'Machine Learning', 'NHS'],
+    status: 'Completed',
+    year: '2017-2020',
+    link: '/projects/tihm-healthcare',
+  },
+];
+
+// Project categories for filtering
+const categories = ['All', 'Digital Identity', 'AI Security', 'EdTech', '5G', 'Healthcare AI', 'Energy AI', 'Biometrics', 'Cybersecurity', 'Machine Learning', 'IoT', 'Robotics'];
+---
+
+<BaseLayout title="Projects" description="Research and development projects by Dr Ahmed Zoha">
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-light mb-4">
+        <span class="text-accent-yellow">Projects</span> & Initiatives
+      </h1>
+      <p class="text-text-secondary max-w-2xl">
+        A showcase of research projects, prototypes, and real-world applications 
+        that translate AI theory into practice.
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="mb-8 flex gap-2 flex-wrap">
+      {categories.map((cat, index) => (
+        <button 
+          class={`px-4 py-2 rounded-lg text-sm transition-all
+            ${index === 0 
+              ? 'bg-accent-yellow text-dark-900' 
+              : 'bg-dark-700 text-text-secondary hover:bg-dark-600'}`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 gap-6 mb-16">
+      {projects.map((project) => (
+        <a 
+          href={project.link}
+          class="group block bg-dark-700 rounded-2xl overflow-hidden border border-dark-500/30 
+                 hover:border-accent-yellow/30 transition-all"
+        >
+          <!-- Project Image -->
+          <div class="aspect-video bg-dark-600 relative overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-cover opacity-80 group-hover:opacity-100 
+                     group-hover:scale-105 transition-all duration-500"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-700 to-transparent"></div>
+            
+            <!-- Status Badge -->
+            <span class={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium
+              ${project.status === 'Active' ? 'bg-green-500/20 text-green-400' : 
+                project.status === 'Research' ? 'bg-blue-500/20 text-blue-400' : 
+                'bg-dark-500 text-text-secondary'}`}>
+              {project.status}
+            </span>
+          </div>
+
+          <!-- Project Info -->
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="font-medium text-lg group-hover:text-accent-yellow transition-colors flex-1">
+                {project.title}
+              </h3>
+              <span class="text-xs text-text-muted flex-shrink-0 mt-1">{project.year}</span>
+            </div>
+            
+            <p class="text-sm text-text-secondary mb-4 line-clamp-2">
+              {project.description}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="px-2 py-1 bg-dark-600 rounded text-xs text-text-muted">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-dark-700 rounded-2xl p-8 border border-dark-500/30 text-center">
+      <h3 class="text-xl font-medium mb-3">Interested in Collaboration?</h3>
+      <p class="text-text-secondary mb-6 max-w-xl mx-auto">
+        I'm always open to discussing new projects, research collaborations, 
+        or partnership opportunities.
+      </p>
+      <a 
+        href="/contact"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-accent-yellow text-dark-900 
+               font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors"
+      >
+        Get in Touch
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+  </section>
+
+</BaseLayout>

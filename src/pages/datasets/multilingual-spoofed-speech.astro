@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const dataset = {
+  title: 'A Multilingual Spoofed Speech Dataset',
+  year: '2025',
+  description: 'MSS (Multilingual Spoofed Speech) - A large-scale dataset addressing code-switching in bilingual speech for audio deepfake detection.',
+  tags: ['Audio deepfakes', 'Code switching', 'Multilingual spoofing dataset', 'SSL', 'Voice spoofing detection'],
+  overview: `
+    <p>We recently introduced <strong class="text-accent-yellow">MSS (Multilingual Spoofed Speech)</strong>, a large-scale dataset designed to address a major blind spot in audio deepfake research: code-switching in bilingual speech. Unlike existing spoofing datasets that focus almost entirely on monolingual English speech, MSS captures realistic conversational patterns where speakers naturally switch between Urdu, Hindi, and English within a single utterance.</p>
+
+    <p class="mt-4">The dataset contains over <strong class="text-text-primary">470,000 audio samples from 154 speakers</strong>, with spoofed voices generated using state-of-the-art voice conversion techniques that preserve accent, prosody, and speaking style.</p>
+
+    <p class="mt-4">To benchmark this challenge, we also propose <strong class="text-accent-yellow">WavSpeech-AASIST</strong>, a self-supervised learning–based anti-spoofing framework that demonstrates strong performance across multilingual and code-switched scenarios, while highlighting how language mixing significantly increases the difficulty of deepfake detection.</p>
+
+    <div class="mt-6 p-4 bg-accent-yellow/10 border border-accent-yellow/30 rounded-lg">
+      <p class="text-accent-yellow font-medium">Note: Link to the original dataset will be published soon</p>
+    </div>
+  `,
+};
+---
+
+<BaseLayout title={dataset.title} description={dataset.description}>
+  <section class="pt-8 lg:pt-16">
+    <!-- Header -->
+    <div class="mb-12">
+      <a href="/research" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Research
+      </a>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow text-sm rounded-full">Dataset</span>
+        <span class="text-text-muted">{dataset.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-4xl font-medium mb-4">
+        {dataset.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {dataset.description}
+      </p>
+    </div>
+
+    <!-- Tags -->
+    <div class="mb-12">
+      <h2 class="text-lg font-medium mb-4">Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+        {dataset.tags.map((tag) => (
+          <span class="px-3 py-1.5 bg-dark-700 border border-dark-500/30 rounded-lg text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-medium mb-6">Overview</h2>
+      <div class="bg-dark-700 rounded-xl p-6 lg:p-8 border border-dark-500/30">
+        <div class="prose prose-invert max-w-none text-text-secondary" set:html={dataset.overview} />
+      </div>
+    </div>
+
+    <!-- Placeholder for more content -->
+    <div class="bg-dark-700 rounded-xl p-8 border border-dark-500/30 text-center">
+      <div class="w-16 h-16 bg-dark-600 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium mb-2">More Details Coming Soon</h3>
+      <p class="text-text-secondary text-sm">
+        Additional information about dataset access, citation, and usage guidelines will be added here.
+      </p>
+    </div>
+
+  </section>
+</BaseLayout>
+

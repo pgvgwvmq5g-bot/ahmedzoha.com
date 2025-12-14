@@ -1,0 +1,1158 @@
+---
+// leap.astro - LEAP Project Page with Tabs
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: 'LEAP — Learning Enhancement through Adaptive Personalisation',
+  tagline: 'AI-Powered Personalised Learning for Higher Education',
+  description: 'Innovate UK KTP developing adaptive AI algorithms and real-time analytics for personalised learning in higher education.',
+  status: 'Active',
+  tags: ['EdTech', 'AI/ML', 'Adaptive Learning', 'Analytics', 'KTP'],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl lg:text-5xl font-light mb-2">
+        {project.title}
+      </h1>
+
+      <p class="text-xl text-accent-yellow mb-6">
+        {project.tagline}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-500/20 text-green-400">
+          {project.status}
+        </span>
+      </div>
+    </div>
+
+    <!-- Project Cover Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-dark-700 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src="/images/projects/leap_cp.png"
+        alt="LEAP Project"
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-500/10 to-blue-500/10\'><div class=\'text-center p-8\'><svg class=\'w-20 h-20 text-purple-400 mx-auto mb-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\' /></svg><p class=\'text-text-muted\'>LEAP Platform - AI-Powered Personalised Learning</p></div></div>'"
+      />
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="mb-8 border-b border-dark-500/30">
+      <div class="flex gap-1 overflow-x-auto">
+        <button
+          class="tab-btn active px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="overview"
+        >
+          Overview
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="team"
+        >
+          Team & Partners
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="activities"
+        >
+          Activities & Innovation
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="outputs"
+        >
+          Outputs & Impact
+        </button>
+        <button
+          class="tab-btn px-6 py-3 text-sm font-medium transition-all whitespace-nowrap"
+          data-tab="resources"
+        >
+          Resources
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Content Container -->
+    <div class="tab-content-container">
+
+      <!-- OVERVIEW TAB -->
+      <div id="overview-tab" class="tab-content active">
+
+        <!-- Project Header Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Funding</div>
+            <div class="text-sm font-medium text-accent-yellow">Innovate UK KTP</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Duration</div>
+            <div class="text-sm font-medium text-text-primary">24-36 months</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Partner</div>
+            <div class="text-sm font-medium text-text-primary">AWTG Limited</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-500/30">
+            <div class="text-xs text-text-muted mb-1">Institution</div>
+            <div class="text-sm font-medium text-text-primary">University of Glasgow</div>
+          </div>
+        </div>
+
+        <!-- The Challenge -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">The Challenge</h2>
+          <p class="text-text-secondary leading-relaxed">
+            The global EdTech sector is valued at approximately $400 billion (2025), with the segment for
+            personalised AI chatbots and adaptive learning platforms expected to reach $6.8 billion by 2027.
+            However, current generic AI tools dominate the market but lack deep personalisation, evidence-based
+            pedagogy, and seamless integration with university curriculum systems — creating a significant gap
+            for institutions seeking tailored educational experiences.
+          </p>
+        </div>
+
+        <!-- The Solution -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">The Solution: LEAP Chatbot</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            LEAP is an AI-driven educational chatbot designed to deliver scalable, personalised learning
+            experiences for higher education institutions. Unlike generic AI assistants, LEAP combines:
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Adaptive AI Algorithms</strong> — Real-time adjustment to individual learning styles and progress</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Evidence-Based Pedagogy</strong> — Grounded in educational research for effective interventions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Curriculum Alignment</strong> — Seamless integration with university learning management systems</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Real-Time Analytics</strong> — Actionable insights for educators on student engagement and performance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span class="text-text-secondary"><strong class="text-text-primary">Scalable Customisation</strong> — Tailored content delivery across disciplines and institutions</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Funding Details -->
+        <div class="mb-10 bg-dark-700/50 rounded-xl p-6 border border-dark-500/30">
+          <h2 class="text-2xl font-medium mb-4">Funding Details</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <tbody class="text-text-secondary">
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Programme</td>
+                  <td class="py-3">Innovate UK Knowledge Transfer Partnership (KTP)</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Knowledge Base</td>
+                  <td class="py-3">University of Glasgow, James Watt School of Engineering</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Industry Partner</td>
+                  <td class="py-3">AWTG Limited</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 pr-4 text-text-muted font-medium">Duration</td>
+                  <td class="py-3">24–36 months</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 text-text-muted font-medium">Pilot Institution</td>
+                  <td class="py-3">University of Glasgow</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Research Objectives -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">Research Objectives</h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">1</span>
+              <p class="text-text-secondary pt-1">Develop adaptive AI algorithms for personalised learning pathways</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">2</span>
+              <p class="text-text-secondary pt-1">Create real-time analytics dashboards for educator insights</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">3</span>
+              <p class="text-text-secondary pt-1">Design scalable content customisation frameworks</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">4</span>
+              <p class="text-text-secondary pt-1">Integrate LEAP with university learning management systems</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">5</span>
+              <p class="text-text-secondary pt-1">Validate effectiveness through pilot deployment at University of Glasgow</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-accent-yellow/10 flex items-center justify-center flex-shrink-0 text-accent-yellow text-sm font-bold">6</span>
+              <p class="text-text-secondary pt-1">Refine platform for market readiness and global scalability</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Methodology & Approach -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-medium mb-4">Methodology & Approach</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            The KTP will embed advanced capabilities in:
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Personalised Learning Systems</h3>
+              <p class="text-sm text-text-secondary">AI models that adapt to individual student needs</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Adaptive Algorithms</h3>
+              <p class="text-sm text-text-secondary">Machine learning for targeted interventions based on learning patterns</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Data-Driven Insights</h3>
+              <p class="text-sm text-text-secondary">Analytics pipelines connecting student behaviour to outcomes</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Curriculum Integration</h3>
+              <p class="text-sm text-text-secondary">APIs and connectors for seamless LMS integration</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Collaborative Tools</h3>
+              <p class="text-sm text-text-secondary">Features enabling student-educator interaction and feedback loops</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TEAM & PARTNERS TAB -->
+      <div id="team-tab" class="tab-content">
+
+        <!-- Academic Team -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Academic Team (University of Glasgow)</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Team Member 1 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-accent-yellow/10 to-purple-500/10 overflow-hidden">
+                <img
+                  src="/images/profile-large.jpg"
+                  alt="Dr Ahmed Zoha"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-accent-yellow/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Dr Ahmed Zoha</h3>
+                <div class="text-sm text-accent-yellow mb-3">Principal Investigator / Academic Lead</div>
+                <p class="text-xs text-text-secondary">AI/ML for personalised systems, federated learning, data analytics, edge intelligence, IoT sensing</p>
+              </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-blue-500/10 to-cyan-500/10 overflow-hidden">
+                <img
+                  src="/images/projects/sajjad_hussain.jpeg"
+                  alt="Prof Sajjad Hussain"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-blue-400/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Prof Sajjad Hussain</h3>
+                <div class="text-sm text-accent-yellow mb-3">Co-Investigator</div>
+                <p class="text-xs text-text-secondary">Machine learning, intelligent systems</p>
+              </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-dark-700 rounded-xl overflow-hidden border border-dark-500/30">
+              <div class="aspect-square bg-gradient-to-br from-purple-500/10 to-pink-500/10 overflow-hidden">
+                <img
+                  src="/images/projects/maliimran.jpeg"
+                  alt="Prof Muhammad Ali Imran"
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center\'><svg class=\'w-20 h-20 text-purple-400/30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\' /></svg></div>'"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="font-medium text-lg text-text-primary mb-1">Prof Muhammad Ali Imran</h3>
+                <div class="text-sm text-accent-yellow mb-3">Co-Investigator</div>
+                <p class="text-xs text-text-secondary">Communications systems, 5G/6G, smart campus technologies</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Industry Partner -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Industry Partner</h2>
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-medium text-text-primary mb-1">AWTG Limited</h3>
+                <div class="text-sm text-text-muted mb-2">Company Registration: 05793772</div>
+                <div class="text-sm text-text-secondary mb-1">8 Canham Mews, Canham Road, London W3 7SR</div>
+                <a href="http://www.awtg.co.uk" target="_blank" rel="noopener noreferrer" class="text-sm text-accent-yellow hover:underline">
+                  www.awtg.co.uk
+                </a>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h4 class="text-sm font-medium text-text-muted uppercase tracking-wider mb-2">Company Profile</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                AWTG Limited is an EdTech company headquartered in London, focused on delivering scalable, AI-driven educational tools.
+                The KTP with University of Glasgow will enable AWTG to become a global leader in personalised learning solutions.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium text-text-muted uppercase tracking-wider mb-3">Key Contacts</h4>
+              <div class="grid sm:grid-cols-3 gap-4">
+                <div class="bg-dark-600/50 rounded-lg p-3">
+                  <div class="font-medium text-text-primary text-sm">Ian Vernon</div>
+                  <div class="text-xs text-text-muted">Chief Operating Officer</div>
+                </div>
+                <div class="bg-dark-600/50 rounded-lg p-3">
+                  <div class="font-medium text-text-primary text-sm">Erkan Berk</div>
+                  <div class="text-xs text-text-muted">Software Development Manager</div>
+                </div>
+                <div class="bg-dark-600/50 rounded-lg p-3">
+                  <div class="font-medium text-text-primary text-sm">Peter Najm</div>
+                  <div class="text-xs text-text-muted">Project Coordinator</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partnership Model -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Partnership Model</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+
+            <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-6 border border-blue-500/20">
+              <h3 class="text-lg font-medium text-blue-400 mb-4">University of Glasgow</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>AI/ML Research Expertise</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Educational Technology</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Smart Campus Infrastructure</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>PhD Student Training</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+              <h3 class="text-lg font-medium text-purple-400 mb-4">AWTG Limited</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>EdTech Commercialisation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Software Development</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Market Access</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Customer Networks</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-6 border border-accent-yellow/20">
+              <h3 class="text-lg font-medium text-accent-yellow mb-4">Joint Innovation</h3>
+              <ul class="space-y-2 text-sm text-text-secondary">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Knowledge Transfer</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Technology Development</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Product Validation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Market Launch</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ACTIVITIES & INNOVATION TAB -->
+      <div id="activities-tab" class="tab-content">
+
+        <!-- Work Packages -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Work Packages</h2>
+          <div class="space-y-4">
+
+            <!-- WP1 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP1</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">Requirements & Design</h3>
+                    <p class="text-xs text-text-muted mt-1">Foundation & Architecture</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Stakeholder engagement with students, educators, and institutions</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>User research and persona development</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>System architecture design</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Curriculum mapping frameworks</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- WP2 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP2</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">AI Algorithm Development</h3>
+                    <p class="text-xs text-text-muted mt-1">Core Intelligence</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Adaptive learning models</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Personalisation engines</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Student behavior prediction models</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Learning style classification</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- WP3 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP3</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">Analytics Dashboard</h3>
+                    <p class="text-xs text-text-muted mt-1">Educator Insights</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Real-time educator insights</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Student engagement tracking</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Performance visualization</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Intervention recommendation system</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- WP4 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP4</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">Platform Integration</h3>
+                    <p class="text-xs text-text-muted mt-1">System Connectivity</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>LMS connectors (Moodle, Canvas, Blackboard)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Curriculum alignment tools</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>API development</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Authentication and security</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- WP5 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP5</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">Pilot Deployment</h3>
+                    <p class="text-xs text-text-muted mt-1">Real-World Testing</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>University of Glasgow trial implementation</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Student cohort recruitment (target: 500+ students)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Educator training and onboarding</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Usage monitoring and data collection</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- WP6 -->
+            <details class="bg-dark-700 rounded-xl border border-dark-500/30 overflow-hidden group">
+              <summary class="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-dark-600 transition-colors">
+                <div class="flex items-center gap-4">
+                  <span class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center text-accent-yellow font-bold flex-shrink-0">WP6</span>
+                  <div>
+                    <h3 class="font-medium text-text-primary">Evaluation & Refinement</h3>
+                    <p class="text-xs text-text-muted mt-1">Performance & Market Readiness</p>
+                  </div>
+                </div>
+                <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 pt-0">
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>User feedback collection and analysis</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Performance metrics evaluation</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Iterative improvements</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Market readiness assessment</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Documentation and knowledge transfer</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+          </div>
+        </div>
+
+        <!-- Key Innovations -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Key Innovations</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-xl p-6 border border-purple-500/20">
+              <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="font-medium text-lg text-text-primary mb-2">Adaptive Personalisation Engine</h3>
+              <p class="text-sm text-text-secondary">AI that learns individual student patterns and adjusts content delivery in real-time based on learning velocity, engagement patterns, and comprehension levels.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+              <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 class="font-medium text-lg text-text-primary mb-2">Evidence-Based Pedagogy Integration</h3>
+              <p class="text-sm text-text-secondary">Learning interventions grounded in educational research, incorporating spaced repetition, retrieval practice, and metacognitive strategies.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+              <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="font-medium text-lg text-text-primary mb-2">Real-Time Analytics Dashboard</h3>
+              <p class="text-sm text-text-secondary">Comprehensive insights for educators showing student engagement, predicted at-risk learners, topic difficulty analysis, and suggested interventions.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-6 border border-orange-500/20">
+              <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+              <h3 class="font-medium text-lg text-text-primary mb-2">Scalable Curriculum Alignment</h3>
+              <p class="text-sm text-text-secondary">Framework enabling rapid customisation across disciplines while maintaining learning outcome alignment with institutional requirements.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-xl p-6 border border-pink-500/20 md:col-span-2">
+              <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 class="font-medium text-lg text-text-primary mb-2">Collaborative Learning Tools</h3>
+              <p class="text-sm text-text-secondary">Features fostering student engagement through peer interaction, study groups, knowledge sharing, and collaborative problem-solving.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- OUTPUTS & IMPACT TAB -->
+      <div id="outputs-tab" class="tab-content">
+
+        <!-- Expected Commercial Outcomes -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Expected Commercial Outcomes</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+
+            <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-6 border border-accent-yellow/20">
+              <div class="text-3xl font-bold text-accent-yellow mb-2">£2.5M</div>
+              <div class="text-sm text-text-muted">Annual Revenue (Year 5)</div>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-6 border border-blue-500/20">
+              <div class="text-3xl font-bold text-blue-400 mb-2">50</div>
+              <div class="text-sm text-text-muted">University Adoption Worldwide</div>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/20">
+              <div class="text-3xl font-bold text-purple-400 mb-2">£50K</div>
+              <div class="text-sm text-text-muted">Average License Fee per Institution</div>
+            </div>
+
+            <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+              <div class="text-3xl font-bold text-emerald-400 mb-2">60-70%</div>
+              <div class="text-sm text-text-muted">Target Profit Margin</div>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl p-6 border border-orange-500/20">
+              <div class="text-3xl font-bold text-orange-400 mb-2">10-15</div>
+              <div class="text-sm text-text-muted">New Full-Time Jobs Created</div>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+              <div class="text-3xl font-bold text-cyan-400 mb-2">3-5%</div>
+              <div class="text-sm text-text-muted">Target Market Share</div>
+            </div>
+
+          </div>
+
+          <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="font-medium text-text-primary mb-2">Market Position</h3>
+            <div class="text-sm text-text-secondary">
+              <p class="mb-2"><strong class="text-text-primary">Target Share:</strong> 3-5% of $6.8B personalised AI education segment by Year 5</p>
+              <p><strong class="text-text-primary">Projected Value:</strong> $204-340 million annually</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Creation Breakdown -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Job Creation Breakdown</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Software Development</h3>
+              <p class="text-sm text-text-secondary mb-2">4-6 roles</p>
+              <p class="text-xs text-text-muted">Full stack developers, AI/ML specialists</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Data Analytics</h3>
+              <p class="text-sm text-text-secondary mb-2">2-3 roles</p>
+              <p class="text-xs text-text-muted">Data scientists, analysts</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Customer Success</h3>
+              <p class="text-sm text-text-secondary mb-2">2-3 roles</p>
+              <p class="text-xs text-text-muted">Implementation, training, support</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30">
+              <h3 class="font-medium text-accent-yellow mb-2">Sales & Marketing</h3>
+              <p class="text-sm text-text-secondary mb-2">2-3 roles</p>
+              <p class="text-xs text-text-muted">Business development, partnerships</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Societal Impact -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Societal Impact</h2>
+          <div class="space-y-6">
+
+            <div class="bg-gradient-to-r from-emerald-500/10 to-transparent rounded-xl p-6 border-l-4 border-emerald-500">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">Democratising Education</h3>
+                  <p class="text-sm text-text-secondary">Personalised learning accessible to diverse student populations regardless of background, learning style, or pace. Reduces educational inequality through tailored support.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-500/10 to-transparent rounded-xl p-6 border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">Improving Student Outcomes</h3>
+                  <p class="text-sm text-text-secondary">Data-driven interventions support struggling learners with early identification and targeted assistance. Predicted 15-20% improvement in student retention and performance.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-purple-500/10 to-transparent rounded-xl p-6 border-l-4 border-purple-500">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">Reducing Educator Burden</h3>
+                  <p class="text-sm text-text-secondary">Automated insights and administrative tasks free up 30-40% more time for meaningful student interaction, mentorship, and curriculum development.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-cyan-500/10 to-transparent rounded-xl p-6 border-l-4 border-cyan-500">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">Enhancing Accessibility</h3>
+                  <p class="text-sm text-text-secondary">Adaptive tools supporting neurodiverse learners, students with disabilities, and those with different learning preferences. Multi-modal content delivery.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-orange-500/10 to-transparent rounded-xl p-6 border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-lg text-text-primary mb-2">Research Advancement</h3>
+                  <p class="text-sm text-text-secondary">Contributing to educational research through anonymised learning analytics, publishing findings on effective AI-driven pedagogy.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Publications & Outputs -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-4">Publications & Outputs</h2>
+          <div class="bg-dark-700/50 rounded-xl p-8 border border-dark-500/30 text-center">
+            <div class="w-16 h-16 rounded-full bg-accent-yellow/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <p class="text-text-muted mb-2">Status: <span class="text-accent-yellow font-medium">Coming Soon</span></p>
+            <p class="text-sm text-text-secondary">Publications will be updated as the project progresses</p>
+            <ul class="mt-4 text-sm text-text-muted space-y-1">
+              <li>• Academic papers</li>
+              <li>• Conference presentations</li>
+              <li>• Technical reports</li>
+              <li>• Open datasets (subject to ethics approval)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESOURCES TAB -->
+      <div id="resources-tab" class="tab-content">
+
+        <!-- Project Documents -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">Project Documents</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">LEAP Product Overview</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon</p>
+                  <p class="text-sm text-text-secondary mb-3">Comprehensive overview of LEAP platform features, architecture, and value proposition</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">Technical White Paper</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon</p>
+                  <p class="text-sm text-text-secondary mb-3">Deep dive into AI algorithms, adaptive learning models, and system architecture</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">Pilot Results Report</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon (Post-pilot)</p>
+                  <p class="text-sm text-text-secondary mb-3">Analysis of University of Glasgow pilot deployment with student and educator feedback</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-text-primary mb-1">Implementation Guide</h3>
+                  <p class="text-xs text-accent-yellow mb-2">Status: Coming Soon</p>
+                  <p class="text-sm text-text-secondary mb-3">Step-by-step guide for institutions adopting LEAP</p>
+                  <span class="text-xs text-text-muted">Format: PDF</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- News & Updates -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-medium mb-6">News & Updates</h2>
+          <div class="bg-dark-700 rounded-xl p-8 border border-dark-500/30">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-text-muted mb-1">Date: TBD</div>
+                <h3 class="font-medium text-text-primary mb-2">Project Launch</h3>
+                <p class="text-sm text-text-secondary">University of Glasgow and AWTG Limited announce innovative Knowledge Transfer Partnership to develop AI-powered personalised learning platform.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-dark-500/30">
+              <p class="text-sm text-text-muted text-center">Additional updates will be posted as the project progresses</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Coverage & Presentations -->
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+
+          <div>
+            <h3 class="text-xl font-medium mb-4">Media Coverage</h3>
+            <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-500/30 text-center">
+              <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <p class="text-sm text-text-muted">Coming Soon</p>
+              <p class="text-xs text-text-secondary mt-2">Press releases, news articles, and media features</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-medium mb-4">Presentations & Talks</h3>
+            <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-500/30 text-center">
+              <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                </svg>
+              </div>
+              <p class="text-sm text-text-muted">Coming Soon</p>
+              <p class="text-xs text-text-secondary mt-2">Conference presentations, demo videos, and slides</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Collaborators Welcome -->
+        <div class="bg-gradient-to-br from-accent-yellow/10 to-green-500/10 rounded-xl p-8 border border-accent-yellow/20">
+          <h2 class="text-2xl font-medium mb-4 text-accent-yellow">Collaborators Welcome</h2>
+          <p class="text-text-secondary mb-4">We welcome collaboration with:</p>
+          <ul class="space-y-2 text-sm text-text-secondary mb-6">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent-yellow flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Universities interested in piloting LEAP</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent-yellow flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>EdTech companies exploring partnerships</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent-yellow flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Researchers working on AI in education</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent-yellow flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Funding bodies supporting educational innovation</span>
+            </li>
+          </ul>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors"
+          >
+            Get in Touch
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Tab Button Styles */
+  .tab-btn {
+    color: var(--text-secondary, #a1a1aa);
+    border-bottom: 2px solid transparent;
+    position: relative;
+  }
+
+  .tab-btn.active {
+    color: var(--accent-yellow, #d4e931);
+    border-bottom-color: var(--accent-yellow, #d4e931);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--text-primary, #ffffff);
+  }
+
+  /* Tab Content Styles */
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Details/Summary Styles */
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<script>
+  // Tab Switching Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(`${targetTab}-tab`).classList.add('active');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+// BaseLayout.astro - Main layout wrapper for all pages
+import Sidebar from '../components/Sidebar.astro';
+import SearchModal from '../components/SearchModal.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Dr Ahmed Zoha - Technology Leader, Applied AI Expert, Academic Innovator" } = Astro.props;
+
+// Google Analytics ID from environment variable
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <meta name="author" content="Dr Ahmed Zoha">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmedzoha.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <title>{title} | Dr Ahmed Zoha</title>
+
+  <!-- Google Analytics -->
+  {GA_ID && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+      <script is:inline define:vars={{ GA_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      </script>
+    </>
+  )}
+</head>
+<body>
+  <Sidebar />
+
+  <!-- Main Content Area -->
+  <main class="lg:ml-64 min-h-screen">
+    <div class="max-w-5xl mx-auto px-6 py-12 lg:py-16">
+      <slot />
+    </div>
+  </main>
+
+  <!-- Search Modal -->
+  <SearchModal />
+</body>
+</html>

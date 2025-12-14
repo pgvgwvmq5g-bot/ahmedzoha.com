@@ -1,0 +1,454 @@
+---
+// scotland-5g-centre.astro - Scotland 5G Centre Project Page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: 'Scotland 5G Centre UoG Testbed — University of Glasgow Partnership',
+  description: '£1.6 million investment delivering transformative 5G solutions for healthcare, education, manufacturing, and sustainability across Scotland, with £29 million return on investment to date.',
+  status: 'Ongoing',
+  year: '2019 – Ongoing',
+  role: 'Co-Investigator & Core Research Team Member',
+  investment: '£1.6 million',
+  roi: '£29 million',
+  funder: 'Scotland 5G Centre (Scottish Government / Scottish Futures Trust)',
+  tags: ['5G', 'Smart Campus', 'Energy Monitoring', 'Healthcare', 'Teleoperation', 'XR'],
+  partners: [
+    'Scottish Government',
+    'Scottish Futures Trust',
+    'University of Strathclyde',
+    'Nokia',
+    'Samsung',
+    'Cisco',
+    'Vodafone',
+    'VMO2',
+  ],
+  useCases: [
+    {
+      name: 'Energy & Environmental Monitoring',
+      application: 'PECN deployed in office environments to track energy consumption correlated with occupancy',
+      impact: 'Cost reduction, carbon emission reduction, Net Zero support'
+    },
+    {
+      name: '5G Teleoperation',
+      application: 'Remote control of robotic arms via secure 5G network with haptic feedback',
+      impact: 'Enables remote specialist healthcare (e.g., orthodontics) for rural populations'
+    },
+    {
+      name: '5G Extended Reality (XR)',
+      application: 'Immersive remote training environments delivered over 5G',
+      impact: 'Increased memory retention, reduced travel, cost-effective training'
+    },
+    {
+      name: '5G Sensing for Healthcare',
+      application: 'RF sensing for assistive living in care homes',
+      impact: 'Non-invasive health monitoring for vulnerable populations'
+    },
+  ],
+  demonstrations: [
+    'COP26 Glasgow (2021): 3D video-conferencing demos, remote-controlled robotics & AI',
+    'Scottish First Minister Visit: Demonstrated how 5G could transform education and manufacturing',
+    'Industry Engagement: Presented to Nokia, Vodafone, Huawei, Samsung, Cisco',
+    'Academic Delegations: President of UESTC China, Vice Chancellors from top engineering universities of Pakistan',
+    'Digital Scotland Events: Featured speaker at Digital Scotland 2021 and 2022',
+  ],
+  outcomes: [
+    { metric: 'Investment', detail: '£1.6 million from Scotland 5G Centre' },
+    { metric: 'ROI Generated', detail: '£29 million return on investment' },
+    { metric: 'Technology Solutions', detail: '4 major use cases (Teleoperation, Sensing, Environmental Monitoring, XR)' },
+    { metric: 'Infrastructure', detail: '60+ energy monitoring nodes; 5G testbed network' },
+    { metric: 'Policy Alignment', detail: 'Scotland Net Zero 2045; Glasgow Carbon Neutral 2030' },
+    { metric: 'Sector Impact', detail: 'Healthcare, Education, Manufacturing, Sustainability' },
+    { metric: 'Rural Reach', detail: 'Solutions specifically designed for Scotland\'s 15%+ rural population' },
+  ],
+  pecnCapabilities: [
+    'Real-time energy consumption monitoring at appliance level',
+    'Occupancy and space utilisation tracking',
+    'AI-driven anomaly detection and forecasting',
+    'Behavioural insights linking user density to energy patterns',
+    'Automated alerts for energy waste',
+  ],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl lg:text-4xl font-light mb-4">
+        {project.title}
+      </h1>
+
+      <p class="text-xl text-text-secondary max-w-3xl mb-6">
+        {project.description}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-400">
+          {project.status}
+        </span>
+        <span>{project.year}</span>
+        <span class="text-accent-yellow font-medium">{project.investment} investment</span>
+        <span class="text-green-400 font-medium">{project.roi} ROI</span>
+      </div>
+    </div>
+
+    <!-- Video Embed -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-dark-700 aspect-video border border-dark-500/30">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/NAI0iXsz96g"
+        title="Scotland 5G Centre - University of Glasgow"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        class="w-full h-full"
+      ></iframe>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">Project Overview</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+
+          <!-- Project Overview -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The Scotland 5G Centre's <strong class="text-text-primary">£1.6 million investment</strong> in the University of Glasgow's Communication, Sensing and Imaging (CSI) group has enabled the development of transformative 5G technological solutions for urban and rural communities across Scotland. With a <strong class="text-text-primary">£29 million return on investment</strong> to date, this partnership is delivering real-world impact across healthcare, education, manufacturing, and sustainability sectors.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              The team is developing a <strong class="text-text-primary">5G-enabled Smart Campus</strong> offering sustainable, healthier and intelligent solutions to students, academics and the surrounding community — already attracting investment into the area, creating new jobs, and contributing to Glasgow's carbon neutral commitment by 2030.
+            </p>
+          </div>
+
+          <!-- My Contribution -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-cyan-500/30">
+            <h3 class="text-lg font-medium text-cyan-400 mb-3">My Contribution: 5G Environmental Sensing & Energy Monitoring</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              As a <strong class="text-text-primary">Co-investigator for the Scotland 5G Centre Testbed led by Prof Muhammad Imran</strong>, featured on the Scotland 5G Centre project page, I led the development of the <strong class="text-text-primary">Persuasive Energy Conscious Network (PECN)</strong> — a 5G-enabled environmental sensing solution that has become one of the flagship demonstrators for the partnership.
+            </p>
+
+            <h4 class="text-sm font-medium text-text-primary mb-3 mt-6">The PECN Solution</h4>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              PECN allows businesses and organisations to assess energy usage, monitor occupancy in real-time, and generate accurate data to reduce costs and carbon emissions. The system consists of <strong class="text-text-primary">60+ LoRa-enabled smart energy monitoring nodes</strong> deployed across the University of Glasgow's James Watt South Building, complemented by an AI-powered analytics dashboard.
+            </p>
+
+            <h4 class="text-sm font-medium text-text-primary mb-3">Key Capabilities</h4>
+            <ul class="space-y-2">
+              {project.pecnCapabilities.map((capability) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-1.5 h-1.5 mt-2 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                  <span class="text-sm text-text-secondary">{capability}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-4 p-4 bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-lg border border-accent-yellow/30">
+              <h4 class="text-sm font-medium text-accent-yellow mb-2">Strategic Alignment</h4>
+              <p class="text-sm text-text-secondary">
+                The technology directly supports <strong class="text-text-primary">Scotland's Net Zero by 2045</strong> target and <strong class="text-text-primary">Glasgow's carbon neutral commitment by 2030</strong>, helping organisations understand and reduce their environmental footprint.
+              </p>
+            </div>
+          </div>
+
+          <!-- Use Cases Demonstrated -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-blue-500/30">
+            <h3 class="text-lg font-medium text-blue-400 mb-4">Use Cases Demonstrated</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-500/30">
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Use Case</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Application</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.useCases.map((useCase, index) => (
+                    <tr class={index !== project.useCases.length - 1 ? 'border-b border-dark-500/20' : ''}>
+                      <td class="py-3 px-4 text-text-secondary font-medium">{useCase.name}</td>
+                      <td class="py-3 px-4 text-text-secondary">{useCase.application}</td>
+                      <td class="py-3 px-4 text-text-secondary">{useCase.impact}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- High-Profile Demonstrations -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-violet-500/30">
+            <h3 class="text-lg font-medium text-violet-400 mb-4">High-Profile Demonstrations</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The work has been showcased at major events and to prominent stakeholders:
+            </p>
+            <ul class="space-y-3">
+              {project.demonstrations.map((demo) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-2 h-2 mt-2 bg-violet-400 rounded-full flex-shrink-0"></span>
+                  <span class="text-text-secondary">{demo}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Key Outcomes & Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">Key Outcomes & Impact</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-500/30">
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Metric</th>
+                    <th class="text-left py-3 px-4 text-text-primary font-medium">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.outcomes.map((outcome, index) => (
+                    <tr class={index !== project.outcomes.length - 1 ? 'border-b border-dark-500/20' : ''}>
+                      <td class="py-3 px-4 text-text-secondary font-medium">{outcome.metric}</td>
+                      <td class="py-3 px-4 text-text-secondary">{outcome.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Why This Matters for Scotland -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-blue-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why This Matters for Scotland</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              More than <strong class="text-text-primary">15% of Scotland's population</strong> lives in rural and remote areas where accessing professional services — particularly specialist healthcare — requires travelling long distances. The 5G solutions developed through this partnership directly address this inequality:
+            </p>
+            <ul class="space-y-3 mb-4">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-accent-yellow rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Remote Healthcare:</strong> Teleoperation enables patients to access specialists without travel</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-accent-yellow rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Energy Efficiency:</strong> PECN helps businesses reduce costs and meet Net Zero obligations</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-accent-yellow rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Training Access:</strong> XR eliminates geographical barriers to professional development</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-accent-yellow rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Smart Communities:</strong> Foundation for future smart cities across Scotland</span>
+              </li>
+            </ul>
+            <p class="text-text-secondary leading-relaxed italic">
+              The Scotland 5G Centre estimates that 5G could contribute <strong class="text-text-primary">£17 billion to Scotland's GDP by 2035</strong> and create <strong class="text-text-primary">160,000 new jobs</strong>. The University of Glasgow partnership is proving these projections through real-world demonstrators that are already attracting investment and creating impact.
+            </p>
+          </div>
+
+          <!-- References -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium mb-4">References</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">Scotland 5G Centre Project Page: <a href="https://scotland5gcentre.org/s5gcprojectglasgow/" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">scotland5gcentre.org/s5gcprojectglasgow/</a></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">CSI Group: <a href="https://www.gla.ac.uk/research/az/csi/" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">gla.ac.uk/research/az/csi/</a></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">Video Demonstration: <a href="https://www.youtube.com/watch?v=NAI0iXsz96g" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">youtube.com/watch?v=NAI0iXsz96g</a></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-muted">•</span>
+                <span class="text-text-secondary">Energy Monitoring Infographic: <a href="https://scotland5gcentre.org/wp-content/uploads/2022/12/Updated-UoG-Infographic-Energy-and-Environmental-Monitoring.pdf" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">Scotland 5G Centre PDF</a></span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Project Info -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Details
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Role</span>
+              <span class="text-text-primary text-right">{project.role}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Investment</span>
+              <span class="text-accent-yellow font-medium">{project.investment}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">ROI</span>
+              <span class="text-green-400 font-medium">{project.roi}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Funding Body</span>
+              <span class="text-text-primary text-right">Scotland 5G Centre</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Period</span>
+              <span class="text-text-primary">{project.year}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ROI Statistics -->
+        <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl p-6 border border-green-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-green-400">
+            Investment Impact
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">£1.6M</span>
+              <span class="text-xs text-text-muted">Investment</span>
+            </div>
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-green-400 block">£29M</span>
+              <span class="text-xs text-text-muted">Return on Investment</span>
+            </div>
+            <div class="p-3 bg-dark-700 rounded-lg">
+              <span class="text-2xl font-bold text-accent-yellow block">18x</span>
+              <span class="text-xs text-text-muted">ROI Multiplier</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economic Projections -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Scotland 5G Projections
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-lg font-bold text-accent-yellow block">£17B</span>
+              <span class="text-xs text-text-muted">GDP Contribution by 2035</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-lg font-bold text-accent-yellow block">160,000</span>
+              <span class="text-xs text-text-muted">New Jobs by 2035</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-lg font-bold text-accent-yellow block">15%+</span>
+              <span class="text-xs text-text-muted">Rural Population Served</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Partners -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Key Partners
+          </h3>
+          <ul class="space-y-2">
+            {project.partners.map((partner) => (
+              <li class="text-text-secondary text-sm flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {partner}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Technology Solutions -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Technology Solutions
+          </h3>
+          <div class="space-y-2">
+            <div class="p-2 bg-dark-600 rounded text-xs text-text-secondary">
+              Energy & Environmental Monitoring
+            </div>
+            <div class="p-2 bg-dark-600 rounded text-xs text-text-secondary">
+              5G Teleoperation
+            </div>
+            <div class="p-2 bg-dark-600 rounded text-xs text-text-secondary">
+              Extended Reality (XR)
+            </div>
+            <div class="p-2 bg-dark-600 rounded text-xs text-text-secondary">
+              5G Sensing for Healthcare
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Impact Story -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Related Stories
+          </h3>
+          <div class="space-y-3">
+            <a
+              href="/impact/policy-influence"
+              class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+            >
+              <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+                Scotland's 5G Innovation Ecosystem
+              </span>
+              <span class="block text-xs text-text-muted mt-1">Impact story →</span>
+            </a>
+            <a
+              href="/impact/energy-assisted-living"
+              class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+            >
+              <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+                Energy Monitoring for Net Zero
+              </span>
+              <span class="block text-xs text-text-muted mt-1">Impact story →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-6 border border-blue-500/20">
+          <h3 class="font-medium mb-2">Interested in 5G solutions?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Get in touch to discuss collaboration opportunities.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Contact Me
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

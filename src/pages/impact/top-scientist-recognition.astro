@@ -1,0 +1,192 @@
+---
+// top-scientist-recognition.astro - Impact Story: Top Scientist Recognition
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const story = {
+  title: 'Top 2% Most-Cited Scientists Worldwide',
+  subtitle: 'Stanford/Elsevier recognition for research impact',
+  year: '2023-2024',
+  category: 'Research Excellence',
+  image: '/images/impact/recognition.jpg',
+};
+
+const highlights = [
+  { value: '4600+', label: 'Total Citations' },
+  { value: '29', label: 'h-index' },
+  { value: 'Top 2%', label: 'Worldwide Ranking' },
+  { value: '100+', label: 'Publications' },
+];
+
+const recognitions = [
+  { title: 'Stanford/Elsevier Top 2% Scientists', year: '2023, 2024', type: 'Global Ranking' },
+  { title: 'Top 10% Most Cited (Scopus)', year: '2024', type: 'Citation Impact' },
+  { title: 'Top 10% Most Viewed (Scopus)', year: '2024', type: 'Research Visibility' },
+];
+---
+
+<BaseLayout title={story.title} description={story.subtitle}>
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a 
+      href="/impact"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Impact
+    </a>
+
+    <!-- Story Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm font-medium">
+          {story.category}
+        </span>
+        <span class="text-text-muted">{story.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-5xl font-light mb-4">
+        {story.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {story.subtitle}
+      </p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-500/20 to-pink-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img 
+        src={story.image} 
+        alt={story.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Impact Highlights -->
+    <div class="mb-12">
+      <div class="stats-gradient rounded-2xl p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {highlights.map((item) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent-yellow mb-1">{item.value}</div>
+              <div class="text-sm text-text-secondary">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-4">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-4">
+          <p class="text-text-secondary leading-relaxed">
+            Content coming soon. This page will detail the journey to being recognized among 
+            the top 2% most-cited scientists worldwide according to the Stanford/Elsevier 
+            database, and the research impact that led to this recognition.
+          </p>
+          
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <p class="text-text-muted text-sm italic">
+              This is a placeholder page. Update this content with your impact story details.
+            </p>
+          </div>
+        </div>
+
+        <!-- Recognition Timeline -->
+        <div class="mt-8">
+          <h3 class="text-lg font-medium mb-4">Recognition Timeline</h3>
+          <div class="space-y-4">
+            {recognitions.map((rec, index) => (
+              <div class="flex gap-4 items-start">
+                <div class="flex-shrink-0 w-3 h-3 mt-1.5 bg-accent-yellow rounded-full"></div>
+                <div class="bg-dark-700 rounded-xl p-4 border border-dark-500/30 flex-1">
+                  <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-medium">{rec.title}</h4>
+                    <span class="text-xs text-accent-yellow">{rec.year}</span>
+                  </div>
+                  <span class="text-xs text-text-muted">{rec.type}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Citation Metrics -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Citation Metrics
+          </h3>
+          <div class="space-y-4">
+            <div class="text-center p-4 bg-dark-600 rounded-lg">
+              <div class="text-3xl font-bold text-accent-yellow">29</div>
+              <div class="text-xs text-text-muted">h-index</div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="text-center p-3 bg-dark-600 rounded-lg">
+                <div class="text-xl font-bold text-text-primary">4600+</div>
+                <div class="text-xs text-text-muted">Citations</div>
+              </div>
+              <div class="text-center p-3 bg-dark-600 rounded-lg">
+                <div class="text-xl font-bold text-text-primary">100+</div>
+                <div class="text-xs text-text-muted">Papers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Research Profiles
+          </h3>
+          <div class="space-y-2">
+            <a 
+              href="https://scholar.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-3 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors text-sm"
+            >
+              Google Scholar →
+            </a>
+            <a 
+              href="https://eprints.gla.ac.uk/view/author/46845.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-3 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors text-sm"
+            >
+              Glasgow ePrints →
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-rose-500/10 to-pink-500/10 rounded-xl p-6 border border-rose-500/20">
+          <h3 class="font-medium mb-2">Research Collaboration?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Interested in collaborating on impactful research? Let's connect.
+          </p>
+          <a 
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>
+

@@ -1,0 +1,610 @@
+---
+// tihm-healthcare.astro - Technology Integrated Health Management Project Page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const project = {
+  title: 'Technology Integrated Health Management (TIHM) for Dementia',
+  description: 'Pioneering NHS England Test Bed programme — the first in the UK or internationally to develop and deploy an Internet of Things (IoT) system supporting dementia care in the community.',
+  status: 'Transitioned to NHS Service',
+  year: '2016-2020',
+  role: 'AI Research Fellow',
+  funding: '£5.2 million',
+  funder: 'NHS England Test Beds Programme / Office for Life Sciences',
+  tags: ['Healthcare AI', 'IoT', 'Machine Learning', 'Dementia Care', 'NHS', 'Remote Monitoring'],
+  collaborators: [
+    'Surrey and Borders Partnership NHS Foundation Trust (Lead)',
+    'University of Surrey (Technical Lead - Prof. Payam Barnaghi)',
+    'Royal Holloway University of London',
+    'Alzheimer\'s Society',
+    'Howz',
+    '10 Technology SMEs',
+  ],
+  publications: [
+    {
+      title: 'Health Management and Pattern Analysis of Daily Living Activities of People with Dementia',
+      venue: 'PLOS ONE',
+      year: '2018',
+      doi: '10.1371/journal.pone.0195605',
+    },
+    {
+      title: 'Machine Learning Methods for Detecting Urinary Tract Infection and Analysing Daily Living Activities in People with Dementia',
+      venue: 'PLOS ONE',
+      year: '2019',
+      doi: '10.1371/journal.pone.0209909',
+    },
+  ],
+  mediaFeatures: [
+    { outlet: 'Science Daily', year: '2018' },
+    { outlet: 'MPR (Medical Professionals Reference)', year: '2019' },
+    { outlet: 'Medindia', year: '2019' },
+    { outlet: 'European Union Policy Document', year: '2022' },
+  ],
+};
+---
+
+<BaseLayout title={project.title} description={project.description}>
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a 
+      href="/projects"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
+          <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+      
+      <h1 class="text-3xl lg:text-5xl font-light mb-4">
+        {project.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl mb-6">
+        {project.description}
+      </p>
+      
+      <div class="flex flex-wrap items-center gap-4 text-text-secondary">
+        <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-500/20 text-green-400">
+          {project.status}
+        </span>
+        <span>{project.year}</span>
+        <span class="text-accent-yellow font-medium">{project.funding}</span>
+      </div>
+    </div>
+
+    <!-- Project Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-dark-700 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img
+        src="/images/projects/tihm_cp.png"
+        alt={project.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500/10 to-cyan-500/10\'><div class=\'text-center p-8\'><svg class=\'w-20 h-20 text-blue-400 mx-auto mb-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\' /></svg><p class=\'text-text-muted\'>TIHM - Technology Integrated Health Management</p></div></div>'"
+      />
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- Main Content -->
+      <div class="lg:col-span-2 space-y-10">
+
+        <!-- Project Overview -->
+        <div>
+          <h2 class="text-2xl font-medium mb-4">Project Overview</h2>
+          <div class="prose prose-invert max-w-none">
+            <p class="text-text-secondary leading-relaxed mb-4">
+              TIHM for Dementia was a pioneering NHS England Test Bed programme — the first in the UK or
+              internationally to develop and deploy an Internet of Things (IoT) system supporting dementia
+              care in the community. Led by Professor Payam Barnaghi at the University of Surrey's Centre
+              for Vision, Speech and Signal Processing, the project combined clinical excellence from
+              Surrey and Borders Partnership NHS Foundation Trust with cutting-edge machine intelligence
+              to create a transformative approach to remote health monitoring.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              With over 930,000 people living with dementia in the UK (projected to exceed one million by 2025),
+              and one in four hospital beds occupied by someone with dementia — 22% for preventable conditions —
+              TIHM addressed an urgent need for better, more efficient support for this vulnerable population.
+            </p>
+          </div>
+        </div>
+
+        <!-- My Contribution -->
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-accent-yellow/20">
+          <h2 class="text-2xl font-medium mb-4 text-accent-yellow">My Contribution: AI Research Fellow</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            As AI Research Fellow on the TIHM project, I contributed to the development of the AI brain of the
+            system — the machine learning algorithms that transformed raw sensor data into actionable clinical insights.
+          </p>
+
+          <h3 class="text-lg font-medium mb-3 mt-6">AI Algorithm Development:</h3>
+          <ul class="space-y-2 text-text-secondary">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>Contributed to designing machine learning models to detect health anomalies from IoT sensor data</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>Developed predictive algorithms to identify early signs of urinary tract infections (UTIs) — a top five cause of hospital admission among people with dementia</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>Contributed to algorithms detecting neuropsychiatric symptoms including agitation, aggression, depression, and anxiety</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>Supported behavioural pattern recognition to identify deviations from "normal" routines indicating potential health decline</span>
+            </li>
+          </ul>
+
+          <h3 class="text-lg font-medium mb-3 mt-6">System Impact:</h3>
+          <ul class="space-y-2 text-text-secondary">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>AI algorithms deployed and validated in 200+ homes across Surrey and North East Hampshire</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>System generated 20,040 alerts during March–December 2017 alone</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full mt-2 flex-shrink-0"></span>
+              <span>Algorithms integrated into the clinical monitoring dashboard for real-time intervention</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- How TIHM Works -->
+        <div>
+          <h2 class="text-2xl font-medium mb-4">How TIHM Works</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            A network of 21 internet-enabled devices installed in each participant's home:
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-500/30">
+                  <th class="text-left py-3 px-4 text-accent-yellow font-medium">Device Type</th>
+                  <th class="text-left py-3 px-4 text-accent-yellow font-medium">Function</th>
+                </tr>
+              </thead>
+              <tbody class="text-text-secondary">
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 px-4">Environmental Sensors</td>
+                  <td class="py-3 px-4">Monitor sleep patterns, movement, door usage</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 px-4">Smart Plugs</td>
+                  <td class="py-3 px-4">Track appliance usage (kettle, fridge, TV) to infer Activities of Daily Living</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 px-4">Vital Signs Monitors</td>
+                  <td class="py-3 px-4">Record blood pressure, heart rate, temperature, weight, hydration</td>
+                </tr>
+                <tr class="border-b border-dark-500/20">
+                  <td class="py-3 px-4">GPS Device</td>
+                  <td class="py-3 px-4">Track location if person goes outside</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Oximeter & Thermometer</td>
+                  <td class="py-3 px-4">Monitor oxygen saturation and body temperature</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed mt-4">
+            Data streams to a centralised clinical dashboard where AI algorithms analyse patterns and flag concerns.
+            A Clinical Monitoring Team investigates alerts and coordinates with NHS services, GPs, social services,
+            or emergency services as needed.
+          </p>
+        </div>
+
+        <!-- Clinical Trial Results -->
+        <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+          <h2 class="text-2xl font-medium mb-4 text-emerald-400">Clinical Trial Results</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            The randomised controlled trial involved 400+ people with dementia and their carers over six months:
+          </p>
+
+          <div class="space-y-4">
+            <div class="bg-dark-900/50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-text-primary">Neuropsychiatric Symptoms</span>
+              </div>
+              <p class="text-sm text-text-secondary">Statistically significant reduction (p&lt;0.05) in depression, agitation, anxiety, irritability</p>
+            </div>
+
+            <div class="bg-dark-900/50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-text-primary">User Satisfaction</span>
+              </div>
+              <p class="text-sm text-text-secondary">70%+ would recommend TIHM to others</p>
+            </div>
+
+            <div class="bg-dark-900/50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-text-primary">A&E Visits</span>
+              </div>
+              <p class="text-sm text-text-secondary">Participants reported dramatic reduction (one carer: "5 visits in 5 months before TIHM, zero since")</p>
+            </div>
+
+            <div class="bg-dark-900/50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-text-primary">Peace of Mind</span>
+              </div>
+              <p class="text-sm text-text-secondary">Carers felt reassured, less likely to unnecessarily rush to A&E/GP</p>
+            </div>
+
+            <div class="bg-dark-900/50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <span class="font-medium text-text-primary">Early Intervention</span>
+              </div>
+              <p class="text-sm text-text-secondary">System supported timely clinical intervention before conditions escalated</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Awards & Recognition -->
+        <div>
+          <h2 class="text-2xl font-medium mb-4">Awards & Recognition</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-medium text-accent-yellow">HSJ Awards</h3>
+                <span class="text-xs px-2 py-1 bg-accent-yellow/10 text-accent-yellow rounded">2018</span>
+              </div>
+              <p class="text-sm text-text-secondary">Winner — Improving Care with Technology</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-medium text-accent-yellow">NHS70 Parliamentary Awards</h3>
+                <span class="text-xs px-2 py-1 bg-accent-yellow/10 text-accent-yellow rounded">2018</span>
+              </div>
+              <p class="text-sm text-text-secondary">Winner — NHS Future (South of England)</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-medium text-accent-yellow">ehi Awards</h3>
+                <span class="text-xs px-2 py-1 bg-accent-yellow/10 text-accent-yellow rounded">2017</span>
+              </div>
+              <p class="text-sm text-text-secondary">Winner — Best Mental Health Initiative</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-medium text-accent-yellow">HSJ Value Awards</h3>
+                <span class="text-xs px-2 py-1 bg-accent-yellow/10 text-accent-yellow rounded">2018</span>
+              </div>
+              <p class="text-sm text-text-secondary">Highly Commended — Use of IT to Drive Value</p>
+            </div>
+
+            <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-medium text-accent-yellow">Innovate Guildford</h3>
+                <span class="text-xs px-2 py-1 bg-accent-yellow/10 text-accent-yellow rounded">2018</span>
+              </div>
+              <p class="text-sm text-text-secondary">Winner — Most Outstanding Innovation</p>
+            </div>
+          </div>
+
+          <div class="bg-dark-700/50 rounded-xl p-4 border border-dark-500/30 mt-4">
+            <p class="text-sm text-text-secondary italic">
+              <strong class="text-text-primary">HSJ Judges commented:</strong> "TIHM evidenced great use of machine
+              learning to solve very real problems... fantastic improvements in patients with specific needs...
+              a truly deserving winner."
+            </p>
+          </div>
+        </div>
+
+        <!-- Transition to NHS Service -->
+        <div>
+          <h2 class="text-2xl font-medium mb-4">Transition to NHS Service</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Following the successful trial, TIHM achieved:
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span><strong class="text-text-primary">CE Mark Approval</strong> from MHRA (Medicines and Healthcare products Regulatory Agency) — enabling promotion across UK and Europe</span>
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span><strong class="text-text-primary">Transition to operational NHS service (2020)</strong> — first of its kind offered by the NHS</span>
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span><strong class="text-text-primary">Scale-up to 2,000+ users</strong> during COVID-19 pandemic</span>
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span><strong class="text-text-primary">Pilot programmes launched</strong> with Birmingham Community Healthcare NHS Foundation Trust, GPs in Middlesex, Surrey County Council</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Policy & Research Impact -->
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-500/30">
+          <h2 class="text-2xl font-medium mb-4">Policy & Research Impact</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-medium text-accent-yellow mb-2">Policy Citations</h3>
+              <p class="text-sm text-text-secondary">Referenced in UK Parliament and EU Commission reports</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-accent-yellow mb-2">Media Coverage</h3>
+              <p class="text-sm text-text-secondary">Featured in 20+ media outlets</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-accent-yellow mb-2">Altmetric Score</h3>
+              <p class="text-sm text-text-secondary">Top 5% of all research outputs</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-accent-yellow mb-2">Patent Citations</h3>
+              <p class="text-sm text-text-secondary">5 international patents cite the underlying research</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why This Matters -->
+        <div>
+          <h2 class="text-2xl font-medium mb-4">Why This Matters</h2>
+          <p class="text-text-secondary leading-relaxed mb-4">
+            TIHM demonstrated that combining clinical expertise with AI and IoT technology can transform care
+            for vulnerable populations:
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent-yellow font-bold">1</span>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-primary mb-1">Proactive vs Reactive Care</h3>
+                <p class="text-sm text-text-secondary">Identifying health issues before they become emergencies</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent-yellow font-bold">2</span>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-primary mb-1">Independent Living</h3>
+                <p class="text-sm text-text-secondary">Enabling people with dementia to remain safely in their own homes — where 80%+ prefer to be</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent-yellow font-bold">3</span>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-primary mb-1">Carer Support</h3>
+                <p class="text-sm text-text-secondary">Reducing anxiety and burden on family carers</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent-yellow font-bold">4</span>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-primary mb-1">NHS Efficiency</h3>
+                <p class="text-sm text-text-secondary">Preventing avoidable hospital admissions and A&E visits</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent-yellow/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-accent-yellow font-bold">5</span>
+              </div>
+              <div>
+                <h3 class="font-medium text-text-primary mb-1">Scalable Model</h3>
+                <p class="text-sm text-text-secondary">Template now being adopted by NHS trusts, primary care networks, and integrated care systems nationwide</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-text-secondary leading-relaxed mt-6 p-4 bg-dark-700 rounded-lg border border-dark-500/30">
+            The project proved that AI-driven remote monitoring is not just technically feasible but clinically
+            effective — delivering measurable improvements in patient outcomes while reducing pressure on NHS services.
+            The AI brain I contributed to developing continues to support thousands of people living with dementia across the UK.
+          </p>
+        </div>
+
+        <!-- References -->
+        <div class="bg-dark-700/50 rounded-xl p-6 border border-dark-500/30">
+          <h2 class="text-xl font-medium mb-4">References & Resources</h2>
+          <ul class="space-y-3">
+            <li>
+              <a href="https://www.england.nhs.uk/aac/what-we-do/how-can-the-aac-help-me/test-beds/technology-integrated-health-management-tihm/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-accent-yellow hover:underline text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                NHS England Test Beds Programme
+              </a>
+            </li>
+            <li>
+              <a href="http://www.sabp.nhs.uk/tihm"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-accent-yellow hover:underline text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                Surrey and Borders Partnership NHS
+              </a>
+            </li>
+            <li>
+              <a href="https://solutions.hsj.co.uk/story.aspx?storyCode=7019824"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-accent-yellow hover:underline text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                HSJ Awards Case Study
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Publications Section -->
+        {project.publications && project.publications.length > 0 && (
+          <div class="mt-10">
+            <h2 class="text-xl font-medium mb-4">Key Publications</h2>
+            <div class="space-y-4">
+              {project.publications.map((pub) => (
+                <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-2 py-0.5 bg-accent-yellow/10 text-accent-yellow text-xs rounded">
+                      {pub.year}
+                    </span>
+                    <span class="px-2 py-0.5 bg-cyan-400/10 text-cyan-400 text-xs rounded">
+                      {pub.venue}
+                    </span>
+                  </div>
+                  <h3 class="font-medium text-sm mb-2">{pub.title}</h3>
+                  <a 
+                    href={`https://doi.org/${pub.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-text-muted hover:text-accent-yellow transition-colors"
+                  >
+                    DOI: {pub.doi}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Media Features Section -->
+        {project.mediaFeatures && project.mediaFeatures.length > 0 && (
+          <div class="mt-10">
+            <h2 class="text-xl font-medium mb-4">Media Coverage</h2>
+            <div class="flex flex-wrap gap-3">
+              {project.mediaFeatures.map((media) => (
+                <div class="px-4 py-2 bg-dark-700 rounded-lg border border-dark-500/30 text-sm">
+                  <span class="text-text-primary">{media.outlet}</span>
+                  <span class="text-text-muted ml-2">({media.year})</span>
+                </div>
+              ))}
+            </div>
+            <p class="text-sm text-text-muted mt-4">
+              <a href="/impact" class="text-accent-yellow hover:underline">
+                View all media features →
+              </a>
+            </p>
+          </div>
+        )}
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Project Info -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Project Details
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Role</span>
+              <span class="text-text-primary">{project.role}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Funding</span>
+              <span class="text-accent-yellow font-medium">{project.funding}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Funder</span>
+              <span class="text-text-primary">{project.funder}</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-text-muted">Duration</span>
+              <span class="text-text-primary">{project.year}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Collaborators -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Collaborators
+          </h3>
+          <ul class="space-y-2">
+            {project.collaborators.map((collab) => (
+              <li class="text-text-secondary text-sm flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {collab}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Impact Highlight -->
+        <div class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-6 border border-emerald-500/20">
+          <h3 class="font-medium mb-3 text-emerald-400">Impact Highlight</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Award-winning NHS-deployed AI system — first of its kind to transition to operational NHS service.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <div class="text-2xl font-bold text-emerald-400">2,000+</div>
+              <div class="text-xs text-text-muted">Users Supported</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-emerald-400">5</div>
+              <div class="text-xs text-text-muted">Major Awards</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-2">Interested in this project?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Get in touch to discuss collaboration opportunities.
+          </p>
+          <a 
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Contact Me
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>
+

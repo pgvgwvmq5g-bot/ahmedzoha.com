@@ -1,0 +1,858 @@
+---
+// index.astro - Homepage
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Static Blog Posts
+const blogPosts = [
+  {
+    slug: 'thinking-aloud-about-agentic-ai',
+    title: 'Thinking Aloud About Agentic AI',
+    excerpt: 'Agentic AI breaks the pattern. These systems do not just observe and advise. They decide and act, often before a human realises there is anything to respond to.',
+    date: 'December 5, 2025',
+    dateSort: new Date('2025-12-05'),
+    readTime: '10 min read',
+    category: 'AI & Infrastructure',
+    featuredImage: '/images/blog/agentic_ai.png',
+  },
+  {
+    slug: 'ai-in-higher-education',
+    title: 'The Conversation We\'re Not Having About AI in Higher Education',
+    excerpt: 'We\'re so caught up in debates about academic integrity that we\'re missing something fundamental about how learning actually happens.',
+    date: 'December 10, 2025',
+    dateSort: new Date('2025-12-10'),
+    readTime: '8 min read',
+    category: 'AI & Education',
+    featuredImage: '/images/blog/academia_ai.png',
+  },
+  {
+    slug: 'privacy-paradox-federated-learning',
+    title: 'The Privacy Paradox: Why Federated Learning Is Not Enough',
+    excerpt: 'I remember the moment when my confidence in federated learning began to slip. From the gradients alone, those supposedly harmless updates, they reconstructed recognisable features from the training data.',
+    date: 'December 12, 2025',
+    dateSort: new Date('2025-12-12'),
+    readTime: '9 min read',
+    category: 'AI & Privacy',
+    featuredImage: '/images/blog/fedai_bp.png',
+  },
+  {
+    slug: 'code-switching-problem-multilingual-ai',
+    title: 'The Code-Switching Problem: Why Multilingual AI Is Harder Than It Looks',
+    excerpt: 'I remember sitting in a meeting room in Taxila, listening to our Pakistani banking partners discuss their customer verification systems. The conversation flowed naturally between Urdu, English, and occasional Hindi phrases. Then one of the bankers asked: "Can your AI understand this?"',
+    date: 'December 13, 2025',
+    dateSort: new Date('2025-12-13'),
+    readTime: '11 min read',
+    category: 'AI & Language',
+    featuredImage: '/images/blog/codeswitching.png',
+  },
+];
+
+// Static News & Updates - sorted by date (newest first)
+const newsUpdates = [
+  {
+    title: 'Breakthrough in Multilingual Voice Anti-Spoofing Research',
+    excerpt: 'MIMER project achieves major milestone with the acceptance of groundbreaking MSS dataset paper at IEEE CBMI 2025 in Dublin. This first-of-its-kind multilingual spoofed speech dataset addresses critical challenges in deepfake detection and digital identity fraud.',
+    date: 'Oct 2025',
+    dateSort: new Date('2025-10-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7375438679454138368',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'Join Our Team: Generative AI Specialist Wanted',
+    excerpt: 'KTP project LEAP is hiring a Generative AI & Large Language Model Specialist for a London-based position. Exciting opportunity to work at the cutting edge of AI research with real-world applications.',
+    date: 'Oct 2025',
+    dateSort: new Date('2025-10-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7373351512099532801',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
+    title: 'Shaping the Future of Wireless Networks on Coursera',
+    excerpt: 'Proud to contribute to the new "6G for a Connected Future" specialization on Coursera, designing and delivering the module on multimodality-enabled smart wireless networks. From learner to contributor—completing the cycle of knowledge sharing.',
+    date: 'Sep 2025',
+    dateSort: new Date('2025-09-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7371215740290404352',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Expanding Cybersecurity Research with New HEC Funding',
+    excerpt: 'MIMER project secures additional NRPU grant from HEC Pakistan to advance the fight against AI-generated audio deception in critical real-time scenarios. Strengthening UK-Pakistan research collaborations in deepfake detection beyond 2026.',
+    date: 'Aug 2025',
+    dateSort: new Date('2025-08-01'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7352300783184343041',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+];
+
+// Sort news by date (newest first)
+const latestNews = newsUpdates.sort((a, b) => b.dateSort - a.dateSort);
+
+// Get latest blog posts (sorted by date, newest first)
+const latestBlogPosts = blogPosts.sort((a, b) => b.dateSort - a.dateSort).slice(0, 5);
+
+// Career highlights data
+const stats = [
+  { value: '4500+', label: 'Citations' },
+  { value: '100+', label: 'Publications' },
+  { value: '29', label: 'h-index' },
+  { value: '£1.5M+', label: 'Grant Funding' },
+];
+
+// Career timeline - first row (positions & honors)
+const timelineRow1 = [
+  { title: 'Associate Professor', subtitle: 'University of Glasgow' },
+  { title: 'Programme Director', subtitle: 'Communication Engineering, Glasgow College UESTC' },
+  { title: 'CSC Advisor', subtitle: 'Foreign, Commonwealth & Development Office, UK' },
+  { title: 'Royal Academy of Engineering', subtitle: 'Endorsed UK Exceptional Talent' },
+  { title: 'Senior Member', subtitle: 'IEEE' },
+  { title: 'Fellow', subtitle: 'RSA' },
+  { title: 'Distinguished Fellow', subtitle: 'EAI' },
+];
+
+// Career timeline - second row (achievements & roles)
+const timelineRow2 = [
+  { title: 'Fellow RET', subtitle: 'UoG' },
+  { title: 'Grant Reviewer', subtitle: 'EPSRC, UKRI, HEC (Pakistan), Middle East (HBKU, UAEU, AU)' },
+  { title: 'Academic Reviewer', subtitle: '20+ Q1 journals/IEEE transactions' },
+  { title: 'Author of 2 Books', subtitle: '' },
+  { title: 'Associate Editor', subtitle: 'Springer Nature Journal of Big Data' },
+  { title: 'Director', subtitle: 'FLAIR' },
+  { title: 'Top 2%', subtitle: 'Most-cited Scientist Worldwide' },
+];
+
+// Featured projects data
+const featuredProjects = [
+  {
+    id: 'mimer',
+    title: 'MIMER — Mitigating Presentation Attacks in Remote Identity Proofing',
+    description: 'Pakistan in Focus: Securing Digital Identity Through AI. Developing advanced biometric security solutions to combat presentation attacks.',
+    image: '/images/projects/mimer_cp.png',
+    tags: ['Digital Identity', 'AI Security', 'Biometrics'],
+    color: 'from-cyan-500/20 to-emerald-500/20',
+  },
+  {
+    id: 'leap',
+    title: 'LEAP — Learning Enhancement through Adaptive Personalisation',
+    description: 'Innovate UK KTP developing adaptive AI algorithms and real-time analytics for personalised learning in higher education.',
+    image: '/images/projects/leap_cp.png',
+    tags: ['EdTech', 'AI/ML', 'Adaptive Learning'],
+    color: 'from-purple-500/20 to-blue-500/20',
+  },
+  {
+    id: 'coil-energy-network',
+    title: 'Energy Conscious Network for Independent Living (COIL)',
+    description: 'AI-driven energy monitoring for assisted living and net zero. 60+ nodes, COP26 showcase, demonstrated to Nokia, Vodafone & Huawei.',
+    image: '/images/projects/coil_cp.png',
+    tags: ['Energy AI', 'Assisted Living', 'Net Zero'],
+    color: 'from-emerald-500/20 to-teal-500/20',
+  },
+  {
+    id: 'scotland-5g-centre',
+    title: '5G Scotland Centre Testbed Phase I/II',
+    description: 'Co-investigator of the £1.6M Scotland 5G Centre testbed enabling immersive remote robotics-powered learning for students worldwide.',
+    image: '/images/projects/5gcentre_cp.png',
+    tags: ['5G', 'Robotics', 'AR/VR'],
+    color: 'from-cyan-500/20 to-teal-500/20',
+  },
+  {
+    id: 'tihm-healthcare',
+    title: 'Technology Integrated Health Management (TIHM)',
+    description: 'Partnered with NHS England to develop and deploy an AI-driven platform for enhancing dementia care, supporting over 1,000 patients.',
+    image: '/images/projects/tihm_cp.png',
+    tags: ['Healthcare AI', 'IoT', 'NHS'],
+    color: 'from-blue-500/20 to-cyan-500/20',
+  },
+];
+
+// Impact Story and Outreach data
+const impactStories = [
+  {
+    id: 'nhs-dementia-care',
+    title: 'Transforming Dementia Care',
+    description: 'Award-winning NHS-deployed AI system supporting 1,000+ patients. Featured in 20+ media outlets, cited in UK Parliament & EU policy.',
+    image: '/images/impact/dementia-care.png',
+    tags: ['NHS', 'AI', 'Award-Winning'],
+    color: 'from-emerald-500/20 to-teal-500/20',
+    icon: 'healthcare',
+    year: '2017-2020',
+  },
+  {
+    id: '5g-remote-learning',
+    title: '5G for Sensor-Free Remote Care',
+    description: 'A seminal work on 5G-enabled activity detection system. Published in Nature, 2 international patents, open dataset for global research.',
+    image: '/images/impact/5g-healthcare.png',
+    tags: ['5G', 'Healthcare', 'Patents'],
+    color: 'from-cyan-500/20 to-blue-500/20',
+    icon: 'healthcare',
+    year: '2019-2022',
+  },
+  {
+    id: 'energy-assisted-living',
+    title: 'AI Energy Monitoring for Net Zero',
+    description: '60+ node testbed, COP26 showcase, demonstrated to Nokia, Vodafone & Huawei. Contributed to Scotland 5G Centre Phase II.',
+    image: '/images/impact/energy-monitoring.png',
+    tags: ['Energy', 'Net Zero', 'COP26'],
+    color: 'from-green-500/20 to-emerald-500/20',
+    icon: 'energy',
+    year: '2018-2022',
+  },
+  {
+    id: 'policy-influence',
+    title: 'Scotland\'s 5G Innovation Ecosystem',
+    description: 'Co-Investigator for Scotland 5G Centre. Led workshops with 50+ industry representatives. Delivered £29M ROI, contributing to £17B GDP potential by 2035.',
+    image: '/images/impact/5g-ecosystem.jpg',
+    tags: ['5G', 'Partnerships'],
+    color: 'from-indigo-500/20 to-violet-500/20',
+    icon: '5g',
+    year: '2019-Present',
+  },
+];
+
+// Research in Focus data - matches Selected Publications categories
+const researchFocus = [
+  {
+    id: 'federated-learning',
+    title: 'Federated Learning & Distributed Intelligence',
+    description: 'Edge-native intelligence for 6G communications, secure smart grid systems, and robust distributed AI frameworks.',
+    image: '/images/RIF/fedai_cp.png',
+    tags: ['Federated Learning', 'Distributed AI'],
+    color: 'from-cyan-500/20 to-teal-500/20',
+    icon: 'brain',
+  },
+  {
+    id: '6g',
+    title: '6G / 5G & Future Wireless Networks',
+    description: 'AI-driven optimization of wireless networks, 5G/6G systems, intelligent spectrum management, and next-generation connectivity.',
+    image: '/images/RIF/6g_cp.png',
+    tags: ['5G/6G', 'Wireless'],
+    color: 'from-violet-500/20 to-purple-500/20',
+    icon: 'wireless',
+  },
+  {
+    id: 'healthcare',
+    title: 'Healthcare AI & Multimodal Sensing',
+    description: 'AI for dementia care, activity recognition, gait analysis, and 5G-enabled contactless health monitoring systems.',
+    image: '/images/RIF/health_cp.png',
+    tags: ['Healthcare AI', 'Multimodal'],
+    color: 'from-pink-500/20 to-rose-500/20',
+    icon: 'human',
+  },
+  {
+    id: 'iot-energy',
+    title: 'IoT, Energy & Industrial AI',
+    description: 'Non-intrusive load monitoring, energy forecasting, digital twins for IoT optimization, and industrial automation.',
+    image: '/images/RIF/iot_cp.png',
+    tags: ['IoT', 'Energy AI'],
+    color: 'from-green-500/20 to-emerald-500/20',
+    icon: 'edge',
+  },
+];
+
+// FLAIR team members - First 10 PhD Students
+const flairTeam = [
+  { name: 'Dr. Ahsan Raza Khan', image: '/images/FLAIR/Ahsan Raza Khan.jpeg', role: 'PhD Student' },
+  { name: 'Dr. Habib Ullah Manzoor', image: '/images/FLAIR/Habib Ullah Manzoor.jpg', role: 'PhD Student' },
+  { name: 'Dr. Fahad Ayaz', image: '/images/FLAIR/fahad_ayaz.jpeg', role: 'PhD Student' },
+  { name: 'Dr. Iftikhar Ahmad', image: '/images/FLAIR/Iftikhar Ahmad.jpeg', role: 'PhD Student' },
+  { name: 'Dr. Mohammad Al-Quraan', image: '/images/FLAIR/alquran.jpeg', role: 'PhD Student' },
+  { name: 'Dr. Sara Khosravi', image: '/images/FLAIR/sarah.jpeg', role: 'PhD Student' },
+  { name: 'Ubaid Ahmed', image: '/images/FLAIR/Ubaid Ahmed.png', role: 'PhD Student' },
+  { name: 'Saja', image: '/images/FLAIR/Saja.png', role: 'PhD Student' },
+  { name: 'Basim Alhumaily', image: '/images/FLAIR/Basim Alhumaily.jpg', role: 'PhD Student' },
+  { name: 'Chen Ao', image: '/images/FLAIR/CHEN AO.jpg', role: 'PhD Student' },
+];
+
+---
+
+<BaseLayout title="Homepage">
+  
+  <!-- Hero Section -->
+  <section class="pt-8 lg:pt-16">
+    <div class="mb-12">
+      <h1 class="text-4xl lg:text-5xl font-light mb-6">
+        Hello! I'm <span class="text-accent-yellow font-medium">Dr Ahmed Zoha</span>
+      </h1>
+      <p class="text-lg text-text-secondary max-w-2xl leading-relaxed">
+        I'm an academic, author, and scientist driven by curiosity to understand how 
+        intelligence can serve humanity. My work explores how AI can connect people, 
+        systems, and ideas — creating technologies that don't just think, but care.
+      </p>
+    </div>
+
+    <!-- Career Highlights -->
+    <div class="mb-16">
+      <h2 class="text-xl font-medium mb-8 text-center lg:text-left">Career Highlights</h2>
+      
+      <!-- Stats Cards -->
+      <div class="stats-gradient rounded-2xl p-6 lg:p-8 glow mb-10">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-2xl sm:text-3xl lg:text-5xl font-bold text-accent-yellow mb-1 lg:mb-2">
+                {stat.value}
+              </div>
+              <div class="text-xs sm:text-sm text-text-secondary">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Career Timeline -->
+      <div class="space-y-6">
+        <!-- Timeline Row 1 -->
+        <div class="timeline-container">
+          <div class="timeline-wrapper">
+            <div class="timeline-line-bg"></div>
+            <div class="timeline-track">
+              {timelineRow1.map((item) => (
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <h4 class="timeline-title">{item.title}</h4>
+                    {item.subtitle && <p class="timeline-subtitle">{item.subtitle}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Row 2 -->
+        <div class="timeline-container">
+          <div class="timeline-wrapper">
+            <div class="timeline-line-bg"></div>
+            <div class="timeline-track">
+              {timelineRow2.map((item) => (
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <h4 class="timeline-title">{item.title}</h4>
+                    {item.subtitle && <p class="timeline-subtitle">{item.subtitle}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- News & Updates Section -->
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-medium">News & Updates</h2>
+        <a href="/news" class="text-sm text-accent-yellow hover:underline">
+          View all →
+        </a>
+      </div>
+      
+      {latestNews.length > 0 ? (
+        <div class="grid gap-3">
+          {latestNews.slice(0, 5).map((item) => (
+          <a
+            href={item.link}
+              class="group flex gap-3 p-3 bg-dark-700 rounded-lg border border-dark-500/30
+                   hover:border-accent-yellow/30 hover:bg-dark-600 transition-all duration-300"
+            >
+              <!-- Content -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  {item.categories && item.categories.length > 0 && (
+                    <span class="px-2 py-0.5 bg-accent-yellow/10 text-accent-yellow rounded text-[10px] font-medium">
+                      {item.categories[0].name}
+                    </span>
+                  )}
+                  <span class="text-[10px] text-text-muted">{item.date}</span>
+                </div>
+                <h3 class="font-medium text-sm mb-1 group-hover:text-accent-yellow transition-colors leading-tight"
+                    set:html={item.title} />
+                <p class="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                  {item.excerpt}
+                </p>
+              </div>
+
+              <!-- Arrow -->
+              <div class="flex items-center">
+                <span class="text-accent-yellow opacity-0 group-hover:opacity-100 transition-opacity text-sm">
+                  →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <!-- Placeholder when no news -->
+        <div class="bg-dark-700 rounded-xl p-8 border border-dark-500/30 text-center">
+          <div class="w-12 h-12 bg-dark-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          </div>
+          <h3 class="font-medium mb-2">News Coming Soon</h3>
+          <p class="text-sm text-text-secondary max-w-sm mx-auto">
+            Latest news and updates will appear here once connected to the content management system.
+          </p>
+        </div>
+      )}
+    </div>
+
+    <!-- Featured Projects Section -->
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-medium">Featured Projects</h2>
+        <a href="/projects" class="text-sm text-accent-yellow hover:underline">
+          View all →
+        </a>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {featuredProjects.slice(0, 4).map((project, index) => (
+          <a 
+            href={`/projects/${project.id}`}
+            class="project-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+                   hover:border-accent-yellow/30 transition-all duration-500"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <!-- Background Gradient -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-500`}></div>
+            
+            <!-- Image Container -->
+            <div class="relative aspect-[4/3] bg-dark-700 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100
+                       group-hover:scale-110 transition-all duration-700 ease-out"
+                onerror="this.style.display='none'"
+              />
+              <!-- Overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent"></div>
+              
+              <!-- Floating tags -->
+              <div class="absolute top-3 left-3 flex gap-2">
+                {project.tags.slice(0, 2).map((tag) => (
+                  <span class="px-2 py-1 bg-dark-900/70 backdrop-blur-sm rounded-md text-[10px] 
+                               text-text-secondary group-hover:bg-accent-yellow/20 
+                               group-hover:text-accent-yellow transition-all duration-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="relative p-4 bg-dark-800/80 backdrop-blur-sm">
+              <h3 class="font-medium text-sm mb-2 group-hover:text-accent-yellow transition-colors duration-300 leading-snug">
+                {project.title}
+            </h3>
+              <p class="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                {project.description}
+              </p>
+              
+              <!-- Animated arrow -->
+              <div class="mt-3 flex items-center gap-1 text-accent-yellow text-xs opacity-0 
+                          group-hover:opacity-100 transform translate-x-[-10px] 
+                          group-hover:translate-x-0 transition-all duration-300">
+                <span>Explore</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Shine effect on hover -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] 
+                          transition-transform duration-1000 bg-gradient-to-r from-transparent 
+                          via-white/5 to-transparent"></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Impact Story & Outreach Section -->
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-medium">Impact & Outreach</h2>
+        <a href="/impact" class="text-sm text-accent-yellow hover:underline">
+              Learn more →
+        </a>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {impactStories.map((story, index) => (
+          <a 
+            href={`/impact/${story.id}`}
+            class="impact-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+                   hover:border-accent-yellow/30 transition-all duration-500"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <!-- Background Gradient -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${story.color} opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-500`}></div>
+            
+            <!-- Image Container -->
+            <div class="relative aspect-[4/3] bg-dark-700 overflow-hidden">
+              <img
+                src={story.image}
+                alt={story.title}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100
+                       group-hover:scale-110 transition-all duration-700 ease-out"
+                onerror="this.style.display='none'"
+              />
+              <!-- Overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent"></div>
+              
+              <!-- Icon overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-0 transition-opacity duration-300">
+                {story.icon === 'policy' && (
+                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                )}
+                {story.icon === 'education' && (
+                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  </svg>
+                )}
+                {story.icon === 'industry' && (
+                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                )}
+                {story.icon === 'media' && (
+                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                )}
+              </div>
+              
+              <!-- Floating tags -->
+              <div class="absolute top-3 left-3 flex gap-2">
+                {story.tags.slice(0, 2).map((tag) => (
+                  <span class="px-2 py-1 bg-dark-900/70 backdrop-blur-sm rounded-md text-[10px] 
+                               text-text-secondary group-hover:bg-accent-yellow/20 
+                               group-hover:text-accent-yellow transition-all duration-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="relative p-4 bg-dark-800/80 backdrop-blur-sm">
+              <h3 class="font-medium text-sm mb-2 group-hover:text-accent-yellow transition-colors duration-300 leading-snug">
+                {story.title}
+              </h3>
+              <p class="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                {story.description}
+              </p>
+              
+              <!-- Animated arrow -->
+              <div class="mt-3 flex items-center gap-1 text-accent-yellow text-xs opacity-0 
+                          group-hover:opacity-100 transform translate-x-[-10px] 
+                          group-hover:translate-x-0 transition-all duration-300">
+                <span>Discover</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Shine effect on hover -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] 
+                          transition-transform duration-1000 bg-gradient-to-r from-transparent 
+                          via-white/5 to-transparent"></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Research in Focus Section -->
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-medium">Research in Focus</h2>
+        <a href="/research" class="text-sm text-accent-yellow hover:underline">
+          View all →
+        </a>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {researchFocus.map((research, index) => (
+          <a 
+            href={`/research#${research.id}`}
+            class="research-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+                   hover:border-accent-yellow/30 transition-all duration-500"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <!-- Background Gradient -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${research.color} opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-500`}></div>
+            
+            <!-- Image Container -->
+            <div class="relative aspect-[4/3] bg-dark-700 overflow-hidden">
+              <img
+                src={research.image}
+                alt={research.title}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100
+                       group-hover:scale-110 transition-all duration-700 ease-out"
+                onerror="this.style.display='none'"
+              />
+              <!-- Overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent"></div>
+
+              <!-- Floating tags -->
+              <div class="absolute top-3 left-3 flex gap-2">
+                {research.tags.slice(0, 2).map((tag) => (
+                  <span class="px-2 py-1 bg-dark-900/70 backdrop-blur-sm rounded-md text-[10px] 
+                               text-text-secondary group-hover:bg-accent-yellow/20 
+                               group-hover:text-accent-yellow transition-all duration-300">
+                    {tag}
+            </span>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="relative p-4 bg-dark-800/80 backdrop-blur-sm">
+              <h3 class="font-medium text-sm mb-2 group-hover:text-accent-yellow transition-colors duration-300 leading-snug">
+                {research.title}
+              </h3>
+
+              <!-- Icon below heading -->
+              <div class="mb-3 flex items-center">
+                {research.icon === 'brain' && (
+                  <svg class="w-5 h-5 text-accent-yellow/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                )}
+                {research.icon === 'wireless' && (
+                  <svg class="w-5 h-5 text-accent-yellow/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                  </svg>
+                )}
+                {research.icon === 'edge' && (
+                  <svg class="w-5 h-5 text-accent-yellow/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 7h10v10H7V7z" />
+                  </svg>
+                )}
+                {research.icon === 'human' && (
+                  <svg class="w-5 h-5 text-accent-yellow/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                )}
+              </div>
+
+              <p class="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                {research.description}
+              </p>
+              
+              <!-- Animated arrow -->
+              <div class="mt-3 flex items-center gap-1 text-accent-yellow text-xs opacity-0 
+                          group-hover:opacity-100 transform translate-x-[-10px] 
+                          group-hover:translate-x-0 transition-all duration-300">
+                <span>Learn more</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Shine effect on hover -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] 
+                          transition-transform duration-1000 bg-gradient-to-r from-transparent 
+                          via-white/5 to-transparent"></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- FLAIR Research Group Section -->
+    <div class="mb-16">
+      <div class="bg-dark-700 rounded-2xl border border-dark-500/30 overflow-hidden">
+        <div class="grid lg:grid-cols-2 gap-0">
+          <!-- Left Content -->
+          <div class="p-8 lg:p-10 flex flex-col justify-center">
+            <h2 class="text-2xl lg:text-3xl font-light mb-2">
+              Meet the Minds Behind
+            </h2>
+            <h3 class="text-2xl lg:text-3xl font-medium text-accent-yellow mb-6">
+              FLAIR
+            </h3>
+            <p class="text-text-secondary leading-relaxed mb-8">
+              I'm fortunate to work with an incredible group of researchers exploring the 
+              frontiers of Federated Learning and Agentic Intelligence — the real heroes 
+              shaping the ideas, innovation, and impact behind our collective work.
+            </p>
+            <div>
+              <a 
+                href="/modai"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-dark-600 hover:bg-dark-500 
+                       border border-dark-500 rounded-lg transition-all duration-300 
+                       hover:border-accent-yellow/30 group"
+              >
+                <span class="text-sm font-medium">Learn More about FLAIR</span>
+                <svg class="w-4 h-4 text-accent-yellow opacity-0 group-hover:opacity-100 
+                           transform translate-x-[-5px] group-hover:translate-x-0 transition-all" 
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Right Content - Logo & Team -->
+          <div class="bg-dark-800/50 p-8 lg:p-10 flex flex-col items-center justify-center">
+            <!-- FLAIR Logo/Branding -->
+            <div class="text-center mb-8">
+              <img 
+                src="/images/logos/flair-logo.png" 
+                alt="FLAIR - Federated Learning & Agentic Intelligence Research" 
+                class="h-20 lg:h-28 w-auto mx-auto mb-4 drop-shadow-[0_0_15px_rgba(45,212,191,0.3)]"
+              />
+              <p class="text-text-secondary text-sm lg:text-base">
+                Federated Learning & Agentic Intelligence
+              </p>
+              <p class="text-text-muted text-sm">
+                Research Group
+              </p>
+            </div>
+            
+            <!-- Team Avatars -->
+            <div class="flex flex-wrap justify-center gap-2 max-w-xs">
+              {flairTeam.map((member, index) => (
+                <div 
+                  class="team-avatar w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-dark-600 border-2 border-dark-500 
+                         overflow-hidden hover:border-accent-yellow/50 hover:scale-110 
+                         transition-all duration-300 cursor-pointer flex items-center justify-center"
+                  title={member.name}
+                  style={`animation-delay: ${index * 80}ms`}
+                >
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="avatar-fallback hidden text-text-muted text-xs font-medium">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog/Insight Section -->
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-medium">Blog/Insight</h2>
+        <a href="/blog" class="text-sm text-accent-yellow hover:underline">
+          View all →
+        </a>
+      </div>
+      
+      {latestBlogPosts.length > 0 ? (
+        <div class="space-y-3">
+          {latestBlogPosts.map((post, index) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="blog-item group flex items-center gap-4 p-3 rounded-xl
+                     hover:bg-dark-700 transition-all duration-300"
+              style={`animation-delay: ${index * 60}ms`}
+            >
+              <!-- Thumbnail -->
+              <div class="w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden bg-dark-700">
+                {post.featuredImage ? (
+                  <img
+                    src={post.featuredImage}
+                    alt={post.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-gradient-to-br from-purple-500/30 to-pink-500/30
+                              flex items-center justify-center">
+                    <svg class="w-6 h-6 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+
+              <!-- Title -->
+              <h3 class="flex-1 text-sm sm:text-base text-text-primary group-hover:text-accent-yellow
+                         transition-colors duration-300 leading-snug">
+                {post.title}
+              </h3>
+            </a>
+          ))}
+          
+          <!-- Read More Button -->
+          <div class="pt-4 flex justify-end">
+            <a 
+              href="/blog"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-dark-700 hover:bg-dark-600 
+                     border border-dark-500 rounded-lg transition-all duration-300 
+                     hover:border-accent-yellow/30 group text-sm"
+            >
+              <span class="text-text-secondary group-hover:text-text-primary">Read More Blog Posts</span>
+              <svg class="w-4 h-4 text-accent-yellow opacity-0 group-hover:opacity-100 
+                         transform translate-x-[-5px] group-hover:translate-x-0 transition-all" 
+                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ) : (
+        <!-- Placeholder when no blog posts -->
+        <div class="space-y-3">
+          {[1, 2, 3, 4, 5].map((_, index) => (
+            <div 
+              class="blog-item group flex items-center gap-4 p-3 rounded-xl 
+                     hover:bg-dark-700 transition-all duration-300 cursor-pointer"
+              style={`animation-delay: ${index * 60}ms`}
+            >
+              <div class="w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden 
+                          bg-gradient-to-br from-purple-500/20 to-pink-500/20"></div>
+              <div class="flex-1">
+                <div class="h-4 bg-dark-600 rounded w-3/4"></div>
+              </div>
+            </div>
+          ))}
+          <p class="text-center text-sm text-text-muted pt-4">
+            Blog posts will appear here once connected to WordPress
+          </p>
+          <div class="pt-2 flex justify-end">
+            <a 
+              href="/blog"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-dark-700 hover:bg-dark-600 
+                     border border-dark-500 rounded-lg transition-all duration-300 
+                     hover:border-accent-yellow/30 group text-sm"
+            >
+              <span class="text-text-secondary group-hover:text-text-primary">Read More Blog Posts</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+
+  </section>
+
+</BaseLayout>

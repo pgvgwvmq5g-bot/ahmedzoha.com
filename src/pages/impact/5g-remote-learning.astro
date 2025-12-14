@@ -1,0 +1,328 @@
+---
+// 5g-remote-learning.astro - Impact Story: 5G for Remote Care
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const story = {
+  title: '5G for Remote Care: Developing Sensor-Free Activity Monitoring',
+  subtitle: 'Non-invasive RF sensing for dignified elderly care without wearables',
+  year: '2019-2022',
+  category: '5G Healthcare Innovation',
+  image: '/images/impact/5g-healthcare.png',
+  projectLink: '/projects/5g-new-thinking',
+};
+
+const highlights = [
+  { value: '3.75 GHz', label: '5G Band Frequency' },
+  { value: '2', label: 'Patent Citations' },
+  { value: 'Open', label: '5G-Enabled Activity Dataset' },
+  { value: 'Nature', label: 'Scientific Reports' },
+];
+
+const patents = [
+  { id: 'DE-102022128862-A1', year: '2022' },
+  { id: 'DE-102023123138-A1', year: '2023' },
+];
+
+const partners = [
+  'Scottish Government',
+  'DCMS',
+  'Albyn Housing Society',
+  'CISCO',
+  'Ofcom',
+];
+---
+
+<BaseLayout title={story.title} description={story.subtitle}>
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a 
+      href="/impact"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Impact
+    </a>
+
+    <!-- Story Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm font-medium">
+          {story.category}
+        </span>
+        <span class="text-text-muted">{story.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-5xl font-light mb-4">
+        {story.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {story.subtitle}
+      </p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img 
+        src={story.image} 
+        alt={story.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Impact Highlights -->
+    <div class="mb-12">
+      <div class="stats-gradient rounded-2xl p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {highlights.map((item) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent-yellow mb-1">{item.value}</div>
+              <div class="text-sm text-text-secondary">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+          
+          <!-- The Challenge -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">The Challenge</h3>
+            <p class="text-text-secondary leading-relaxed">
+              Traditional remote health monitoring systems — including our earlier NHS-deployed TIHM solution — 
+              require multiple intrusive sensors or wearable devices. This creates significant barriers: high 
+              deployment costs, privacy concerns, and low user acceptance among elderly populations who find 
+              wearables uncomfortable or stigmatizing. For remote and rural communities, these challenges are 
+              amplified by limited infrastructure and specialist support.
+            </p>
+          </div>
+
+          <!-- My Contribution -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">My Contribution</h3>
+            <p class="text-text-secondary leading-relaxed">
+              As a <strong class="text-text-primary">co-investigator and Work Package Lead</strong> from the
+              University of Glasgow on the <strong class="text-text-primary">5G New Thinking Project</strong>
+              (funded by Scottish Government and DCMS), the UoG team led by Prof Muhammad Imran successfully developed a
+              <strong class="text-text-primary">Portable Non-Invasive Radio Frequency (RF) Sensing System</strong>
+              for assistive living — a fundamentally different approach that monitors activities without any on-body sensors.
+            </p>
+          </div>
+
+          <!-- How It Works -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-cyan-500/30">
+            <h3 class="text-lg font-medium text-cyan-400 mb-3">How It Works</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The system uses Software Defined Radio (SDR) devices to extract Channel State Information (CSI) 
+              from continuous streams across multiple subcarriers. By analyzing how RF signals propagate between 
+              transmitting and receiving nodes, we detect variances in signal amplitude caused by human movement — 
+              enabling advanced gait and motion analysis to infer daily activity patterns.
+            </p>
+            
+            <!-- Technical Diagram -->
+            <div class="my-6 rounded-xl overflow-hidden border border-dark-500/30">
+              <img 
+                src="/images/impact/5g-tech.png" 
+                alt="5G RF Sensing Technical Architecture"
+                class="w-full h-auto"
+              />
+            </div>
+            
+            <p class="text-text-secondary leading-relaxed">
+              The key innovation lies in using <strong class="text-text-primary">Orthogonal Frequency-Division 
+              Multiplexing (OFDM)</strong> to capture small-scale signal propagation, providing sensitivity to 
+              detect subtle movements that indicate health changes.
+            </p>
+          </div>
+
+          <!-- The Role of 5G -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">The Role of 5G</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Our system was specifically designed to operate in the <strong class="text-text-primary">5G band 
+              at 3.75 GHz</strong> — making it a true 5G-native sensing solution. We secured 
+              <strong class="text-text-primary">Ofcom licensing approval</strong> to operate at this frequency, 
+              enabling deployment beyond the lab.
+            </p>
+            <p class="text-text-secondary mb-3">The choice of 5G was strategic for three reasons:</p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">5G frequency for sensing</strong> — Mining CSI from 5G communication channels with 20 MHz bandwidth provides the resolution needed for accurate activity detection</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Split-second response times</strong> — 5G's low latency enables health applications requiring immediate decisions, particularly for detecting emergencies like falls</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-cyan-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Network virtualization</strong> — 5G's ability to dynamically set up and tear down services without human intervention is critical for portable, pop-up health sensing deployments</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- The Trial -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-4">The Trial</h3>
+            <p class="text-text-secondary mb-4">We conducted a two-phase validation:</p>
+            <div class="space-y-4">
+              <div class="p-4 bg-dark-600 rounded-lg">
+                <h4 class="font-medium text-sm mb-2">Phase 1: University Lab Trials</h4>
+                <p class="text-text-secondary text-sm">
+                  Systematic experiments applying 5G sensing for non-invasive activity monitoring, 
+                  with results published in <strong class="text-text-primary">Nature Scientific Reports</strong>.
+                </p>
+              </div>
+              <div class="p-4 bg-dark-600 rounded-lg">
+                <h4 class="font-medium text-sm mb-2">Phase 2: Real-World Deployment</h4>
+                <p class="text-text-secondary text-sm">
+                  Partnered with <strong class="text-text-primary">Albyn Housing Society</strong> in Alness, Scotland 
+                  (a community with active 5G licenses) and <strong class="text-text-primary">CISCO</strong> to test 
+                  the system in an actual remote care home setting.
+                </p>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mt-4 italic">
+              We performed comprehensive latency analysis to determine feasibility of integrating actuating systems 
+              for future applications — proving that 5G can reliably support health emergencies requiring immediate response.
+            </p>
+          </div>
+
+          <!-- The Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">The Impact</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Published the <strong class="text-text-primary">5G-enabled activity detection research dataset</strong> (<a href="https://doi.org/10.5525/gla.researchdata.1151" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">DOI: 10.5525/gla.researchdata.1151</a>), openly available to accelerate global research</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Research published in <strong class="text-text-primary">Nature Scientific Reports</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Technology incorporated into <strong class="text-text-primary">2 international patent citations</strong> (DE-102022128862-A1, DE-102023123138-A1)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Addresses <strong class="text-text-primary">fall detection</strong> — the second leading cause of accidental deaths globally (WHO)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Provides evidence-led foundation for how <strong class="text-text-primary">5G-enabled "human-fidelity remote healthcare"</strong> can transform care delivery in remote and rural locations</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Why It Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why It Matters</h3>
+            <p class="text-text-secondary leading-relaxed italic">
+              This work demonstrates that the future of remote health monitoring doesn't require people to wear 
+              devices or fill their homes with sensors. By harnessing 5G's unique capabilities — both as a sensing 
+              medium and connectivity backbone — we've created a blueprint for dignified, non-invasive care that 
+              can scale to underserved communities worldwide. The openly released dataset ensures this isn't just 
+              our innovation, but a foundation for global research acceleration.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Patents -->
+        <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-cyan-400">
+            International Patent Citations
+          </h3>
+          <div class="space-y-3">
+            {patents.map((patent) => (
+              <div class="p-3 bg-dark-700 rounded-lg">
+                <span class="text-sm font-mono block">{patent.id}</span>
+                <span class="text-xs text-text-muted">{patent.year}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Dataset -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Open Dataset
+          </h3>
+          <a 
+            href="https://doi.org/10.5525/gla.researchdata.1151"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors block">
+              5G Activity Detection Dataset
+            </span>
+            <span class="block text-xs text-text-muted mt-1">World's first • Open access →</span>
+          </a>
+        </div>
+
+        <!-- Partners -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Key Partners
+          </h3>
+          <ul class="space-y-2">
+            {partners.map((partner) => (
+              <li class="text-sm text-text-secondary flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {partner}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Related Project -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Related Project
+          </h3>
+          <a 
+            href={story.projectLink}
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+              5G New Thinking
+            </span>
+            <span class="block text-xs text-text-muted mt-1">View full project details →</span>
+          </a>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20">
+          <h3 class="font-medium mb-2">Interested in 5G Healthcare?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Let's discuss potential collaborations in 5G-enabled health solutions.
+          </p>
+          <a 
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

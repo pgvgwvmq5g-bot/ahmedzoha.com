@@ -1,0 +1,19 @@
+{
+  "name": "ahmed-zoha-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "astro": "^5.16.3",
+    "tailwindcss": "^3.4.0"
+  }
+}

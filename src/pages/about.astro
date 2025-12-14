@@ -1,0 +1,745 @@
+---
+// about.astro - Comprehensive About Me page
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Research Impact cards
+const researchImpact = [
+  {
+    title: 'Global Research Standing',
+    items: [
+      'Stanford University Top 2% Most Cited Scientists (2022-2023)',
+      'Total Citations: 4,500+ | h-index: 29',
+      'Field-Weighted Citation Impact: 2.27',
+      'Publications in Top 10% Journals: 55%',
+      'Q1/Q2 Publications: 80%',
+    ],
+    icon: 'globe',
+  },
+  {
+    title: 'Real-World Impact & Translation',
+    items: [
+      'Award-winning NHS-deployed AI system for dementia care',
+      'Research cited in 3 government policy documents',
+      '33 international patents cite this research',
+      'Featured in 22+ media outlets including BBC Click',
+    ],
+    icon: 'impact',
+  },
+  {
+    title: 'Professional Recognition & Awards',
+    items: [
+      'UK Exceptional Talent - Royal Academy of Engineering',
+      'Distinguished Fellow - European Alliance for Innovation',
+      'Senior Member - IEEE',
+      'Fellow - Royal Society of Arts (RSA)',
+      'Multiple Best Paper Awards (IEEE)',
+    ],
+    icon: 'award',
+  },
+];
+
+// Academic appointments
+const academicAppointments = [
+  {
+    period: '2023 – Present',
+    role: 'Senior Lecturer / Associate Professor',
+    institution: 'University of Glasgow, UK',
+    summary: 'Director of FLAIR, School Management & Research Committee member, leading 23+ researchers and £400K+ annual research portfolio',
+  },
+  {
+    period: '2023 – Present',
+    role: 'Programme Director, Communications Engineering',
+    institution: 'University of Glasgow, UK',
+    summary: 'Overseeing curriculum strategy, IET accreditation, and transnational partnership with UESTC China',
+  },
+  {
+    period: '2019 – 2023',
+    role: 'Lecturer / Assistant Professor',
+    institution: 'University of Glasgow, UK',
+    summary: 'Designed and delivered 3 new undergraduate courses to 250-400 students with award-winning teaching',
+  },
+];
+
+// Research appointments
+const researchAppointments = [
+  {
+    period: '2017 – 2018',
+    role: 'Research Fellow (Data Analytics & ML)',
+    institution: '5G Innovation Centre, University of Surrey, UK',
+    summary: 'Lead AI developer for NHS-funded TIHM Project, delivering award-winning AI systems for dementia care',
+  },
+  {
+    period: '2016 – 2017',
+    role: 'Research Fellow (AI & Cyber-Physical Systems)',
+    institution: 'iTrust Research Centre, SUTD, Singapore',
+    summary: 'Developed AI-driven cybersecurity solutions for critical infrastructure including water treatment and smart grids',
+  },
+  {
+    period: '2013 – 2016',
+    role: 'Research Scientist (Principal Researcher)',
+    institution: 'Qatar Mobility Innovations Centre, Qatar',
+    summary: 'Principal Investigator on $1.45M QNRF programme, delivering AI algorithms achieving 35% operational cost reduction',
+  },
+];
+
+// Major funded programmes
+const fundedProgrammes = [
+  { 
+    name: 'LEAP', 
+    role: 'Principal Investigator', 
+    funding: '£300K', 
+    funder: 'Innovate UK', 
+    period: '2025–2027',
+    description: 'Developing AI-driven Personalised Learning Platform to support dialogic and personalised learning.'
+  },
+  { 
+    name: 'MIMER', 
+    role: 'Principal Investigator', 
+    funding: '£200K', 
+    funder: 'EPSRC, UK', 
+    period: '2024–2026',
+    description: 'Leading international consortium developing state-of-the-art deepfake detection solutions in partnership with governmental and commercial stakeholders.'
+  },
+  {
+    name: 'Scotland 5G Centre UoG Testbed',
+    role: 'Co-investigator',
+    funding: '£1.62M',
+    funder: 'Scottish Government, UK',
+    period: '2019–2023',
+    description: 'Worked with more than 30+ academic and industrial partners (Samsung, Nokia, Cisco) to deploy and test commercially driven 5G use cases.'
+  },
+  {
+    name: '5G New Thinking (UoG)',
+    role: 'Co-Investigator/Work-package Lead',
+    funding: '£160K',
+    funder: 'DCMS UK',
+    period: '2019–2022',
+    description: 'Developed and delivered new 5G solutions, including a "Smart" city network, to urban and rural communities in Scotland.'
+  },
+  { 
+    name: 'Quality-Aware Self-Organising Network', 
+    role: 'Lead Researcher', 
+    funding: '$1.45M', 
+    funder: 'QNRF, Qatar', 
+    period: '2013–2016',
+    description: 'Led international consortium (USA, UK, Spain) to develop autonomous network management solutions for 5G heterogeneous networks.'
+  },
+  { 
+    name: 'TIHM Healthcare AI', 
+    role: 'AI Research Fellow', 
+    funding: '£4.4 million', 
+    funder: 'NHS England, UK', 
+    period: '2017–2018',
+    description: 'Partnered with medical professionals from NHS England to develop and deploy AI-driven platform for enhancing dementia care.'
+  },
+  { 
+    name: 'Ed-Tech Innovation Grants', 
+    role: 'Principal Investigator', 
+    funding: '£60K', 
+    funder: 'UofG CEDI', 
+    period: '2022–2024',
+    description: 'Led portfolio of education-technology innovation grants, driving the integration of advanced learning technologies such as eye-tracking analytics and immersive XR into engineering education.'
+  },
+  { 
+    name: 'EPSRC Impact Acceleration Account (IAA) Grants', 
+    role: 'Principal Investigator', 
+    funding: '£65K', 
+    funder: 'EPSRC, UK', 
+    period: '2019–2023',
+    description: 'Led an EPSRC IAA funding portfolio totalling £65K, translating AI, IoT and energy analytics research into real-world solutions for independent living and smart buildings.'
+  },
+];
+
+// Education
+const education = [
+  { degree: 'PGCAP', field: 'Post Graduate Certification in Academic Practice', institution: 'University of Glasgow, UK', year: '2022' },
+  { degree: 'PhD', field: 'Electrical & Electronic Engineering', institution: 'University of Surrey, UK', year: '2014' },
+  { degree: 'MSc', field: 'Communication Engineering', institution: 'Chalmers University of Technology, Sweden', year: '2009' },
+];
+
+// Teaching courses
+const courses = [
+  'AI-Driven Next Generation Wireless Communication Systems (PhD)',
+  'Artificial Intelligence and Machine Learning (Year 3)',
+  'Introductory Programming (Year 1)',
+  'Digital Communication Systems (Year 4)',
+  "Coursera: '6G for a Connected Future' Module",
+];
+
+// Teaching stats
+const teachingStats = [
+  { label: 'Class Participation', before: '30%', after: '90%' },
+  { label: 'Average Exam Scores', before: '70%', after: '81%' },
+  { label: 'Pass Rate', before: '-', after: '99%' },
+  { label: 'Student Feedback', before: '-', after: '5-star' },
+];
+
+// Advisory roles
+const advisoryRoles = [
+  {
+    title: 'Editorial Leadership',
+    items: [
+      { role: 'Associate Editor', desc: 'Journal of Big Data (Impact Factor: 8.1)' },
+      { role: 'Associate Editor', desc: 'Frontiers in Communication and Networks' },
+      { role: 'Guest Editor', desc: '3 special issues on ML/FL for IoT' },
+      { role: 'Book Editor', desc: 'Body Area Networks (Springer, 2021)' },
+      { role: 'Book Editor', desc: 'Multimodal Intelligent Sensing (Wiley-IEEE Press, 2024)' },
+    ],
+  },
+  {
+    title: 'Conference Leadership',
+    items: [
+      { role: 'Chair Technical Programme', desc: 'EAI BodyNets 2021, Glasgow (200+ attendees)' },
+      { role: 'Technical Track Co-Chair', desc: 'IEEE PIMRC Workshop 2024, Toronto' },
+      { role: 'Track Chair', desc: 'BodyNets Workshop on Healthcare (150+ attendees) (2021)' },
+      { role: 'Publicity Chair', desc: '4th UK-China Emerging Technologies (UCET), Glasgow (2019-2020)' },
+      { role: 'Lead Organizer', desc: '1st 5G Workshop on Sustainable 5G, University of Glasgow (2018)' },
+      { role: 'Publicity Chair', desc: 'IEEE Infocom Workshop on Big Data, San Francisco (2016)' },
+    ],
+  },
+  {
+    title: 'External Examining & Grant Review',
+    items: [
+      { role: 'PhD/MSc Examiner', desc: 'Tallinn University of Technology (Estonia), UAEU (Abu Dhabi), NED University (Pakistan), University of Leeds (UK), University of Strathclyde (UK)' },
+      { role: 'Grant Reviewer', desc: 'UKRI Future Leadership Fellowship, EPSRC College, Ajman University (UAE), HBKU (Qatar), HEC (Pakistan)' },
+      { role: 'Journal Reviewer', desc: '20+ Q1 journals including IEEE Transactions and Nature' },
+    ],
+  },
+  {
+    title: 'Professional Advisory Roles',
+    items: [
+      { role: 'CSC Academic Advisor', desc: 'FCDO UK (2022–Present)' },
+      { role: 'Advisory Board Member', desc: 'Cloudlab Pvt Limited' },
+      { role: 'Visiting Researcher', desc: 'AI4Network, University of Oklahoma (2016–Present)' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="About Me" description="Learn more about Dr Ahmed Zoha - Professor of Distributed AI, Research Director, Driving AI for Social Good">
+  
+  <!-- Hero & Biography Section -->
+  <section class="pt-12 lg:pt-20 pb-16 lg:pb-24">
+    <div class="grid lg:grid-cols-[1fr,auto] gap-10 lg:gap-16 items-center">
+      <!-- Left Content -->
+      <div class="animate-fade-in order-2 lg:order-1">
+        <!-- Name & Title -->
+        <h1 class="text-4xl lg:text-5xl font-bold mb-2">
+          Dr Ahmed Zoha
+      </h1>
+        <p class="text-2xl lg:text-3xl text-accent-yellow font-light mb-8">
+          Professor (Assoc.) of Distributed AI
+        </p>
+        
+        <!-- Biography Paragraphs -->
+        <div class="space-y-5 text-text-secondary leading-relaxed max-w-xl">
+          <p>
+            I believe AI should do more than think—it should care. As a technology leader, 
+            educator, and advocate for responsible innovation, I have dedicated my career to 
+            building intelligent systems that advance <span class="text-accent-yellow font-medium">AI for social good</span>.
+          </p>
+          <p>
+            Recognized among <span class="text-text-primary font-medium">Stanford's Top 2% Most Cited Scientists</span> 
+            and endorsed as a <span class="text-text-primary font-medium">UK Exceptional Talent</span> by the Royal Academy 
+            of Engineering, I lead research at the intersection of Federated Learning, Edge Intelligence, and
+            AI-Driven Systems. With <span class="text-accent-yellow">4,500+ citations</span>,
+            <span class="text-accent-yellow">£1.5M+ in research funding</span>, and
+            <span class="text-accent-yellow">2 authored books</span>, my work bridges theoretical breakthroughs 
+            with transformative applications—from award-winning NHS-deployed systems for dementia care 
+            to privacy-preserving technologies for smart cities.
+          </p>
+          <p>
+            As Director of <span class="text-accent-yellow font-medium">FLAIR</span>, 
+            I lead a group of dynamic researchers in developing distributed AI that protects privacy 
+            while unlocking collaborative intelligence. My vision is a world-leading programme that 
+            translates cutting-edge research into real-world impact across healthcare, infrastructure, and beyond.
+          </p>
+          <p>
+            I am equally passionate about education and mentorship—shaping the next generation of AI 
+            researchers and practitioners who will carry this mission forward. For me, the true measure 
+            of research is not publications alone, but <span class="text-accent-yellow">lives improved and problems solved</span>.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Profile Photo (Right) -->
+      <div class="flex-shrink-0 animate-fade-in-delay order-1 lg:order-2 mx-auto lg:mx-0">
+        <div class="w-48 h-56 lg:w-56 lg:h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-accent-yellow/20 to-accent-yellow/5 p-1">
+          <div class="w-full h-full rounded-xl overflow-hidden">
+            <img 
+              src="/images/profile-large.jpg" 
+              alt="Dr Ahmed Zoha"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-dark-700 text-accent-yellow text-5xl font-bold\'>AZ</div>'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Impact -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-2xl lg:text-3xl font-medium scroll-animate">Research Impact & Recognition</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      {researchImpact.map((card, index) => (
+        <div class="impact-card bg-dark-700 rounded-2xl p-6 border border-dark-500/30 
+                    hover:border-accent-yellow/50 transition-all duration-300 scroll-animate"
+             style={`animation-delay: ${index * 0.1}s`}>
+          <div class="w-12 h-12 bg-accent-yellow/10 rounded-xl flex items-center justify-center mb-4">
+            {card.icon === 'globe' && (
+              <svg class="w-6 h-6 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+            {card.icon === 'impact' && (
+              <svg class="w-6 h-6 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            )}
+            {card.icon === 'award' && (
+              <svg class="w-6 h-6 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            )}
+          </div>
+          <h3 class="text-lg font-medium mb-4">{card.title}</h3>
+          <ul class="space-y-2">
+            {card.items.map((item) => (
+              <li class="text-sm text-text-secondary flex items-start gap-2">
+                <span class="text-accent-yellow mt-1">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8 text-center scroll-animate">
+      <a href="/research" class="inline-flex items-center gap-2 text-accent-yellow hover:underline">
+        Explore My Research
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Leadership Quote -->
+  <section class="py-8">
+    <div class="bg-dark-700 rounded-2xl p-6 lg:p-8 border border-dark-500/30 max-w-2xl mx-auto scroll-animate">
+      <div class="text-center">
+        <div class="text-4xl text-accent-yellow/20 font-serif mb-2">"</div>
+        <blockquote class="text-base lg:text-lg italic text-text-secondary leading-relaxed mb-4">
+          Impactful research requires more than technical excellence—it demands strategic vision, 
+          collaborative leadership, and a relentless focus on solving problems that matter.
+        </blockquote>
+        <cite class="text-accent-yellow font-medium not-italic text-sm">— Dr Ahmed Zoha</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Major Funded Programmes Led/Contributed -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <h2 class="text-2xl lg:text-3xl font-medium mb-10 scroll-animate">Major Funded Programmes Led/Contributed</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {fundedProgrammes.map((project, index) => (
+        <div class="funding-card bg-dark-700 rounded-xl p-5 border border-dark-500/30 
+                    hover:border-accent-yellow/50 transition-all duration-300 scroll-animate"
+             style={`animation-delay: ${index * 0.1}s`}>
+          <h3 class="font-medium mb-3 text-base lg:text-lg">{project.name}</h3>
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-accent-yellow/10 text-accent-yellow text-xs rounded">
+              {project.role}
+            </span>
+            {project.funder && (
+              <span class="px-2 py-0.5 bg-teal-500/10 text-teal-400 text-xs rounded">
+                {project.funder}
+              </span>
+            )}
+          </div>
+          <p class="text-sm text-text-secondary mb-3 leading-relaxed">{project.description}</p>
+          <div class="flex justify-between items-center text-sm pt-2 border-t border-dark-500/30">
+            <span class="text-accent-yellow font-medium">{project.funding}</span>
+            <span class="text-text-muted">{project.period}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Appointments & Service Roles - Multi-column Multi-row -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <h2 class="text-2xl lg:text-3xl font-medium mb-10 scroll-animate">Appointments & Service Roles</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Academic Appointments -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Academic Appointments</h3>
+        <div class="space-y-0">
+          {academicAppointments.map((item, index) => (
+            <div class="relative pl-5 pb-4 border-l-2 border-dark-500">
+              <div class="absolute -left-[5px] top-0 w-2 h-2 bg-accent-yellow rounded-full"></div>
+              <span class="text-xs text-accent-yellow font-medium">{item.period}</span>
+              <h4 class="text-sm font-medium mt-1">{item.role}</h4>
+              <p class="text-xs text-text-secondary">{item.institution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Research Appointments -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate" style="animation-delay: 0.05s">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Research Appointments</h3>
+        <div class="space-y-0">
+          {researchAppointments.map((item, index) => (
+            <div class="relative pl-5 pb-4 border-l-2 border-dark-500">
+              <div class="absolute -left-[5px] top-0 w-2 h-2 bg-accent-yellow rounded-full"></div>
+              <span class="text-xs text-accent-yellow font-medium">{item.period}</span>
+              <h4 class="text-sm font-medium mt-1">{item.role}</h4>
+              <p class="text-xs text-text-secondary">{item.institution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Editorial Leadership -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate" style="animation-delay: 0.1s">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Editorial Leadership</h3>
+        <ul class="space-y-3">
+          {advisoryRoles[0].items.map((item) => (
+            <li class="text-xs">
+              <span class="font-medium text-text-primary">{item.role}</span>
+              <span class="text-text-secondary"> — {item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Conference Leadership -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate" style="animation-delay: 0.15s">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Conference Leadership</h3>
+        <ul class="space-y-3">
+          {advisoryRoles[1].items.map((item) => (
+            <li class="text-xs">
+              <span class="font-medium text-text-primary">{item.role}</span>
+              <span class="text-text-secondary"> — {item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- External Examining & Grant Review -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate" style="animation-delay: 0.2s">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Examining & Grant Review</h3>
+        <ul class="space-y-3">
+          {advisoryRoles[2].items.map((item) => (
+            <li class="text-xs">
+              <span class="font-medium text-text-primary">{item.role}</span>
+              <span class="text-text-secondary"> — {item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Professional Advisory Roles -->
+      <div class="bg-dark-700 rounded-xl p-5 border border-dark-500/30 hover:border-accent-yellow/30 transition-all scroll-animate" style="animation-delay: 0.25s">
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Professional Advisory</h3>
+        <ul class="space-y-3">
+          {advisoryRoles[3].items.map((item) => (
+            <li class="text-xs">
+              <span class="font-medium text-text-primary">{item.role}</span>
+              <span class="text-text-secondary"> — {item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <h2 class="text-2xl lg:text-3xl font-medium mb-10 scroll-animate">Education</h2>
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-dark-500"></div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {education.map((edu, index) => (
+          <div class="relative scroll-animate" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- Timeline dot -->
+            <div class="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-4 h-4 bg-dark-900 border-2 border-accent-yellow rounded-full z-10"></div>
+            
+            <!-- Content card -->
+            <div class="md:pt-12">
+              <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 
+                          hover:border-accent-yellow/50 transition-all duration-300 text-center">
+                <span class="text-sm text-accent-yellow font-medium">{edu.year}</span>
+                <div class="text-2xl font-bold text-text-primary mt-2 mb-1">{edu.degree}</div>
+                <h3 class="font-medium text-sm mb-2">{edu.field}</h3>
+                <p class="text-xs text-text-secondary">{edu.institution}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching Leadership & Curriculum Design -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <h2 class="text-2xl lg:text-3xl font-medium mb-10 scroll-animate">Teaching Leadership & Curriculum Design</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Programme Leadership -->
+      <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/50 transition-all duration-300 scroll-animate">
+        <div class="w-10 h-10 bg-accent-yellow/10 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Programme Leadership</h3>
+        <ul class="space-y-2">
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span><span class="font-medium text-text-primary">Programme Director</span> for Communications Engineering</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Coordinated successful <span class="font-medium text-text-primary">IET accreditation</span> (AHEP 4 aligned)</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Oversee curriculum strategy and academic programme review</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Manage transnational partnership with <span class="font-medium text-text-primary">UESTC China</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Curriculum Design -->
+      <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/50 transition-all duration-300 scroll-animate" style="animation-delay: 0.1s">
+        <div class="w-10 h-10 bg-accent-yellow/10 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Curriculum Design</h3>
+        <ul class="space-y-2">
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Designed <span class="font-medium text-text-primary">4 courses</span> spanning PhD to undergraduate level</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Created AI-Driven Wireless Systems course (PhD)</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Developed AI/ML, Digital Communications, and Programming courses</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Courses delivered to <span class="font-medium text-text-primary">250-400 students</span> annually</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Global Reach -->
+      <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30 hover:border-accent-yellow/50 transition-all duration-300 scroll-animate" style="animation-delay: 0.2s">
+        <div class="w-10 h-10 bg-accent-yellow/10 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium mb-4 text-accent-yellow">Global Reach</h3>
+        <ul class="space-y-2">
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span><span class="font-medium text-text-primary">Coursera contributor:</span> '6G for a Connected Future' specialization</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span>Module on Multimodalities-enabled Smart Wireless Networks</span>
+          </li>
+          <li class="text-xs text-text-secondary flex items-start gap-2">
+            <span class="text-accent-yellow mt-0.5">•</span>
+            <span><span class="font-medium text-text-primary">£60K+</span> secured for technology-enhanced learning innovation</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 border-t border-dark-500/30">
+    <div class="text-center max-w-2xl mx-auto scroll-animate">
+      <h2 class="text-3xl lg:text-4xl font-light mb-4">
+        Let's <span class="text-accent-yellow font-medium">Collaborate</span>
+      </h2>
+      <p class="text-text-secondary mb-8">
+        I'm always open to discussing research collaborations, PhD supervision opportunities, 
+        industry partnerships, or speaking engagements. Let's explore how we can work together 
+        to advance AI for social good.
+      </p>
+      <a 
+        href="/contact"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-accent-yellow text-dark-900 
+               font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-lg"
+      >
+        Get in Touch
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Fade-in animations */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Scroll animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover effects */
+  .impact-card:hover,
+  .funding-card:hover,
+  .edu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Timeline animation */
+  .timeline-item {
+    transition: border-color 0.3s ease;
+  }
+  
+  .timeline-item:hover {
+    border-color: rgba(212, 233, 49, 0.5);
+  }
+  
+  .timeline-dot {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(212, 233, 49, 0.5);
+  }
+  
+  /* Accordion styling */
+  .advisory-accordion[open] {
+    border-color: rgba(212, 233, 49, 0.3);
+  }
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Add stagger delay based on data attribute or index
+          const delay = entry.target.style.animationDelay || '0s';
+          entry.target.style.transitionDelay = delay;
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    document.querySelectorAll('.scroll-animate').forEach((el) => {
+      observer.observe(el);
+    });
+    
+    // Count-up animation for stats
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const value = parseFloat(el.dataset.value);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const duration = 2000;
+          const start = performance.now();
+          
+          const animate = (currentTime) => {
+            const elapsed = currentTime - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = value * easeOut;
+            
+            if (value >= 100) {
+              el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            } else if (value >= 10) {
+              el.textContent = prefix + Math.floor(current) + suffix;
+            } else {
+              el.textContent = prefix + current.toFixed(1) + suffix;
+            }
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              if (value >= 100) {
+                el.textContent = prefix + Math.floor(value).toLocaleString() + suffix;
+              } else if (value >= 10) {
+                el.textContent = prefix + Math.floor(value) + suffix;
+              } else {
+                el.textContent = prefix + value + suffix;
+              }
+            }
+          };
+          
+          requestAnimationFrame(animate);
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach((el) => statsObserver.observe(el));
+  });
+</script>

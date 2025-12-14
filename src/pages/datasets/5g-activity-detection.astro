@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const dataset = {
+  title: '5G Enabled Contactless Activity Detection',
+  year: '2021',
+  description: 'A dataset for contactless human activity detection using 5G wireless signals.',
+  tags: ['5G Enabled Activity Sensing', 'Healthcare', 'AI based Activity Detection'],
+  overview: `
+    <p>This dataset supports research in contactless human activity detection leveraging 5G wireless communication infrastructure. It enables development of AI-based systems for healthcare monitoring and smart environment applications.</p>
+    <p class="mt-4">Key features include:</p>
+    <ul class="list-disc list-inside space-y-2 mt-2">
+      <li>5G signal-based activity sensing data</li>
+      <li>Healthcare-focused activity annotations</li>
+      <li>AI/ML-ready data format</li>
+      <li>Contactless sensing scenarios for privacy-preserving monitoring</li>
+    </ul>
+  `,
+};
+---
+
+<BaseLayout title={dataset.title} description={dataset.description}>
+  <section class="pt-8 lg:pt-16">
+    <!-- Header -->
+    <div class="mb-12">
+      <a href="/research" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Research
+      </a>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow text-sm rounded-full">Dataset</span>
+        <span class="text-text-muted">{dataset.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-4xl font-medium mb-4">
+        {dataset.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {dataset.description}
+      </p>
+    </div>
+
+    <!-- Tags -->
+    <div class="mb-12">
+      <h2 class="text-lg font-medium mb-4">Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+        {dataset.tags.map((tag) => (
+          <span class="px-3 py-1.5 bg-dark-700 border border-dark-500/30 rounded-lg text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-medium mb-6">Overview</h2>
+      <div class="bg-dark-700 rounded-xl p-6 lg:p-8 border border-dark-500/30">
+        <div class="prose prose-invert max-w-none text-text-secondary" set:html={dataset.overview} />
+      </div>
+    </div>
+
+    <!-- Placeholder for more content -->
+    <div class="bg-dark-700 rounded-xl p-8 border border-dark-500/30 text-center">
+      <div class="w-16 h-16 bg-dark-600 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium mb-2">More Details Coming Soon</h3>
+      <p class="text-text-secondary text-sm">
+        Additional information about dataset access, citation, and usage guidelines will be added here.
+      </p>
+    </div>
+
+  </section>
+</BaseLayout>
+

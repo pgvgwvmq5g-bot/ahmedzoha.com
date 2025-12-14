@@ -1,0 +1,386 @@
+---
+// energy-assisted-living.astro - Impact Story: AI-Driven Energy Monitoring
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const story = {
+  title: 'From Campus Testbed to Real-World Validation: AI-Driven Energy Monitoring for Assisted Living and Net Zero',
+  subtitle: 'A dual-purpose platform serving health monitoring and sustainability goals',
+  year: '2018-2022',
+  category: 'Energy & Healthcare Innovation',
+  image: '/images/impact/energy-monitoring.png',
+  projectLink: '/projects/coil-energy-network',
+  relatedProjectLink: '/projects/scotland-5g-centre',
+};
+
+const highlights = [
+  { value: '60+', label: 'Monitoring Nodes' },
+  { value: '4 Mo', label: 'Real-World Trial' },
+  { value: 'COP26', label: 'Showcase' },
+  { value: 'S5GC II', label: 'Follow-on Funding' },
+];
+
+const industryShowcase = [
+  'Nokia',
+  'Vodafone',
+  'Huawei',
+  'Scotland 5G Centre',
+];
+
+const partners = [
+  'EPSRC',
+  'Briteyellow Ltd',
+  'University of Glasgow',
+  'Scotland 5G Centre',
+  'Glasgow City Council',
+];
+---
+
+<BaseLayout title="Energy Monitoring for Assisted Living" description={story.subtitle}>
+  
+  <section class="pt-8 lg:pt-16">
+    <!-- Back Button -->
+    <a 
+      href="/impact"
+      class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
+             transition-colors mb-8"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Impact
+    </a>
+
+    <!-- Story Header -->
+    <div class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow rounded-full text-sm font-medium">
+          {story.category}
+        </span>
+        <span class="text-text-muted">{story.year}</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-4xl font-light mb-4">
+        {story.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {story.subtitle}
+      </p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-2xl overflow-hidden bg-gradient-to-br from-green-500/20 to-emerald-500/20 aspect-video flex items-center justify-center border border-dark-500/30">
+      <img 
+        src={story.image} 
+        alt={story.title}
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <!-- Impact Highlights -->
+    <div class="mb-12">
+      <div class="stats-gradient rounded-2xl p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {highlights.map((item) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent-yellow mb-1">{item.value}</div>
+              <div class="text-sm text-text-secondary">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-2">
+        <h2 class="text-xl font-medium mb-6">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
+          
+          <!-- The Challenge -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">The Challenge</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              With the rising cost of energy consumption and with carbon emissions fast becoming one of the world's
+              most pressing challenges, it's important to re-evaluate energy usage and come up with a strategy to
+              change collective behaviours to save money and resources.
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              At the same time, an aging population requires ambient assisted living solutions that can monitor
+              wellbeing non-invasively. We asked: <em class="text-text-primary">could a single intelligent system
+              address both challenges simultaneously?</em>
+            </p>
+          </div>
+
+          <!-- Phase 1 -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-green-500/30">
+            <h3 class="text-lg font-medium text-green-400 mb-3">Phase 1: Building the University Testbed</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              I led the development of the <strong class="text-text-primary">Persuasive Energy Conscious Network (PECN)</strong>
+              — a research testbed comprising <strong class="text-text-primary">60+ energy monitoring nodes</strong> deployed
+              across the James Watt South Building at the University of Glasgow.
+            </p>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              PECN allows businesses to assess energy usage, monitoring occupancy in real-time and providing accurate data
+              to reduce costs. Carbon emissions would be reduced by using this technology, helping businesses and organisations
+              to achieve Scotland's Net Zero targets.
+            </p>
+
+            <!-- COIL Setup Diagram -->
+            <div class="my-6 rounded-xl overflow-hidden border border-dark-500/30">
+              <img
+                src="/images/impact/coil-setup.png"
+                alt="COIL Energy Monitoring Setup"
+                class="w-full h-auto"
+              />
+            </div>
+
+            <p class="text-text-secondary leading-relaxed">
+              The system captures granular, real-time electricity consumption data, enabling machine learning analysis
+              of appliance usage patterns, occupancy behaviours, and energy efficiency opportunities.
+            </p>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-cyan-500/30">
+            <h3 class="text-lg font-medium text-cyan-400 mb-3">Phase 2: Industrial Partnership with Briteyellow</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Through the <strong class="text-text-primary">EPSRC Impact Acceleration funded COIL project</strong> 
+              (Energy Conscious Network for Independent Living), we partnered with <strong class="text-text-primary">Briteyellow Ltd</strong>, 
+              a telehealth company with expertise in wearable user tracking. The collaboration merged two complementary technologies:
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 mb-4">
+              <div class="p-3 bg-dark-600 rounded-lg">
+                <span class="text-sm font-medium text-green-400">PECN nodes</span>
+                <p class="text-xs text-text-muted mt-1">Granular energy consumption monitoring</p>
+              </div>
+              <div class="p-3 bg-dark-600 rounded-lg">
+                <span class="text-sm font-medium text-cyan-400">BriteCare platform</span>
+                <p class="text-xs text-text-muted mt-1">Indoor user location and activity tracking</p>
+              </div>
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              This integration created an <strong class="text-text-primary">Ambient Assisted Living (AAL) framework</strong> 
+              capable of correlating user movements with appliance usage — enabling detection of behavioral anomalies that 
+              may indicate health issues such as memory lapses or early signs of cognitive decline.
+            </p>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-amber-500/30">
+            <h3 class="text-lg font-medium text-amber-400 mb-3">Phase 3: Real-World Deployment and Validation</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              We deployed the integrated system at Briteyellow's offices for a <strong class="text-text-primary">four-month trial</strong>, 
+              monitoring an environment with approximately 20 daily occupants. The real-world data revealed:
+            </p>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-amber-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Clear correlations between user density, daily routines, and energy consumption patterns</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-amber-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Ability to detect anomalous appliance interactions (e.g., devices left on unexpectedly)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-amber-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary">Potential early warning indicators for health issues through deviations in routine behaviors</span>
+              </li>
+            </ul>
+            <p class="text-text-secondary leading-relaxed italic">
+              Our machine learning algorithms for energy forecasting and anomaly detection demonstrated that monitoring 
+              energy patterns alone can provide meaningful insights into occupant wellbeing — without invasive sensors or wearables.
+            </p>
+          </div>
+
+          <!-- The Impact -->
+          <div class="bg-dark-700 rounded-xl p-6 border border-emerald-500/30">
+            <h3 class="text-lg font-medium text-emerald-400 mb-4">The Impact</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Research Testbed:</strong> 60+ node deployment enabling ongoing research in energy modeling and activity detection</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Real-World Validation:</strong> 4-month deployment at Briteyellow proving commercial and technical viability</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Publication:</strong> Federated learning approach for anomaly-aware load forecasting published in Sensors journal (<a href="https://doi.org/10.3390/s23073570" target="_blank" rel="noopener noreferrer" class="text-accent-yellow hover:underline">DOI: 10.3390/s23073570</a>)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Industry Showcase:</strong> Demonstrated to Nokia, Vodafone, Huawei, and delegations from UESTC China and Pakistani universities; featured by Scotland 5G Centre as a 5G-enabled energy and environmental monitoring solution</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">COP26 Showcase:</strong> Presented to policymakers and public, demonstrating how AI supports Scotland's Net Zero targets</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Public Engagement:</strong> Presented to young female students at Glasgow City Council Civic Reception, inspiring future STEM careers</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Policy Relevance:</strong> Opportunities to reduce carbon footprints through sensing, monitoring and data insight allow businesses and individuals to make choices to change their behaviour and decision-making based on energy emissions they generate</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 mt-2 bg-emerald-400 rounded-full flex-shrink-0"></span>
+                <span class="text-text-secondary"><strong class="text-text-primary">Follow-on Funding:</strong> Contributed to securing follow on EPSRC Impact Acceleration and Scotland 5G Centre Phase II projects funding</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Why It Matters -->
+          <div class="bg-gradient-to-br from-accent-yellow/10 to-amber-500/10 rounded-xl p-6 border border-accent-yellow/30">
+            <h3 class="text-lg font-medium text-accent-yellow mb-3">Why It Matters</h3>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              The race against climate change and the huge increase in energy prices presents huge challenges for
+              organisations. A simple and effective 5G solution like the Persuasive Energy Conscious Network can help
+              businesses in assessing their energy usage behaviours and work towards improving it.
+            </p>
+            <p class="text-text-secondary leading-relaxed italic">
+              By starting with rigorous university-based research, then validating through industrial partnership, we've
+              created a pathway from lab to real-world deployment — <strong class="text-text-primary">demonstrating that
+              health tech and climate tech can work together.</strong>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- COP26 Showcase -->
+        <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl p-6 border border-green-500/20">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-green-400">
+            COP26 Showcase
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-dark-600 rounded-full text-sm text-text-secondary">
+              Showcase Presentation
+            </span>
+            <span class="px-3 py-1 bg-dark-600 rounded-full text-sm text-text-secondary">
+              AI for Net Zero
+            </span>
+            <span class="px-3 py-1 bg-dark-600 rounded-full text-sm text-text-secondary">
+              Policymakers & Public
+            </span>
+          </div>
+        </div>
+
+        <!-- Industry Showcase -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Industry Showcase
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {industryShowcase.map((company) => (
+              <span class="px-3 py-1 bg-dark-600 rounded-full text-sm text-text-secondary">
+                {company}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Publication -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Publication
+          </h3>
+          <a 
+            href="https://doi.org/10.3390/s23073570"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+          >
+            <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors block">
+              Federated Learning for Anomaly-Aware Load Forecasting
+            </span>
+            <span class="block text-xs text-cyan-400 mt-1">Sensors Journal</span>
+            <span class="block text-xs text-text-muted mt-1">DOI: 10.3390/s23073570 →</span>
+          </a>
+        </div>
+
+        <!-- Partners -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Key Partners
+          </h3>
+          <ul class="space-y-2">
+            {partners.map((partner) => (
+              <li class="text-sm text-text-secondary flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-accent-yellow rounded-full"></span>
+                {partner}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Related Projects -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Related Projects
+          </h3>
+          <div class="space-y-3">
+            <a 
+              href={story.projectLink}
+              class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+            >
+              <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+                Energy Conscious Network for Independent Living (COIL)
+              </span>
+              <span class="block text-xs text-text-muted mt-1">View project details →</span>
+            </a>
+            <a 
+              href={story.relatedProjectLink}
+              class="block p-4 bg-dark-600 rounded-lg hover:bg-dark-500 transition-colors group"
+            >
+              <span class="text-sm font-medium group-hover:text-accent-yellow transition-colors">
+                5G Scotland Centre
+              </span>
+              <span class="block text-xs text-text-muted mt-1">5G-enabled solutions →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Policy Impact -->
+        <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+          <h3 class="font-medium mb-4 text-sm uppercase tracking-wider text-text-muted">
+            Policy Relevance
+          </h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block">Scotland's Net Zero Targets</span>
+              <span class="text-xs text-text-muted">Energy monitoring for carbon reduction</span>
+            </div>
+            <div class="p-3 bg-dark-600 rounded-lg">
+              <span class="text-sm font-medium block">Behavioural Change</span>
+              <span class="text-xs text-text-muted">Data-driven decision making on emissions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl p-6 border border-green-500/20">
+          <h3 class="font-medium mb-2">Interested in Energy AI?</h3>
+          <p class="text-sm text-text-secondary mb-4">
+            Let's discuss potential collaborations in energy and assisted living.
+          </p>
+          <a 
+            href="/contact"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
+                   font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>
+
