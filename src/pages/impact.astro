@@ -82,6 +82,16 @@ const impactStories = [
     tags: ['Energy', 'Net Zero', 'COP26'],
     color: 'from-green-500/20 to-emerald-500/20',
   },
+  {
+    id: 'top-scientist-recognition',
+    title: 'Top 2% Most-Cited Scientists Worldwide',
+    subtitle: 'Stanford/Elsevier recognition for research impact',
+    year: '2022-2023',
+    image: '/images/impact/top_sci.png',
+    category: 'Research Excellence',
+    tags: ['Stanford', 'Citations', 'h-index'],
+    color: 'from-rose-500/20 to-pink-500/20',
+  },
 ];
 
 // Media features (ordered by year, most recent first)
@@ -94,7 +104,7 @@ const mediaFeatures = [
     description: 'Our TIHM dementia care research cited in an official European Union policy document.',
     publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195605',
     logo: '/images/media/eu-logo.png',
-    projectLink: '/projects/tihm-healthcare',
+    projectLink: '/projects/tihm-healthcare/',
     projectTitle: 'Technology Integrated Health Management (TIHM)',
   },
   {
@@ -104,7 +114,7 @@ const mediaFeatures = [
     link: 'https://futurescot.com/glasgow-robotics-learning-experience-enjoyed-by-students-globally/',
     description: 'Coverage of the Scotland 5G Centre testbed at University of Glasgow, enabling immersive remote robotics-powered learning experiences for students worldwide.',
     logo: '/images/media/futurescot-logo.png',
-    projectLink: '/projects/scotland-5g-centre',
+    projectLink: '/projects/scotland-5g-centre/',
     projectTitle: '5G Scotland Centre Phase I/II - University of Glasgow',
   },
   {
@@ -114,7 +124,7 @@ const mediaFeatures = [
     link: 'https://www.digit.fyi/5g-tech-is-helping-to-support-a-pioneering-glasgow-uni-robotics-project/',
     description: 'Our team\'s pioneering work on 5G-enabled remote laboratory access was featured in national technology press. The project demonstrates how students can conduct experiments using robotic systems from anywhere in the world, marking a significant advancement in remote education capabilities.',
     logo: '/images/impact/digitfyi.png',
-    projectLink: '/projects/scotland-5g-centre',
+    projectLink: '/projects/scotland-5g-centre/',
     projectTitle: '5G Scotland Centre Phase I/II - University of Glasgow',
   },
   {
@@ -125,7 +135,7 @@ const mediaFeatures = [
     description: 'Our work on UTI detection published in PLOS ONE is featured in this healthcare news article.',
     publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209909',
     logo: '/images/media/mpr-logo.png',
-    projectLink: '/projects/tihm-healthcare',
+    projectLink: '/projects/tihm-healthcare/',
     projectTitle: 'Technology Integrated Health Management (TIHM)',
   },
   {
@@ -136,7 +146,7 @@ const mediaFeatures = [
     description: 'Our machine learning research for UTI detection in dementia patients featured in Medindia health news.',
     publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209909',
     logo: '/images/media/medindia-logo.png',
-    projectLink: '/projects/tihm-healthcare',
+    projectLink: '/projects/tihm-healthcare/',
     projectTitle: 'Technology Integrated Health Management (TIHM)',
   },
   {
@@ -147,7 +157,7 @@ const mediaFeatures = [
     description: 'Our TIHM research on using IoT and machine learning for dementia care monitoring featured in Science Daily.',
     publicationLink: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195605',
     logo: '/images/media/sciencedaily-logo.png',
-    projectLink: '/projects/tihm-healthcare',
+    projectLink: '/projects/tihm-healthcare/',
     projectTitle: 'Technology Integrated Health Management (TIHM)',
   },
   {
@@ -180,9 +190,9 @@ const mediaFeatures = [
       <h2 class="text-2xl font-medium mb-8">Impact Stories</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {impactStories.map((story, index) => (
-          <a 
-            href={`/impact/${story.id}`}
-            class="group block bg-dark-700 rounded-2xl overflow-hidden border border-dark-500/30 
+          <a
+            href={`/impact/${story.id}/`}
+            class="group block bg-dark-700 rounded-2xl overflow-hidden border border-dark-500/30
                    hover:border-accent-yellow/30 transition-all duration-300 impact-story-card"
             style={`animation-delay: ${index * 0.1}s`}
           >

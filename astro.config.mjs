@@ -5,10 +5,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   site: 'https://www.ahmedzoha.com',
+  trailingSlash: 'always',
+
   redirects: {
-    '/flair': '/flair',
-    '/flair/': '/flair/',
+    '/modai/': '/flair/',
   },
 });
+
 
 

@@ -5,9 +5,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const story = {
   title: 'Top 2% Most-Cited Scientists Worldwide',
   subtitle: 'Stanford/Elsevier recognition for research impact',
-  year: '2023-2024',
+  year: '2022-2023',
   category: 'Research Excellence',
-  image: '/images/impact/recognition.jpg',
+  image: '/images/impact/top_sci.png',
 };
 
 const highlights = [
@@ -18,9 +18,9 @@ const highlights = [
 ];
 
 const recognitions = [
-  { title: 'Stanford/Elsevier Top 2% Scientists', year: '2023, 2024', type: 'Global Ranking' },
-  { title: 'Top 10% Most Cited (Scopus)', year: '2024', type: 'Citation Impact' },
-  { title: 'Top 10% Most Viewed (Scopus)', year: '2024', type: 'Research Visibility' },
+  { title: 'Stanford/Elsevier Top 2% Scientists', year: '2022, 2023', type: 'Global Ranking' },
+  { title: 'Top 10% Most Cited (Scopus)', year: '2023', type: 'Citation Impact' },
+  { title: 'Top 10% Most Viewed (Scopus)', year: '2023', type: 'Research Visibility' },
 ];
 ---
 
@@ -29,7 +29,7 @@ const recognitions = [
   <section class="pt-8 lg:pt-16">
     <!-- Back Button -->
     <a 
-      href="/impact"
+      href="/impact/"
       class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow 
              transition-colors mb-8"
     >
@@ -84,17 +84,17 @@ const recognitions = [
     <!-- Content -->
     <div class="grid lg:grid-cols-3 gap-8 mb-16">
       <div class="lg:col-span-2">
-        <h2 class="text-xl font-medium mb-4">The Story</h2>
-        <div class="prose prose-invert max-w-none space-y-4">
-          <p class="text-text-secondary leading-relaxed">
-            Content coming soon. This page will detail the journey to being recognized among 
-            the top 2% most-cited scientists worldwide according to the Stanford/Elsevier 
-            database, and the research impact that led to this recognition.
-          </p>
-          
+        <h2 class="text-xl font-medium mb-6">The Story</h2>
+        <div class="prose prose-invert max-w-none space-y-6">
           <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
-            <p class="text-text-muted text-sm italic">
-              This is a placeholder page. Update this content with your impact story details.
+            <p class="text-text-secondary leading-relaxed">
+              Being recognised among Stanford University's Top 2% Most-Cited Scientists is an honour I deeply value. This achievement is not an individual milestone, but a reflection of the collective effort, curiosity, and persistence of the incredible students, postdocs, collaborators, and research partners I have been fortunate to work with.
+            </p>
+          </div>
+
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-500/30">
+            <p class="text-text-secondary leading-relaxed">
+              Our shared work across energy systems, AI, telecommunications, and multimodal sensing has been driven by real-world impact rather than metrics, and I am sincerely grateful to my research groups and collaborators for their trust, creativity, and commitment.
             </p>
           </div>
         </div>
@@ -176,7 +176,7 @@ const recognitions = [
             Interested in collaborating on impactful research? Let's connect.
           </p>
           <a 
-            href="/contact"
+            href="/contact/"
             class="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow text-dark-900 
                    font-medium rounded-lg hover:bg-accent-yellow/90 transition-colors text-sm"
           >

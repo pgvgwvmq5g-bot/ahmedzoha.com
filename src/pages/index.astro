@@ -349,7 +349,7 @@ const flairTeam = [
     <div class="mb-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-medium">News & Updates</h2>
-        <a href="/news" class="text-sm text-accent-yellow hover:underline">
+        <a href="/news/" class="text-sm text-accent-yellow hover:underline">
           View all →
         </a>
       </div>
@@ -408,16 +408,16 @@ const flairTeam = [
     <div class="mb-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-medium">Featured Projects</h2>
-        <a href="/projects" class="text-sm text-accent-yellow hover:underline">
+        <a href="/projects/" class="text-sm text-accent-yellow hover:underline">
           View all →
         </a>
       </div>
       
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {featuredProjects.slice(0, 4).map((project, index) => (
-          <a 
-            href={`/projects/${project.id}`}
-            class="project-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+          <a
+            href={`/projects/${project.id}/`}
+            class="project-card group relative block rounded-2xl overflow-hidden border border-dark-500/30
                    hover:border-accent-yellow/30 transition-all duration-500"
             style={`animation-delay: ${index * 100}ms`}
           >
@@ -484,16 +484,16 @@ const flairTeam = [
     <div class="mb-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-medium">Impact & Outreach</h2>
-        <a href="/impact" class="text-sm text-accent-yellow hover:underline">
+        <a href="/impact/" class="text-sm text-accent-yellow hover:underline">
               Learn more →
         </a>
       </div>
       
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {impactStories.map((story, index) => (
-          <a 
-            href={`/impact/${story.id}`}
-            class="impact-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+          <a
+            href={`/impact/${story.id}/`}
+            class="impact-card group relative block rounded-2xl overflow-hidden border border-dark-500/30
                    hover:border-accent-yellow/30 transition-all duration-500"
             style={`animation-delay: ${index * 100}ms`}
           >
@@ -584,16 +584,16 @@ const flairTeam = [
     <div class="mb-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-medium">Research in Focus</h2>
-        <a href="/research" class="text-sm text-accent-yellow hover:underline">
+        <a href="/research/" class="text-sm text-accent-yellow hover:underline">
           View all →
         </a>
       </div>
       
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {researchFocus.map((research, index) => (
-          <a 
-            href={`/research#${research.id}`}
-            class="research-card group relative block rounded-2xl overflow-hidden border border-dark-500/30 
+          <a
+            href={`/research/#${research.id}`}
+            class="research-card group relative block rounded-2xl overflow-hidden border border-dark-500/30
                    hover:border-accent-yellow/30 transition-all duration-500"
             style={`animation-delay: ${index * 100}ms`}
           >
@@ -700,7 +700,7 @@ const flairTeam = [
             </p>
             <div>
               <a 
-                href="/flair"
+                href="/flair/"
                 class="inline-flex items-center gap-2 px-6 py-3 bg-dark-600 hover:bg-dark-500 
                        border border-dark-500 rounded-lg transition-all duration-300 
                        hover:border-accent-yellow/30 group"
@@ -763,7 +763,7 @@ const flairTeam = [
     <div class="mb-16">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-medium">Blog/Insight</h2>
-        <a href="/blog" class="text-sm text-accent-yellow hover:underline">
+        <a href="/blog/" class="text-sm text-accent-yellow hover:underline">
           View all →
         </a>
       </div>
@@ -772,7 +772,7 @@ const flairTeam = [
         <div class="space-y-3">
           {latestBlogPosts.map((post, index) => (
             <a
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.slug}/`}
               class="blog-item group flex items-center gap-4 p-3 rounded-xl
                      hover:bg-dark-700 transition-all duration-300"
               style={`animation-delay: ${index * 60}ms`}
@@ -806,7 +806,7 @@ const flairTeam = [
           <!-- Read More Button -->
           <div class="pt-4 flex justify-end">
             <a 
-              href="/blog"
+              href="/blog/"
               class="inline-flex items-center gap-2 px-5 py-2.5 bg-dark-700 hover:bg-dark-600 
                      border border-dark-500 rounded-lg transition-all duration-300 
                      hover:border-accent-yellow/30 group text-sm"
@@ -841,7 +841,7 @@ const flairTeam = [
           </p>
           <div class="pt-2 flex justify-end">
             <a 
-              href="/blog"
+              href="/blog/"
               class="inline-flex items-center gap-2 px-5 py-2.5 bg-dark-700 hover:bg-dark-600 
                      border border-dark-500 rounded-lg transition-all duration-300 
                      hover:border-accent-yellow/30 group text-sm"

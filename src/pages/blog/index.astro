@@ -144,11 +144,11 @@ const blogPosts = [
 
       <h2>Putting Theory into Practice: The LEAP Project</h2>
 
-      <p>These aren't just theoretical concerns for me. I'm currently leading <a href="/projects/leap" class="text-accent-yellow hover:underline">LEAP (Learning Enhancement through Adaptive Pathways)</a>, a two-year Knowledge Transfer Partnership funded by Innovate UK. We're developing an AI platform specifically designed to support teachers and enhance student learning through dialogue-driven thinking.</p>
+      <p>These aren't just theoretical concerns for me. I'm currently leading <a href="/projects/leap/" class="text-accent-yellow hover:underline">LEAP (Learning Enhancement through Adaptive Pathways)</a>, a two-year Knowledge Transfer Partnership funded by Innovate UK. We're developing an AI platform specifically designed to support teachers and enhance student learning through dialogue-driven thinking.</p>
 
       <p>The goal isn't to replace human teaching but to amplify educator expertise. LEAP uses adaptive pathways to create spaces where AI acts as a scaffold for deeper thinking, not a shortcut around it. It's about designing AI tools that preserve and enhance the dialogic spaces I've been talking about, rather than collapsing them.</p>
 
-      <p>If you're interested in how we're approaching this challenge practically, <a href="/projects/leap" class="text-accent-yellow hover:underline">you can learn more about the LEAP project here</a>.</p>
+      <p>If you're interested in how we're approaching this challenge practically, <a href="/projects/leap/" class="text-accent-yellow hover:underline">you can learn more about the LEAP project here</a>.</p>
 
       <h2>What Needs to Change</h2>
 
@@ -349,7 +349,7 @@ const hasPosts = posts.length > 0;
             <div class="grid md:grid-cols-2 gap-6">
               {featuredPosts.map((post) => (
                 <a
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   class="group block bg-dark-700 rounded-2xl overflow-hidden border border-dark-500/30
                          hover:border-accent-yellow/30 transition-all"
                 >
@@ -421,7 +421,7 @@ const hasPosts = posts.length > 0;
             <div class="space-y-6" id="posts-container">
               {remainingPosts.map((post) => (
                 <a
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   class="blog-post flex flex-col md:flex-row gap-6 p-6 bg-dark-700 rounded-xl
                          border border-dark-500/30 hover:border-accent-yellow/30
                          hover:bg-dark-600 transition-all group"
