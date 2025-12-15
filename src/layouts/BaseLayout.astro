@@ -1,7 +1,6 @@
 ---
 // BaseLayout.astro - Main layout wrapper for all pages
 import Sidebar from '../components/Sidebar.astro';
-import SearchModal from '../components/SearchModal.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -94,8 +93,5 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
       <slot />
     </div>
   </main>
-
-  <!-- Search Modal -->
-  <SearchModal />
 </body>
 </html>

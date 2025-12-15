@@ -960,32 +960,77 @@ const categories = ['All', 'Federated Learning', '5G/6G', 'Healthcare', 'IoT & E
       <!-- Multi-tab Layout -->
       <div class="bg-dark-700 rounded-2xl border border-dark-500/30 overflow-hidden">
         <div class="grid lg:grid-cols-[280px_1fr]">
-          
-          <!-- Left Side - Category Tabs -->
+
+          <!-- Left Side - Category Tabs (Desktop) / Accordion (Mobile) -->
           <div class="lg:border-r border-dark-500/30 bg-dark-800/50">
-            <div class="p-4 border-b border-dark-500/30 lg:border-b-0">
+            <div class="p-4 border-b border-dark-500/30 lg:border-b-0 hidden lg:block">
               <span class="text-xs text-text-muted uppercase tracking-wider">Research Areas</span>
             </div>
-            <div class="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
-              {publicationCategories.map((category, index) => (
-            <button 
-                  class={`pub-tab flex-shrink-0 lg:flex-shrink w-full text-left px-4 py-4 border-b border-dark-500/20 
-                         transition-all flex items-center gap-3 group
-                         ${index === 0 ? 'bg-dark-700 border-l-2 border-l-accent-yellow text-text-primary' : 'hover:bg-dark-700/50 text-text-secondary border-l-2 border-l-transparent'}`}
-                  data-pub-tab={index}
-                >
-                  <span class={`w-2 h-2 rounded-full flex-shrink-0 transition-colors ${index === 0 ? 'bg-accent-yellow' : 'bg-dark-500 group-hover:bg-text-secondary'}`}></span>
-                  <div class="min-w-0">
-                    <span class="text-sm font-medium block truncate lg:whitespace-normal">{category.name}</span>
-                    <span class="text-xs text-text-muted">{category.publications.length} papers</span>
+            <div class="flex flex-col lg:flex-col">
+              {publicationCategories.map((category, index) => {
+                // Create URL-friendly IDs for each category
+                const categoryIds = ['federated-learning', '6g', 'healthcare', 'iot-energy'];
+                return (
+                  <div class="pub-category-wrapper">
+                    <button
+                      class={`pub-tab w-full text-left px-4 py-4 border-b border-dark-500/20
+                             transition-all flex items-center justify-between gap-3 group
+                             ${index === 0 ? 'bg-dark-700 border-l-2 border-l-accent-yellow text-text-primary' : 'hover:bg-dark-700/50 text-text-secondary border-l-2 border-l-transparent'}`}
+                      data-pub-tab={index}
+                      data-category-id={categoryIds[index]}
+                    >
+                      <div class="flex items-center gap-3 flex-1 min-w-0">
+                        <span class={`w-2 h-2 rounded-full flex-shrink-0 transition-colors ${index === 0 ? 'bg-accent-yellow' : 'bg-dark-500 group-hover:bg-text-secondary'}`}></span>
+                        <div class="min-w-0">
+                          <span class="text-sm font-medium block truncate lg:whitespace-normal">{category.name}</span>
+                          <span class="text-xs text-text-muted">{category.publications.length} papers</span>
+                        </div>
+                      </div>
+                      <svg class="chevron-icon w-4 h-4 text-text-muted lg:hidden transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    <!-- Mobile Accordion Publications (hidden by default, shown on mobile when clicked) -->
+                    <div class="mobile-pub-detail hidden lg:hidden divide-y divide-dark-500/30 bg-dark-600/50" data-mobile-pub-id={categoryIds[index]}>
+                      {category.publications.map((pub) => (
+                        <a
+                          href={pub.doi !== 'Accepted' ? `https://doi.org/${pub.doi}` : '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="block px-6 py-4 hover:bg-dark-600 transition-all group"
+                        >
+                          <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1 min-w-0">
+                              <h4 class="text-sm font-medium group-hover:text-accent-yellow transition-colors leading-relaxed">
+                                {pub.title}
+                              </h4>
+                              <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-xs text-accent-yellow/80 bg-accent-yellow/10 px-2 py-0.5 rounded">
+                                  {pub.year}
+                                </span>
+                                <span class="text-xs text-cyan-400/80 bg-cyan-400/10 px-2 py-0.5 rounded">
+                                  {pub.journal}
+                                </span>
+                              </div>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0">
+                              <svg class="w-4 h-4 text-text-muted group-hover:text-accent-yellow transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                              </svg>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
-            </button>
-          ))}
+                );
+              })}
         </div>
       </div>
 
-          <!-- Right Side - Publications List -->
-          <div class="min-h-[400px] max-h-[600px] overflow-y-auto" id="selected-publications">
+          <!-- Right Side - Publications List (Desktop only) -->
+          <div class="hidden lg:block min-h-[400px] max-h-[600px] overflow-y-auto" id="selected-publications">
             {publicationCategories.map((category, catIndex) => {
               // Create URL-friendly IDs for each category
               const categoryIds = ['federated-learning', '6g', 'healthcare', 'iot-energy'];
@@ -1199,17 +1244,47 @@ const categories = ['All', 'Federated Learning', '5G/6G', 'Healthcare', 'IoT & E
         tab.querySelector('span:first-child')?.classList.add('bg-accent-yellow');
       }
 
-      // Show corresponding content
+      // Show corresponding content (desktop only)
       document.querySelectorAll('.pub-content').forEach(content => {
         content.classList.add('hidden');
       });
       document.querySelector(`[data-pub-content="${tabIndex}"]`)?.classList.remove('hidden');
     }
 
+    // Mobile accordion functionality for publications
     document.querySelectorAll('.pub-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         const tabIndex = tab.getAttribute('data-pub-tab');
-        switchPublicationTab(tabIndex);
+        const categoryId = tab.getAttribute('data-category-id');
+        const mobileDetail = document.querySelector(`[data-mobile-pub-id="${categoryId}"]`);
+        const chevron = tab.querySelector('.chevron-icon');
+
+        // Check if we're on mobile (window width < 1024px for lg breakpoint)
+        const isMobile = window.innerWidth < 1024;
+
+        if (isMobile && mobileDetail) {
+          // Mobile: Toggle accordion
+          const isCurrentlyOpen = !mobileDetail.classList.contains('hidden');
+
+          // Close all other accordions
+          document.querySelectorAll('.mobile-pub-detail').forEach(detail => {
+            detail.classList.add('hidden');
+          });
+
+          // Reset all chevrons
+          document.querySelectorAll('.chevron-icon').forEach(icon => {
+            icon.classList.remove('rotate-180');
+          });
+
+          // Toggle current accordion
+          if (!isCurrentlyOpen) {
+            mobileDetail.classList.remove('hidden');
+            chevron?.classList.add('rotate-180');
+          }
+        } else {
+          // Desktop: Switch tabs as normal
+          switchPublicationTab(tabIndex);
+        }
       });
     });
 
