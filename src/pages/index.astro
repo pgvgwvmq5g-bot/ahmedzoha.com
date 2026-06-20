@@ -49,6 +49,46 @@ const blogPosts = [
 // Static News & Updates - sorted by date (newest first)
 const newsUpdates = [
   {
+    title: 'Dr Basim Alhumaily Passes PhD Viva',
+    excerpt: 'FLAIR researcher Basim Alhumaily successfully defended his PhD (minor corrections), with work on AI and radar-based sensing for camera-free, contactless monitoring of human activity and vital signs — completed alongside his faculty role at Qassim University.',
+    date: 'Jun 2026',
+    dateSort: new Date('2026-06-17'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7473049474542657536',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'Dr Saja Al Ani Passes PhD Viva',
+    excerpt: 'Saja Al Ani successfully defended her PhD at the University of Glasgow, passing with minor corrections. Her research developed deep-learning models for ultrasound tongue imaging to support the clinical assessment of speech sound disorders.',
+    date: 'May 2026',
+    dateSort: new Date('2026-05-22'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7463585319058153472',
+    categories: [{ name: 'Recognition' }],
+    category: 'Recognition',
+    featuredImage: null,
+  },
+  {
+    title: 'VeriVoice-V1 Bilingual Speech Corpus Released',
+    excerpt: 'The MIMER project publicly released VeriVoice-V1, a bilingual Urdu-English speech corpus for deepfake detection and remote identity-verification research — the project first public dataset deliverable, developed with UET Taxila and industrial partner STech.ai.',
+    date: 'May 2026',
+    dateSort: new Date('2026-05-05'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7457390014776225792',
+    categories: [{ name: 'Research' }],
+    category: 'Research',
+    featuredImage: null,
+  },
+  {
+    title: 'MIMER Roundtable on Digital Identity, Deepfakes & Fraud',
+    excerpt: 'Organised and chaired a hybrid roundtable at the James Watt School of Engineering, bringing together industry, academia and policy experts to tackle digital identity, deepfakes and fraud in the age of generative AI — part of the EPSRC-funded UK-Pakistan MIMER collaboration.',
+    date: 'Feb 2026',
+    dateSort: new Date('2026-02-06'),
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7425683426730569728',
+    categories: [{ name: 'Activity' }],
+    category: 'Activity',
+    featuredImage: null,
+  },
+  {
     title: 'Advance in Multilingual Voice Anti-Spoofing Research',
     excerpt: 'MIMER project achieves major milestone with the acceptance of a significant MSS dataset paper at IEEE CBMI 2025 in Dublin. This first-of-its-kind multilingual spoofed speech dataset addresses critical challenges in deepfake detection and digital identity fraud.',
     date: 'Oct 2025',
@@ -98,10 +138,10 @@ const latestBlogPosts = blogPosts.sort((a, b) => b.dateSort - a.dateSort).slice(
 
 // Career highlights data
 const stats = [
-  { value: '4500+', label: 'Citations' },
-  { value: '100+', label: 'Publications' },
-  { value: '29', label: 'h-index' },
-  { value: '£1.5M+', label: 'Grant Funding' },
+  { value: '5,200+', label: 'Citations' },
+  { value: '150+', label: 'Publications' },
+  { value: '30', label: 'h-index' },
+  { value: '£3.5M+', label: 'Grant Funding' },
 ];
 
 // Career timeline - first row (positions & honors)
@@ -263,8 +303,8 @@ const flairTeam = [
   { name: 'Dr. Mohammad Al-Quraan', image: '/images/FLAIR/alquran.jpeg', role: 'PhD Student' },
   { name: 'Dr. Sara Khosravi', image: '/images/FLAIR/sarah.jpeg', role: 'PhD Student' },
   { name: 'Ubaid Ahmed', image: '/images/FLAIR/Ubaid Ahmed.png', role: 'PhD Student' },
-  { name: 'Saja', image: '/images/FLAIR/Saja.png', role: 'PhD Student' },
-  { name: 'Basim Alhumaily', image: '/images/FLAIR/Basim Alhumaily.jpg', role: 'PhD Student' },
+  { name: 'Dr. Saja Al Ani', image: '/images/FLAIR/Saja.png', role: 'PhD Graduate' },
+  { name: 'Dr. Basim Alhumaily', image: '/images/FLAIR/Basim Alhumaily.jpg', role: 'PhD Graduate' },
   { name: 'Chen Ao', image: '/images/FLAIR/CHEN AO.jpg', role: 'PhD Student' },
 ];
 
