@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const dataset = {
+  title: 'VeriVoice-V1 Bilingual Speech Corpus',
+  year: '2026',
+  description: 'A bilingual Urdu–English speech corpus for deepfake detection and remote identity-verification research, released on IEEE DataPort.',
+  tags: ['Deepfake detection', 'Remote identity proofing', 'Bilingual speech', 'Urdu', 'English', 'IEEE DataPort'],
+  overview: `
+    <p>As Principal Investigator of the EPSRC project <strong class="text-accent-yellow">MIMER</strong>, I released <strong class="text-text-primary">VeriVoice-V1</strong> (IEEE DataPort, 2026), built with industrial partner <strong class="text-text-primary">STech.ai</strong> for deepfake-resistant identity proofing.</p>
+
+    <p class="mt-4">The corpus supports research on bilingual Urdu–English speech, closing a gap in existing anti-spoofing benchmarks that are dominated by monolingual English material. It is one of three public datasets released under MIMER, alongside MSS and iRAW.</p>
+
+    <p class="mt-4">VeriVoice-V1 was the project's first public dataset deliverable and is intended for researchers working on remote identity verification, presentation-attack detection, and audio deepfake forensics.</p>
+  `,
+};
+---
+
+<BaseLayout title={dataset.title} description={dataset.description}>
+  <section class="pt-8 lg:pt-16">
+    <div class="mb-12">
+      <a href="/research/" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent-yellow transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Research
+      </a>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-accent-yellow/10 text-accent-yellow text-sm rounded-full">Dataset</span>
+        <span class="text-text-muted">{dataset.year} · IEEE DataPort</span>
+      </div>
+      
+      <h1 class="text-3xl lg:text-4xl font-medium mb-4">
+        {dataset.title}
+      </h1>
+      
+      <p class="text-xl text-text-secondary max-w-3xl">
+        {dataset.description}
+      </p>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-lg font-medium mb-4">Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+        {dataset.tags.map((tag) => (
+          <span class="px-3 py-1.5 bg-dark-700 border border-dark-500/30 rounded-lg text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-2xl font-medium mb-6">Overview</h2>
+      <div class="bg-dark-700 rounded-xl p-6 lg:p-8 border border-dark-500/30">
+        <div class="prose prose-invert max-w-none text-text-secondary" set:html={dataset.overview} />
+      </div>
+    </div>
+
+    <div class="bg-dark-700 rounded-xl p-8 border border-dark-500/30 text-center">
+      <h3 class="text-lg font-medium mb-2">Related Project</h3>
+      <p class="text-text-secondary text-sm mb-4">
+        Released under the EPSRC-funded MIMER collaboration with UET Taxila and STech.ai.
+      </p>
+      <a href="/projects/mimer/" class="text-accent-yellow hover:underline text-sm">
+        View the MIMER project →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

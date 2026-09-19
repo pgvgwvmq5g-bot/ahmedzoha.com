@@ -4,15 +4,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Research Footprint Stats
 const footprintRow1 = [
-  { value: '150+', label: 'Total Publications' },
-  { value: '80%', label: 'Q1/Q2 Publications' },
-  { value: '24%', label: 'Top 10% Most Viewed (Scopus)' },
-  { value: '30%', label: 'Top 10% Most Cited Worldwide (CiteScore)' },
+  { value: '132', label: 'Total Publications' },
+  { value: '16 / 49', label: 'First-author / Senior-author' },
+  { value: '20%', label: 'Top 10% Most Cited Worldwide (Scopus)' },
+  { value: '62%', label: 'Top 10% Journals (by CiteScore)' },
 ];
 
 const footprintRow2 = [
-  { value: '58%', label: 'Top 10% Journals (by CiteScore)' },
-  { value: '33', label: 'Patents Citations' },
+  { value: '5,450', label: 'Citations (Google Scholar, Sep 2026)' },
+  { value: '68', label: 'Patent Document Citations' },
   { value: '3', label: 'Policy Document Citations (UK Parliament & EU)' },
   { value: '22+', label: 'Media Features (incl. BBC Click)' },
 ];
@@ -200,7 +200,7 @@ const categories = ['All', 'Federated Learning', '5G/6G', 'Healthcare', 'IoT & E
                 <div class="text-xs text-text-secondary">Annual Growth in Citations</div>
               </div>
               <div class="bg-dark-600 rounded-xl p-4 text-center">
-                <div class="text-2xl lg:text-3xl font-medium text-accent-yellow mb-1">13</div>
+                <div class="text-2xl lg:text-3xl font-medium text-accent-yellow mb-1">11</div>
                 <div class="text-xs text-text-secondary">PhDs Graduated</div>
               </div>
             </div>
@@ -259,11 +259,11 @@ const categories = ['All', 'Federated Learning', '5G/6G', 'Healthcare', 'IoT & E
             <!-- Citation Stats -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               <div class="bg-dark-600 rounded-xl p-4 text-center">
-                <div class="text-2xl lg:text-3xl font-medium text-accent-yellow mb-1">5,200+</div>
-                <div class="text-xs text-text-secondary">Total Citations (2026)</div>
+                <div class="text-2xl lg:text-3xl font-medium text-accent-yellow mb-1">5,450</div>
+                <div class="text-xs text-text-secondary">Total Citations (Sep 2026)</div>
               </div>
               <div class="bg-dark-600 rounded-xl p-4 text-center">
-                <div class="text-2xl lg:text-3xl font-medium text-text-primary mb-1">30</div>
+                <div class="text-2xl lg:text-3xl font-medium text-text-primary mb-1">32</div>
                 <div class="text-xs text-text-secondary">h-index</div>
               </div>
               <div class="bg-dark-600 rounded-xl p-4 text-center">
@@ -887,7 +887,87 @@ const categories = ['All', 'Federated Learning', '5G/6G', 'Healthcare', 'IoT & E
           </div>
         </a>
 
-        <!-- Dataset 2: 5G Activity Detection -->
+        <!-- Dataset 2: VeriVoice-V1 -->
+        <a 
+          href="/datasets/verivoice-v1/"
+          class="block bg-dark-700 rounded-xl border border-dark-500/30 p-5 hover:border-accent-yellow/30 hover:bg-dark-600 transition-all group"
+        >
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-dark-700 transition-colors">
+              <svg class="w-10 h-10 dataset-icon" viewBox="0 0 100 100">
+                <g class="text-text-secondary group-hover:text-accent-yellow transition-colors" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <line x1="50" y1="10" x2="50" y2="25"/>
+                  <line x1="50" y1="75" x2="50" y2="90"/>
+                  <line x1="10" y1="50" x2="25" y2="50"/>
+                  <line x1="75" y1="50" x2="90" y2="50"/>
+                  <line x1="21.7" y1="21.7" x2="32.3" y2="32.3"/>
+                  <line x1="67.7" y1="67.7" x2="78.3" y2="78.3"/>
+                  <line x1="78.3" y1="21.7" x2="67.7" y2="32.3"/>
+                  <line x1="32.3" y1="67.7" x2="21.7" y2="78.3"/>
+                </g>
+                <circle cx="50" cy="50" r="12" fill="currentColor" class="text-text-secondary group-hover:text-accent-yellow transition-colors"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-medium text-lg group-hover:text-accent-yellow transition-colors">
+                    VeriVoice-V1 Bilingual Speech Corpus
+                  </h3>
+                  <span class="text-sm text-text-muted">2026 · IEEE DataPort</span>
+                </div>
+                <span class="px-4 py-2 bg-dark-600 rounded-lg text-sm font-medium group-hover:bg-accent-yellow group-hover:text-dark-900 transition-all flex-shrink-0">
+                  Read More
+                </span>
+              </div>
+              <p class="text-sm text-text-secondary mt-3">
+                Bilingual Urdu–English speech corpus built with STech.ai for deepfake-resistant identity proofing and remote verification research.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Dataset 3: iRAW -->
+        <a 
+          href="/datasets/iraw/"
+          class="block bg-dark-700 rounded-xl border border-dark-500/30 p-5 hover:border-accent-yellow/30 hover:bg-dark-600 transition-all group"
+        >
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-dark-700 transition-colors">
+              <svg class="w-10 h-10 dataset-icon" viewBox="0 0 100 100">
+                <g class="text-text-secondary group-hover:text-accent-yellow transition-colors" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <line x1="50" y1="10" x2="50" y2="25"/>
+                  <line x1="50" y1="75" x2="50" y2="90"/>
+                  <line x1="10" y1="50" x2="25" y2="50"/>
+                  <line x1="75" y1="50" x2="90" y2="50"/>
+                  <line x1="21.7" y1="21.7" x2="32.3" y2="32.3"/>
+                  <line x1="67.7" y1="67.7" x2="78.3" y2="78.3"/>
+                  <line x1="78.3" y1="21.7" x2="67.7" y2="32.3"/>
+                  <line x1="32.3" y1="67.7" x2="21.7" y2="78.3"/>
+                </g>
+                <circle cx="50" cy="50" r="12" fill="currentColor" class="text-text-secondary group-hover:text-accent-yellow transition-colors"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-medium text-lg group-hover:text-accent-yellow transition-colors">
+                    iRAW Smartphone Sensor Forensics
+                  </h3>
+                  <span class="text-sm text-text-muted">August 2026 · IEEE DataPort</span>
+                </div>
+                <span class="px-4 py-2 bg-dark-600 rounded-lg text-sm font-medium group-hover:bg-accent-yellow group-hover:text-dark-900 transition-all flex-shrink-0">
+                  Read More
+                </span>
+              </div>
+              <p class="text-sm text-text-secondary mt-3">
+                3,203 RAW images from 20 smartphone sensors for device-authentication forensics, released as a public benchmark under EPSRC MIMER.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Dataset 4: 5G Activity Detection -->
         <a 
           href="/datasets/5g-activity-detection/"
           class="block bg-dark-700 rounded-xl border border-dark-500/30 p-5 hover:border-accent-yellow/30 hover:bg-dark-600 transition-all group"
